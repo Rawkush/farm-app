@@ -11,19 +11,17 @@ import android.widget.RadioGroup;
 
 import farm.gecdevelopers.com.farm.R;
 
-public class LoginUserData extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity {
     RadioButton rbType_2,rbType_3;
     EditText edUserName,edPassword, edEmail,edId;
     Button btLogin;
     RadioGroup radioGroup;
     final String TAG="My Tag";
     int type=0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_user_data);
-
+        setContentView(R.layout.activity_create_account);
         initViews();
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -49,7 +47,7 @@ public class LoginUserData extends AppCompatActivity {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                createAccount();
             }
         });
 
@@ -57,7 +55,7 @@ public class LoginUserData extends AppCompatActivity {
     }
 
 
-    private void login(){
+    private void createAccount(){
         isFormFilled();
         //TODO perform check or authenticity
 
@@ -89,15 +87,15 @@ public class LoginUserData extends AppCompatActivity {
 
     private void initViews() {
 
-    rbType_2=findViewById(R.id.type_2);
-    rbType_3= findViewById(R.id.type_3);
-    edId=findViewById(R.id.id);
-    edEmail=findViewById(R.id.email);
-    edPassword=findViewById(R.id.password);
-    edUserName=findViewById(R.id.username);
-    btLogin= findViewById(R.id.button);
-    radioGroup=findViewById(R.id.rdGroup);
-}
+        rbType_2=findViewById(R.id.type_2);
+        rbType_3= findViewById(R.id.type_3);
+        edId=findViewById(R.id.id);
+        edEmail=findViewById(R.id.email);
+        edPassword=findViewById(R.id.password);
+        edUserName=findViewById(R.id.username);
+        btLogin= findViewById(R.id.button);
+        radioGroup=findViewById(R.id.rdGroup);
+    }
 
 
 }
