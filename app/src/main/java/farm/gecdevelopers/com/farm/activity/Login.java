@@ -59,16 +59,18 @@ public class Login extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
+  /*                      // Display the first 500 characters of the response string.
                         if(response=="200"){
 
                             Toast.makeText(getApplicationContext(),"Logged in successfully",Toast.LENGTH_SHORT).show();
 
-                            //TODOcheck if logged in or not
+                            //TODO check if logged in or not
 
                             Intent intent = new Intent(Login.this,CreateAccount.class);
                             startActivity(intent);
                         }
+  */
+
                         Log.e("Response is: ", response);
                     }
                 }, new Response.ErrorListener() {
@@ -87,7 +89,7 @@ public class Login extends AppCompatActivity {
                 return param;
 
             }
-
+/*
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
                 String responseString = "";
@@ -97,6 +99,8 @@ public class Login extends AppCompatActivity {
                 }
                 return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
             }
+
+            */
         };
 
 
