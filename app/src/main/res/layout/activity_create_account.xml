@@ -24,7 +24,7 @@
             android:textSize="44sp" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
@@ -69,6 +69,13 @@
             android:inputType="phone" />
 
 
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Enter the username" />
 
         <RadioGroup
             android:id="@+id/rdGroup"

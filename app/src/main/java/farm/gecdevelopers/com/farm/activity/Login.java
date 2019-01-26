@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.admin.CreateAccount;
 
 public class Login extends AppCompatActivity {
 
@@ -60,9 +61,12 @@ public class Login extends AppCompatActivity {
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         if(response=="200"){
-                            Toast.makeText(getApplicationContext(),"Logged in successfully",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Login.this,LoginUserData.class);
 
+                            Toast.makeText(getApplicationContext(),"Logged in successfully",Toast.LENGTH_SHORT).show();
+
+                            //TODOcheck if logged in or not
+
+                            Intent intent = new Intent(Login.this,CreateAccount.class);
                             startActivity(intent);
                         }
                         Log.e("Response is: ", response);
