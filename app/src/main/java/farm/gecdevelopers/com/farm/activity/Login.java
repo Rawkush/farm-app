@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.LogPrinter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,11 +20,15 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.admin.CreateAccount;
+import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -53,30 +58,57 @@ public class Login extends AppCompatActivity {
 
     private void login(){
 
-        String url="http://axxentfarms.com/farm/files/pages/examples2/login.php?";
+        String url="http://axxentfarms.com/farm/files/pages/app/login.php?";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-  /*                      // Display the first 500 characters of the response string.
-                        if(response=="200"){
 
-                            Toast.makeText(getApplicationContext(),"Logged in successfully",Toast.LENGTH_SHORT).show();
+                        try {
+                            JSONObject data= new JSONObject(response);
+                            String login_status= data.getString("login_status");
+                            String type= data.getString("type");
+                            if(login_status.equals("1")){
 
-                            //TODO check if logged in or not
+                                Toast.makeText(Login.this,"Login successful",Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(Login.this,CreateAccount.class);
-                            startActivity(intent);
+                                if(type.equals("1")) {
+                                    Intent intent = new Intent(Login.this, DashBoardActivity.class);
+                                    startActivity(intent);
+                                }else
+                                    if(type.equals("2")){
+                                        Intent intent = new Intent(Login.this, DashBoardActivity.class);
+                                        startActivity(intent);
+                                    }else{
+
+                                        //TODO open auditor
+
+                                    }
+
+
+
+
+                                finish();
+
+                            }else
+                                Toast.makeText(Login.this,"Invalid Credential",Toast.LENGTH_SHORT).show();
+
+
+                        } catch (JSONException e) {
+                            Toast.makeText(Login.this,"Login failed",Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
                         }
-  */
 
                         Log.e("Response is: ", response);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-              //  mTextView.setText("That didn't work!");
+
+                Toast.makeText(Login.this,"Login failed",Toast.LENGTH_SHORT).show();
+
+
             }
         }){
             @Override
@@ -85,22 +117,10 @@ public class Login extends AppCompatActivity {
                 Map<String,String> param= new HashMap<>();
                 param.put("email",edUsername.getText().toString());
                 param.put("password",edPassword.getText().toString());
-                param.put("login","123");
                 return param;
 
             }
-/*
-            @Override
-            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                String responseString = "";
-                if (response != null) {
-                    responseString = String.valueOf(response.statusCode);
-                    // can get more details such as response.headers
-                }
-                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
-            }
 
-            */
         };
 
 
