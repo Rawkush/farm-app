@@ -44,17 +44,24 @@ public class Login extends AppCompatActivity {
         button=findViewById(R.id.button);
         queue=  Volley.newRequestQueue(this);
 
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                if(checkForEmptyField())
+                    login();
+                else
+                    Toast.makeText(Login.this,"Fields can't be empty",Toast.LENGTH_SHORT).show();
+
             }
         });
 
 
     }
 
+
+    private boolean checkForEmptyField(){
+        return !edUsername.getText().toString().equals("") && !edPassword.getText().toString().equals("");
+    }
 
     private void login(){
 
@@ -86,9 +93,6 @@ public class Login extends AppCompatActivity {
 
                                     }
 
-
-
-
                                 finish();
 
                             }else
@@ -100,7 +104,7 @@ public class Login extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        Log.e("Response is: ", response);
+                        Log.i("Response is: ", response);
                     }
                 }, new Response.ErrorListener() {
             @Override

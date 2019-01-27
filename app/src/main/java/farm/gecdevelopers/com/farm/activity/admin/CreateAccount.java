@@ -89,19 +89,19 @@ public class CreateAccount extends AppCompatActivity {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            // Display the first 500 characters of the response string.
-                            if(response.equals("200")){
-                                Toast.makeText(getApplicationContext(),"Created successfully",Toast.LENGTH_SHORT).show();
-                               /* Intent intent = new Intent(Cr.this,CreateAccount.class);
 
-                                startActivity(intent);*/
-                            }
                             Log.e("Response is: ", response);
+
+
+
+
                         }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    //  mTextView.setText("That didn't work!");
+
+
+
                 }
             }){
                 @Override
@@ -128,22 +128,10 @@ public class CreateAccount extends AppCompatActivity {
                 }
             };
 
-
             queue.add(stringRequest);
 
 
-
-
-
-
-
-
-
-
-
         }
-        //TODO perform check or authenticity
-
 
     }
 
