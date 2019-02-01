@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_margin="15dp">
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="#000"
+        android:text="Zeeshan Ali"/>
+
+       <ImageView
+            android:id="@+id/edit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            android:layout_alignParentEnd="true"/>
+        <TextView
+            android:id="@+id/man_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manager Id: 25"
+            android:visibility="visible"
+            android:layout_toRightOf="@id/uname"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@id/name"
+            />
+       <ImageView
+            android:id="@+id/delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/edit_btn"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username: zeesh"
+            android:id="@+id/uname"
+
+            android:layout_below="@+id/name"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: hvdkfvn"
+            android:id="@+id/man_email"
+            android:layout_below="@+id/uname"
+            />
+        <TextView
+            android:id="@+id/man_phn_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact: 99112326646"
+            android:layout_below="@+id/man_email"
+            />
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

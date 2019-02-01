@@ -23,25 +23,26 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import farm.gecdevelopers.com.farm.Adapters.FAdapter;
 import farm.gecdevelopers.com.farm.Adapters.FarmsAdapter;
 import farm.gecdevelopers.com.farm.Adapters.PlotAdapter;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
-import farm.gecdevelopers.com.farm.models.Farms;
+import farm.gecdevelopers.com.farm.models.FarmActivity;
 import farm.gecdevelopers.com.farm.models.Plot;
 
-public class PlotsList extends Fragment {
+public class FarmactivityList extends Fragment {
     View root;
     static Context ctx;
-    static ArrayList<Plot> plotArrayList;
+    static ArrayList<FarmActivity> farmActivityArrayList;
     static RecyclerView recyclerView;
 
-    static PlotAdapter adapter;
+    static FAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_plots, container, false);
+        root = inflater.inflate(R.layout.fragment_activity, container, false);
 
         ctx=getActivity();
         recyclerView=root.findViewById(R.id.man_rv);
@@ -69,28 +70,23 @@ public class PlotsList extends Fragment {
         try{
             if(jsonfile!=null){
                 JSONObject root=new JSONObject(jsonfile);
-                JSONArray user=root.getJSONArray("add_farm");
-                Plot item;
+                JSONArray user=root.getJSONArray("addfarmactivity");
+                FarmActivity item;
 
                 for(int i=0;i<user.length();i++){
                     JSONObject eachMan=user.getJSONObject(i);
-                    String desc=eachMan.getString("farm_disc");
-                    String plotname=eachMan.getString("farm_name");
-                    String size=eachMan.getString("farm_size");
-                    String location=eachMan.getString("farm_location");
-                    String manager=eachMan.getString("farm_manager");
+                    String desc=eachMan.getString("activity_disc");
+                    String activity=eachMan.getString("activity_name");
 
+                    item=new FarmActivity(desc,activity);
 
-                    item=new Plot(desc,plotname,size,manager,location);
-                    item.setSize(size);
                     item.setDesc(desc);
-                    item.setPlotname(plotname);
-                    item.setManager(manager);
-                    item.setLocation(location);
+
+                    item.setActivity(activity);
 
 
 
-                    plotArrayList.add(item) ;
+                    farmActivityArrayList.add(item) ;
 
 
                     //  Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
@@ -105,7 +101,7 @@ public class PlotsList extends Fragment {
     }
 
     public static void getList(){
-        plotArrayList=new ArrayList<>();
+        farmActivityArrayList=new ArrayList<>();
         final String url="http://axxentfarms.com/farm/files/pages/examples2/fetchtable.php?";
 
 
@@ -115,37 +111,31 @@ public class PlotsList extends Fragment {
                     public void onResponse(String response) {
                         try{
                             JSONObject root=new JSONObject(response);
-                            JSONArray user=root.getJSONArray("add_farm");
-                            Plot item;
+                            JSONArray user=root.getJSONArray("addfarmactivity");
+                            FarmActivity item;
 
                             for(int i=0;i<user.length();i++){
                                 JSONObject eachMan=user.getJSONObject(i);
-                                String desc=eachMan.getString("farm_disc");
-                                String plotname=eachMan.getString("farm_name");
-                                String size=eachMan.getString("farm_size");
-                                String location=eachMan.getString("farm_location");
-                                String manager=eachMan.getString("farm_manager");
+                                String desc=eachMan.getString("activity_disc");
+                                String activity=eachMan.getString("activity_name");
 
 
 
 
 
-                                item=new Plot(desc,plotname,size,manager,location);
-                                item.setSize(size);
+                                item=new FarmActivity(desc,activity);
                                 item.setDesc(desc);
-                                item.setPlotname(plotname);
-                                item.setManager(manager);
-                                item.setLocation(location);
+                                item.setActivity(activity);
 
 
-                                plotArrayList.add(item) ;
+                                farmActivityArrayList.add(item) ;
 
 
 
 
 
-                                int a=plotArrayList.size();
-                                adapter = new PlotAdapter(ctx,plotArrayList);
+                                int a=farmActivityArrayList.size();
+                                adapter = new FAdapter(ctx,farmActivityArrayList);
                                 LinearLayoutManager llm = new LinearLayoutManager(ctx);
                                 llm.setOrientation(LinearLayoutManager.VERTICAL);
                                 recyclerView.setLayoutManager(llm);
@@ -171,6 +161,7 @@ public class PlotsList extends Fragment {
         DashBoardActivity.queue.add(stringRequest);
     }
 }
+
 
 
 

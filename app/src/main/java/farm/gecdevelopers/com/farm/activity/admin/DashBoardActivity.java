@@ -9,18 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -31,9 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.NetworkUtility;
+import farm.gecdevelopers.com.farm.fragments.AuditorsList;
+import farm.gecdevelopers.com.farm.fragments.FarmactivityList;
 import farm.gecdevelopers.com.farm.fragments.FarmsList;
 import farm.gecdevelopers.com.farm.fragments.ManagersList;
+import farm.gecdevelopers.com.farm.fragments.MoreOptions;
 import farm.gecdevelopers.com.farm.fragments.PlotsList;
 import farm.gecdevelopers.com.farm.models.DailyActivity_Data;
 import farm.gecdevelopers.com.farm.models.DailyExpense_Data;
@@ -52,7 +47,7 @@ public class DashBoardActivity extends AppCompatActivity {
     FrameLayout frameLayout;
 
     private String[] navLabels = {
-            "Managers","Farms","Plot"
+            "Managers","Auditors","Farms","Plots","Farm Activities","More Options"
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +97,12 @@ public class DashBoardActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new ManagersList(), "Managers");
+        adapter.addFrag(new AuditorsList(), "Auditors");
         adapter.addFrag(new FarmsList(),"Farms");
         adapter.addFrag(new PlotsList(), "Plots");
+        adapter.addFrag(new FarmactivityList(), "Activities");
+        adapter.addFrag(new MoreOptions(), "More Options");
+
         viewPager.setAdapter(adapter);
     }
 

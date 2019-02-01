@@ -23,25 +23,23 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import farm.gecdevelopers.com.farm.Adapters.FarmsAdapter;
-import farm.gecdevelopers.com.farm.Adapters.PlotAdapter;
+import farm.gecdevelopers.com.farm.Adapters.ManagersAdapter;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
-import farm.gecdevelopers.com.farm.models.Farms;
-import farm.gecdevelopers.com.farm.models.Plot;
+import farm.gecdevelopers.com.farm.models.Managers;
 
-public class PlotsList extends Fragment {
+public class AuditorsList extends Fragment {
     View root;
     static Context ctx;
-    static ArrayList<Plot> plotArrayList;
+    static ArrayList<Managers> managersList;
     static RecyclerView recyclerView;
 
-    static PlotAdapter adapter;
+    static ManagersAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_plots, container, false);
+        root = inflater.inflate(R.layout.fragment_auditor, container, false);
 
         ctx=getActivity();
         recyclerView=root.findViewById(R.id.man_rv);
@@ -69,29 +67,25 @@ public class PlotsList extends Fragment {
         try{
             if(jsonfile!=null){
                 JSONObject root=new JSONObject(jsonfile);
-                JSONArray user=root.getJSONArray("add_farm");
-                Plot item;
+                JSONArray user=root.getJSONArray("login_user");
+                Managers item;
 
                 for(int i=0;i<user.length();i++){
                     JSONObject eachMan=user.getJSONObject(i);
-                    String desc=eachMan.getString("farm_disc");
-                    String plotname=eachMan.getString("farm_name");
-                    String size=eachMan.getString("farm_size");
-                    String location=eachMan.getString("farm_location");
-                    String manager=eachMan.getString("farm_manager");
+                    String type=eachMan.getString("type");
+                    String name=eachMan.getString("name");
+                    String uname=eachMan.getString("username");
+                    String email=eachMan.getString("email");
+                    String phn=eachMan.getString("phone");
+                    String manId=eachMan.getString("client_num");
 
+                    if(type.equals("3")){
+                        item=new Managers(manId,name,email,phn,uname);
+                        item.setManEmail(email);item.setManId(manId);item.setManName(name);item.setManPhnNo(phn);
+                        item.setManUsrname(uname);
 
-                    item=new Plot(desc,plotname,size,manager,location);
-                    item.setSize(size);
-                    item.setDesc(desc);
-                    item.setPlotname(plotname);
-                    item.setManager(manager);
-                    item.setLocation(location);
-
-
-
-                    plotArrayList.add(item) ;
-
+                        managersList.add(item) ;
+                    }
 
                     //  Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
 
@@ -105,7 +99,7 @@ public class PlotsList extends Fragment {
     }
 
     public static void getList(){
-        plotArrayList=new ArrayList<>();
+        managersList=new ArrayList<>();
         final String url="http://axxentfarms.com/farm/files/pages/examples2/fetchtable.php?";
 
 
@@ -115,37 +109,32 @@ public class PlotsList extends Fragment {
                     public void onResponse(String response) {
                         try{
                             JSONObject root=new JSONObject(response);
-                            JSONArray user=root.getJSONArray("add_farm");
-                            Plot item;
+                            JSONArray user=root.optJSONArray("login_user");
+                            Managers item;
 
                             for(int i=0;i<user.length();i++){
                                 JSONObject eachMan=user.getJSONObject(i);
-                                String desc=eachMan.getString("farm_disc");
-                                String plotname=eachMan.getString("farm_name");
-                                String size=eachMan.getString("farm_size");
-                                String location=eachMan.getString("farm_location");
-                                String manager=eachMan.getString("farm_manager");
+                                String type=eachMan.getString("type");
+                                String name=eachMan.getString("name");
+                                String uname=eachMan.getString("username");
+                                String email=eachMan.getString("email");
+                                String phn=eachMan.getString("phone");
+                                String manId=eachMan.getString("client_num");
 
 
 
+                                if(type.equals("3")){
+                                    item=new Managers(manId,name,email,phn,uname);
+                                    item.setManEmail(email);item.setManId(manId);item.setManName(name);item.setManPhnNo(phn);
+                                    item.setManUsrname(uname);
 
-
-                                item=new Plot(desc,plotname,size,manager,location);
-                                item.setSize(size);
-                                item.setDesc(desc);
-                                item.setPlotname(plotname);
-                                item.setManager(manager);
-                                item.setLocation(location);
-
-
-                                plotArrayList.add(item) ;
+                                    managersList.add(item) ;
+                                }
 
 
 
-
-
-                                int a=plotArrayList.size();
-                                adapter = new PlotAdapter(ctx,plotArrayList);
+                                int a=managersList.size();
+                                adapter = new ManagersAdapter(ctx,managersList);
                                 LinearLayoutManager llm = new LinearLayoutManager(ctx);
                                 llm.setOrientation(LinearLayoutManager.VERTICAL);
                                 recyclerView.setLayoutManager(llm);
@@ -171,12 +160,6 @@ public class PlotsList extends Fragment {
         DashBoardActivity.queue.add(stringRequest);
     }
 }
-
-
-
-
-
-
 
 
 
