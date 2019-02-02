@@ -1,9 +1,11 @@
 package farm.gecdevelopers.com.farm.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +31,7 @@ import java.util.ArrayList;
 import farm.gecdevelopers.com.farm.Adapters.ManagersAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Managers;
 
@@ -40,70 +43,36 @@ public class ManagersList extends Fragment {
 
    static ManagersAdapter adapter;
 
+    public static String type="";
+
+    FloatingActionButton add;
 
 
 
+
+    @SuppressLint("RestrictedApi")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_managers, container, false);
 
+        add=root.findViewById(R.id.add_manager_btn);
+        type=SplashActivity.type;
+        if(type.equals("1"))
+        {
+           add.setVisibility(View.VISIBLE);
+        }
+        else if(type.equals("3")){
+            add.setVisibility(View.GONE);
+        }
         ctx=getActivity();
         recyclerView=root.findViewById(R.id.man_rv);
-        String json="";
-        /*URL url=NetworkUtility.buildUrl();
-        try {
-            json=NetworkUtility.getResponseFromHttpUrl(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
 
-//json= NetworkUtility.hitApi();
-
-        //getManList(json);
 
         getList();
 
         return root;
     }
-     public static void getManList(String jsonfile)  {
-
-       // String res= NetworkUtility.hitApi();
-
-        // Log.d("STING KI MAA KI",""+res);
-         try{
-             if(jsonfile!=null){
-                 JSONObject root=new JSONObject(jsonfile);
-                 JSONArray user=root.getJSONArray("login_user");
-                 Managers item;
-
-                 for(int i=0;i<user.length();i++){
-                     JSONObject eachMan=user.getJSONObject(i);
-                     String type=eachMan.getString("type");
-                     String name=eachMan.getString("name");
-                     String uname=eachMan.getString("username");
-                     String email=eachMan.getString("email");
-                     String phn=eachMan.getString("phone");
-                     String manId=eachMan.getString("client_num");
-
-                     if(type.equals("2")){
-                         item=new Managers(manId,name,email,phn,uname);
-                         item.setManEmail(email);item.setManId(manId);item.setManName(name);item.setManPhnNo(phn);
-                         item.setManUsrname(uname);
-
-                         managersList.add(item) ;
-                     }
-
-                   //  Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
-
-                 }
-         }
-
-
-         } catch (JSONException e) {
-             e.printStackTrace();
-         }
-     }
 
      public static void getList(){
         managersList=new ArrayList<>();

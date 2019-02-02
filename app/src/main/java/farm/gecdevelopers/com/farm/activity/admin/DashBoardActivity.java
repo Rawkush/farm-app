@@ -44,7 +44,10 @@ public class DashBoardActivity extends AppCompatActivity {
     static FragmentManager fmanager;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    FrameLayout frameLayout;
+    public static FrameLayout frameLayout;
+
+
+
 
     private String[] navLabels = {
             "Managers","Auditors","Farms","Plots","Farm Activities","More Options"
@@ -59,6 +62,8 @@ public class DashBoardActivity extends AppCompatActivity {
         document_data= new ArrayList<>();
 
         bindView();
+
+
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
@@ -135,49 +140,7 @@ public class DashBoardActivity extends AppCompatActivity {
         }
     }
 
-/*
-        private void fetchTable(){
-            final String url="http://axxentfarms.com/farm/files/pages/examples2/fetchtable.php?";
 
-
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-
-                            Log.e("Response is: ", response);
-                            try {
-                                JSONObject table = new JSONObject(response);
-                                extractDataFromTable(table);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                    Toast.makeText(DashBoardActivity.this,"Failed to fetch, please retry",Toast.LENGTH_SHORT).show();
-
-
-                }
-            });
-            queue.add(stringRequest);
-
-        }
-*/
-
-/*
-        private void extractDataFromTable(JSONObject table){
-
-            extractDailyActivity(table);
-            extractDailyExpenses(table);
-            extractDocumentData(table);
-        }
-*/
 
     private void extractDailyActivity(JSONObject table){
         try {

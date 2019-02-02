@@ -27,8 +27,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.SessionManagement;
 import farm.gecdevelopers.com.farm.activity.admin.CreateAccount;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
+import farm.gecdevelopers.com.farm.activity.manager.Manager_DashBoardActivity;
+
+import static farm.gecdevelopers.com.farm.activity.SplashActivity.session;
 
 public class Login extends AppCompatActivity {
 
@@ -78,20 +82,27 @@ public class Login extends AppCompatActivity {
                             String type= data.getString("type");
                             if(login_status.equals("1")){
 
-                                Toast.makeText(Login.this,"Login successful",Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(Login.this,"Login successful",Toast.LENGTH_SHORT).show();
+
 
                                 if(type.equals("1")) {
+                                    session.createLoginSession(edUsername.getText().toString(),edPassword.getText().toString(),"1");
+                                    SplashActivity.type="1";
                                     Intent intent = new Intent(Login.this, DashBoardActivity.class);
                                     startActivity(intent);
-                                }else
-                                    if(type.equals("2")){
-                                        Intent intent = new Intent(Login.this, DashBoardActivity.class);
-                                        startActivity(intent);
-                                    }else{
+                                }else if(type.equals("2")){
+                                    session.createLoginSession(edUsername.getText().toString(),edPassword.getText().toString(),"2");
+                                    SplashActivity.type="2";
 
-                                        //TODO open auditor
+                                    Intent intent = new Intent(Login.this, Manager_DashBoardActivity.class);
+                                    startActivity(intent);
 
-                                    }
+                                }else if(type.equals("3")){
+                                    session.createLoginSession(edUsername.getText().toString(),edPassword.getText().toString(),"3");
+                                    SplashActivity.type="3";
+                                    Intent intent = new Intent(Login.this, DashBoardActivity.class);
+                                    startActivity(intent);
+                                }
 
                                 finish();
 
