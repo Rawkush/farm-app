@@ -28,6 +28,7 @@ import java.util.Map;
 
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.SessionManagement;
+import farm.gecdevelopers.com.farm.activity.admin.AddFarmActivity;
 import farm.gecdevelopers.com.farm.activity.admin.CreateAccount;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.activity.manager.Manager_DashBoardActivity;
@@ -79,16 +80,17 @@ public class Login extends AppCompatActivity {
                         try {
                             JSONObject data= new JSONObject(response);
                             String login_status= data.getString("login_status");
-                            String type= data.getString("type");
                             if(login_status.equals("1")){
+                                String type= data.getString("type");
 
-                               // Toast.makeText(Login.this,"Login successful",Toast.LENGTH_SHORT).show();
+                               //0 Toast.makeText(Login.this,"Login successful",Toast.LENGTH_SHORT).show();
 
 
                                 if(type.equals("1")) {
                                     session.createLoginSession(edUsername.getText().toString(),edPassword.getText().toString(),"1");
                                     SplashActivity.type="1";
-                                    Intent intent = new Intent(Login.this, DashBoardActivity.class);
+                                    //todo directing to dash board
+                                    Intent intent = new Intent(Login.this, AddFarmActivity.class);
                                     startActivity(intent);
                                 }else if(type.equals("2")){
                                     session.createLoginSession(edUsername.getText().toString(),edPassword.getText().toString(),"2");

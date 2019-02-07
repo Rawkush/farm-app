@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.Login">
-
-        </activity>
+        <activity android:name=".activity.Login"></activity>
         <activity android:name=".activity.admin.CreateAccount" />
         <activity android:name=".activity.admin.DashBoardActivity" />
         <activity android:name=".activity.manager.Manager_DashBoardActivity" />
@@ -25,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.admin.AddFarmActivity"></activity>
     </application>
 
 </manifest>
