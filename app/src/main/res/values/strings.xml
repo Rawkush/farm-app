@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">farm</string>
+
+    <string name="login">Login</string>
+    <string name="login_to_your_account">Login to your Account</string>
+    <string name="your_email">Username</string>
+    <string name="password">Password</string>
+
+
 </resources>

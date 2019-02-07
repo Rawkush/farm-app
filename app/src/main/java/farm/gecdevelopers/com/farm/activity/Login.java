@@ -1,8 +1,12 @@
 package farm.gecdevelopers.com.farm.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.LogPrinter;
 import android.view.View;
@@ -11,10 +15,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
 import com.android.volley.NetworkResponse;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
@@ -37,25 +47,38 @@ import static farm.gecdevelopers.com.farm.activity.SplashActivity.session;
 
 public class Login extends AppCompatActivity {
 
-    EditText edUsername,edPassword;
+    final static int MY_SOCKET_TIMEOUT_MS=30000;
+    private TextInputLayout mLoginEmail;
+    private TextInputLayout mLoginPassword;
+    private Toolbar mToolbar;
+    private ProgressDialog mLoginProgress;
+
+
     Button button;
     RequestQueue queue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        edPassword=findViewById(R.id.password);
-        edUsername=findViewById(R.id.username);
-        button=findViewById(R.id.button);
-        queue=  Volley.newRequestQueue(this);
+
+        initActivityComponents();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkForEmptyField())
-                    login();
-                else
-                    Toast.makeText(Login.this,"Fields can't be empty",Toast.LENGTH_SHORT).show();
+                String email = mLoginEmail.getEditText().getText().toString();
+                String password = mLoginPassword.getEditText().getText().toString();
+
+                if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
+
+                    mLoginProgress.setTitle("Logging In");
+                    mLoginProgress.setMessage("Please wait while we check your credentials.");
+                    mLoginProgress.setCanceledOnTouchOutside(false);
+                    mLoginProgress.show();
+
+                    login(email, password);
+
+                }
 
             }
         });
@@ -64,13 +87,25 @@ public class Login extends AppCompatActivity {
     }
 
 
-    private boolean checkForEmptyField(){
-        return !edUsername.getText().toString().equals("") && !edPassword.getText().toString().equals("");
+    private void initActivityComponents(){
+
+        mLoginEmail = findViewById(R.id.login_email);
+        mLoginPassword = findViewById(R.id.login_password);
+        button = findViewById(R.id.login_btn);
+        queue=  Volley.newRequestQueue(this);
+        mToolbar = findViewById(R.id.login_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Login");
+        mLoginProgress = new ProgressDialog(this);
+
     }
 
-    private void login(){
 
-        String url="http://axxentfarms.com/farm/files/pages/app/login.php?";
+
+    private void login(final String username, final String password){
+
+       final String url="http://axxentfarms.com/farm/files/pages/app/login.php?";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -85,25 +120,31 @@ public class Login extends AppCompatActivity {
 
                                //0 Toast.makeText(Login.this,"Login successful",Toast.LENGTH_SHORT).show();
 
+                                switch (type) {
+                                    case "1": {
+                                        session.createLoginSession(username, password, "1");
+                                        SplashActivity.type = "1";
+                                        //todo directing to dash board
+                                        Intent intent = new Intent(Login.this, DashBoardActivity.class);
+                                        startActivity(intent);
+                                        break;
+                                    }
+                                    case "2": {
+                                        session.createLoginSession(username, password, "2");
+                                        SplashActivity.type = "2";
 
-                                if(type.equals("1")) {
-                                    session.createLoginSession(edUsername.getText().toString(),edPassword.getText().toString(),"1");
-                                    SplashActivity.type="1";
-                                    //todo directing to dash board
-                                    Intent intent = new Intent(Login.this, AddFarmActivity.class);
-                                    startActivity(intent);
-                                }else if(type.equals("2")){
-                                    session.createLoginSession(edUsername.getText().toString(),edPassword.getText().toString(),"2");
-                                    SplashActivity.type="2";
+                                        Intent intent = new Intent(Login.this, Manager_DashBoardActivity.class);
+                                        startActivity(intent);
 
-                                    Intent intent = new Intent(Login.this, Manager_DashBoardActivity.class);
-                                    startActivity(intent);
-
-                                }else if(type.equals("3")){
-                                    session.createLoginSession(edUsername.getText().toString(),edPassword.getText().toString(),"3");
-                                    SplashActivity.type="3";
-                                    Intent intent = new Intent(Login.this, DashBoardActivity.class);
-                                    startActivity(intent);
+                                        break;
+                                    }
+                                    case "3": {
+                                        session.createLoginSession(username, password, "3");
+                                        SplashActivity.type = "3";
+                                        Intent intent = new Intent(Login.this, DashBoardActivity.class);
+                                        startActivity(intent);
+                                        break;
+                                    }
                                 }
 
                                 finish();
@@ -123,8 +164,25 @@ public class Login extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(Login.this,"Login failed",Toast.LENGTH_SHORT).show();
+                mLoginProgress.dismiss();
 
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    //This indicates that the reuest has either time out or there is no connection
+                    Toast.makeText(Login.this,"time out",Toast.LENGTH_SHORT).show();
+
+                } else if (error instanceof AuthFailureError) {
+                    //Error indicating that there was an Authentication Failure while performing the request
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(Login.this,"Server error",Toast.LENGTH_SHORT).show();
+
+                    //Indicates that the server responded with a error response
+                } else if (error instanceof NetworkError) {
+                    //Indicates that there was network error while performing the request
+                    Toast.makeText(Login.this,"Network error",Toast.LENGTH_SHORT).show();
+
+                } else if (error instanceof ParseError) {
+                    // Indicates that the server response could not be parsed
+                }
 
             }
         }){
@@ -132,14 +190,17 @@ public class Login extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String,String> param= new HashMap<>();
-                param.put("email",edUsername.getText().toString());
-                param.put("password",edPassword.getText().toString());
+                param.put("email",username);
+                param.put("password",password);
                 return param;
 
             }
 
         };
-
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
             queue.add(stringRequest);
 
