@@ -105,7 +105,7 @@ public class Login extends AppCompatActivity {
 
     private void login(final String username, final String password){
 
-       final String url="http://axxentfarms.com/farm/files/pages/app/login.php?";
+        final String url = "http://axxentfarms.com/farm/files/pages/app/login.php?";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -201,7 +201,7 @@ public class Login extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-            queue.add(stringRequest);
+        queue.add(stringRequest);
 
 
     }
