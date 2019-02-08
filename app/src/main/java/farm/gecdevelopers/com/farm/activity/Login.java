@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
     private TextInputLayout mLoginPassword;
     private Toolbar mToolbar;
     private ProgressDialog mLoginProgress;
-
+    private final String ADMIN = "1", MANAGER = "2", AUDITOR = "3";
 
     Button button;
     RequestQueue queue;
@@ -116,12 +116,11 @@ public class Login extends AppCompatActivity {
                             JSONObject data= new JSONObject(response);
                             String login_status= data.getString("login_status");
                             if(login_status.equals("1")){
+
                                 String type= data.getString("type");
 
-                               //0 Toast.makeText(Login.this,"Login successful",Toast.LENGTH_SHORT).show();
-
                                 switch (type) {
-                                    case "1": {
+                                    case ADMIN: {
                                         session.createLoginSession(username, password, "1");
                                         SplashActivity.type = "1";
                                         //todo directing to dash board
@@ -129,7 +128,7 @@ public class Login extends AppCompatActivity {
                                         startActivity(intent);
                                         break;
                                     }
-                                    case "2": {
+                                    case MANAGER: {
                                         session.createLoginSession(username, password, "2");
                                         SplashActivity.type = "2";
 
@@ -138,7 +137,7 @@ public class Login extends AppCompatActivity {
 
                                         break;
                                     }
-                                    case "3": {
+                                    case AUDITOR: {
                                         session.createLoginSession(username, password, "3");
                                         SplashActivity.type = "3";
                                         Intent intent = new Intent(Login.this, DashBoardActivity.class);
