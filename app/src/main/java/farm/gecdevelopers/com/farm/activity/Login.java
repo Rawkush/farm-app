@@ -2,6 +2,7 @@ package farm.gecdevelopers.com.farm.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.LogPrinter;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,9 +50,8 @@ import static farm.gecdevelopers.com.farm.activity.SplashActivity.session;
 public class Login extends AppCompatActivity {
 
     final static int MY_SOCKET_TIMEOUT_MS=30000;
-    private TextInputLayout mLoginEmail;
-    private TextInputLayout mLoginPassword;
-    private Toolbar mToolbar;
+    private EditText mLoginEmail;
+    private EditText mLoginPassword;
     private ProgressDialog mLoginProgress;
     private final String ADMIN = "1", MANAGER = "2", AUDITOR = "3";
 
@@ -66,8 +67,8 @@ public class Login extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = mLoginEmail.getEditText().getText().toString();
-                String password = mLoginPassword.getEditText().getText().toString();
+                String email = mLoginEmail.getText().toString();
+                String password = mLoginPassword.getText().toString();
 
                 if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
 
@@ -93,10 +94,6 @@ public class Login extends AppCompatActivity {
         mLoginPassword = findViewById(R.id.login_password);
         button = findViewById(R.id.login_btn);
         queue=  Volley.newRequestQueue(this);
-        mToolbar = findViewById(R.id.login_toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Login");
         mLoginProgress = new ProgressDialog(this);
 
     }
@@ -116,8 +113,9 @@ public class Login extends AppCompatActivity {
                             JSONObject data= new JSONObject(response);
                             String login_status= data.getString("login_status");
                             if(login_status.equals("1")){
-
                                 String type= data.getString("type");
+
+                                //0 Toast.makeText(Login.this,"Login successful",Toast.LENGTH_SHORT).show();
 
                                 switch (type) {
                                     case ADMIN: {

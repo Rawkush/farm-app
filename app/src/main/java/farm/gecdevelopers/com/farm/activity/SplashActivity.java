@@ -17,23 +17,21 @@ import farm.gecdevelopers.com.farm.activity.manager.Manager_DashBoardActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    int SPLASH_TIME_OUT=3000;
-    String signedIn="";
-    public static String type="";
+    public static String type = "";
+    public static SessionManagement session;
+    int SPLASH_TIME_OUT = 3000;
+    String signedIn = "";
 
-
-public static SessionManagement session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-         session=new SessionManagement(SplashActivity.this);
-        signedIn=session.pref.getString(SessionManagement.IS_SIGNED_IN,"");
+        session = new SessionManagement(SplashActivity.this);
+        signedIn = session.pref.getString(SessionManagement.IS_SIGNED_IN, "");
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
-
 
 
         new Handler().postDelayed(new Runnable() {
@@ -41,28 +39,28 @@ public static SessionManagement session;
             @Override
             public void run() {
 
-                if(signedIn.equals("true")){
-                     type=session.pref.getString(SessionManagement.TYPE,"0");
+                if (signedIn.equals("true")) {
+                    type = session.pref.getString(SessionManagement.TYPE, "0");
 
-                    if(type.equals("1")) {
+                    if (type.equals("1")) {
                         Intent intent = new Intent(SplashActivity.this, DashBoardActivity.class);
                         startActivity(intent);
-                    }else if(type.equals("2")){
+                    } else if (type.equals("2")) {
                         Intent intent = new Intent(SplashActivity.this, Manager_DashBoardActivity.class);
                         startActivity(intent);
 
-                    }else if(type.equals("3")){
+                    } else if (type.equals("3")) {
                         Intent intent = new Intent(SplashActivity.this, DashBoardActivity.class);
                         startActivity(intent);
                     }
 
-                }else{
-                    Intent i=new Intent(SplashActivity.this,Login.class);
+                } else {
+                    Intent i = new Intent(SplashActivity.this, Login.class);
                     startActivity(i);
                 }
 
 
-                 finish();
+                finish();
             }
         }, SPLASH_TIME_OUT);
     }
