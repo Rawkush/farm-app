@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -39,7 +41,7 @@ public class ManagersList extends Fragment {
     View root;
     static Context ctx;
     static ArrayList<Managers> managersList;
-   static RecyclerView recyclerView;
+    static RecyclerView recyclerView;
 
    static ManagersAdapter adapter;
 
@@ -74,7 +76,7 @@ public class ManagersList extends Fragment {
         return root;
     }
 
-     public static void getList(){
+    public static void getList() {
         managersList=new ArrayList<>();
          final String url="http://axxentfarms.com/farm/files/pages/examples2/fetchtable.php?";
 
@@ -135,4 +137,20 @@ public class ManagersList extends Fragment {
          });
          DashBoardActivity.queue.add(stringRequest);
      }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((DashBoardActivity) getActivity()).switchToSecondFragment(DashBoardActivity.MANAGER);
+                ((DashBoardActivity) getActivity()).toggleVisiblity(View.INVISIBLE);
+
+            }
+        });
+
+
+    }
 }

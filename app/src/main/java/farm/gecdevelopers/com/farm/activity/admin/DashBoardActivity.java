@@ -4,11 +4,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.fragments.AddManagers;
 import farm.gecdevelopers.com.farm.fragments.AuditorsList;
 import farm.gecdevelopers.com.farm.fragments.FarmactivityList;
 import farm.gecdevelopers.com.farm.fragments.FarmsList;
@@ -40,17 +43,14 @@ public class DashBoardActivity extends AppCompatActivity {
     ArrayList<DailyActivity_Data> dailyActivity_data;
     ArrayList<DailyExpense_Data> dailyExpense_data;
     ArrayList<Document_Data> document_data;
-
-    static FragmentManager fmanager;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public static FrameLayout frameLayout;
-
+    public static final String MANAGER = "Manager", AUDITOR = "Auditors", FARMS = "Farms", PLOTS = "Plots", FARM_ACTIVITY = "Farm Activities";
 
 
 
     private String[] navLabels = {
-            "Managers","Auditors","Farms","Plots","Farm Activities","More Options"
+            MANAGER, AUDITOR, FARMS, PLOTS, FARM_ACTIVITY, "More Options"
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,15 +88,10 @@ public class DashBoardActivity extends AppCompatActivity {
             tabLayout.getTabAt(i).setCustomView(tab);
         }
 
-        //fetchTable();
-        //String res=NetworkUtility.hitApi();
     }
     private void bindView() {
         viewPager = findViewById(R.id.frame_);
         tabLayout = findViewById(R.id.tabs);
-        frameLayout = findViewById(R.id.frame);
-
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -140,106 +135,70 @@ public class DashBoardActivity extends AppCompatActivity {
         }
     }
 
+    public void switchToSecondFragment(String TAG) {
+
+        Fragment fragment = new Fragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+
+        switch (TAG) {
+
+            case MANAGER:
+                fragment = new AddManagers();
+                transaction.replace(R.id.fragment, fragment).addToBackStack(MANAGER);
+
+                break;
+
+            case PLOTS:
+
+                break;
+
+            case AUDITOR:
 
 
-    private void extractDailyActivity(JSONObject table){
-        try {
-            JSONArray array= table.getJSONArray("dailyactivity");
-
-            for(int i=0;i<array.length();i++){
+            case FARMS:
 
 
-                JSONObject data=array.getJSONObject(i);
-                DailyActivity_Data s= new DailyActivity_Data();
+                break;
+
+            case FARM_ACTIVITY:
+                break;
+        }
 
 
-                s.setDailyAcitvityID(Long.parseLong(data.getString("dactivity_id")));
-                s.setFarmID(Long.parseLong(data.getString("farmid")));
-                s.setImageName(data.getString("imgname"));
-                s.setDocName(data.getString("docname"));
-                s.setVideoName(data.getString("vidname"));
-                s.setActid(Long.parseLong(data.getString("actid")));
-                s.setDetails(data.getString("det"));
-                s.setComments(data.getString("cmts"));
-                s.setFarmLatitude(data.getString("farmlat"));
-                s.setFarmLongitude(data.getString("farmlong"));
-                s.setDateAndTime(data.getString("date"));
-                s.setUserId(data.getInt("userid"));
-                s.setHect(data.getString("hect"));
-                s.setStatus(data.getInt("status"));
-                s.setReason(data.getInt("reason"));
+        transaction.commit();
+    }
 
-                dailyActivity_data.add(s);
+    public void toggleVisiblity(int visibility) {
 
+        switch (visibility) {
 
-            }
+            case View.INVISIBLE:
+                viewPager.setVisibility(View.INVISIBLE);
+                tabLayout.setVisibility(View.INVISIBLE);
 
+                break;
 
+            case View.VISIBLE:
+                viewPager.setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.VISIBLE);
 
-
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
 
     }
 
-    private void extractDailyExpenses(JSONObject table){
-        try {
-            JSONArray array= table.getJSONArray("dailyexpenses");
 
-            for(int i=0;i<array.length();i++){
-
-                JSONObject data=array.getJSONObject(i);
-                DailyExpense_Data s= new DailyExpense_Data();
-                s.setId(Long.parseLong(data.getString("id")));
-                s.setFarmId(data.getInt("farmid"));
-                s.setPurpose(data.getString("purpose"));
-                s.setSupplier(data.getString("supplier"));
-                s.setDescription(data.getString("description"));
-                s.setDateAndTime(data.getString("datetime"));
-                s.setUnit(Long.parseLong(data.getString("unit")));
-                s.setUnitPrice(Long.parseLong(data.getString("unitprice")));
-                s.setTotal(Long.parseLong(data.getString("total")));
-                s.setUserId(Long.parseLong(data.getString("userid")));
-                dailyExpense_data.add(s);
-
-            }
+    @Override
+    public void onBackPressed() {
 
 
+        super.onBackPressed();
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
 
-    private  void extractDocumentData(JSONObject table){
-
-        try {
-            JSONArray array= table.getJSONArray("document");
-
-            for(int i=0;i<array.length();i++){
-
-                JSONObject data=array.getJSONObject(i);
-                Document_Data s= new Document_Data();
-
-                s.setId(Long.parseLong(data.getString("id")));
-                s.setUserId(data.getInt("user_id"));
-                s.setName(data.getString("name"));
-                s.setLink(data.getString("link"));
-                document_data.add(s);
-
-            }
 
 
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 }

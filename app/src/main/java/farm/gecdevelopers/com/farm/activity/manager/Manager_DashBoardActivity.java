@@ -11,5 +11,9 @@ public class Manager_DashBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager__dash_board);
+
+
     }
+
+
 }
