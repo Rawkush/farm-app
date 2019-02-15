@@ -21,22 +21,28 @@ import java.util.Map;
 
 import farm.gecdevelopers.com.farm.R;
 
-public class AddFarmActivity extends AppCompatActivity {
+public class AddItems extends AppCompatActivity {
 
-
-
-
-    EditText edActName,edActDesc;
-    Button button;
     RequestQueue queue;
+    private EditText edItemName, edDescription, edManufacturer;
+    private Button btnSubmit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_farmactivity);
-
+        setContentView(R.layout.activity_add_items);
         bindViews();
+    }
 
-        button.setOnClickListener(new View.OnClickListener() {
+
+    private void bindViews() {
+        queue = Volley.newRequestQueue(this);
+
+        edItemName = findViewById(R.id.item_name);
+        edDescription = findViewById(R.id.description);
+        edManufacturer = findViewById(R.id.manufacturer);
+        btnSubmit = findViewById(R.id.submit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendDataToDatabse();
@@ -45,24 +51,16 @@ public class AddFarmActivity extends AppCompatActivity {
 
     }
 
-    private void bindViews(){
-        edActDesc= findViewById(R.id.desc);
-        edActName= findViewById(R.id.actname);
-        button= findViewById(R.id.button2);
-        queue=  Volley.newRequestQueue(this);
 
-    }
-
-    private void sendDataToDatabse(){
-        String url = "http://axxentfarms.com/farm/files/pages/apps/addact.php";
+    private void sendDataToDatabse() {
+        String url = "http://axxentfarms.com/farm/files/pages/apps/additem.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        //todo show a dialogbox instead of toast
-                        Toast.makeText(AddFarmActivity.this, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddItems.this, response, Toast.LENGTH_SHORT).show();
 
 
                         Log.i("Response is: ", response);
@@ -71,17 +69,18 @@ public class AddFarmActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(AddFarmActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddItems.this, error.getMessage(), Toast.LENGTH_SHORT).show();
 
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
-                Map<String,String> param= new HashMap<>();
-                param.put("actname",edActName.getText().toString());
-                param.put("actdisc",edActDesc.getText().toString());
+                Map<String, String> param = new HashMap<>();
+                param.put("itemname", edItemName.getText().toString());
+                param.put("itemdisc", edDescription.getText().toString());
+                param.put("itemman", edManufacturer.getText().toString());
                 return param;
 
             }
@@ -93,5 +92,6 @@ public class AddFarmActivity extends AppCompatActivity {
 
 
     }
+
 
 }
