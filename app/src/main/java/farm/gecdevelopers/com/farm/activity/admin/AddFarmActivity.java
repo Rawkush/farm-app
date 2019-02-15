@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 
 public class AddFarmActivity extends AppCompatActivity {
@@ -54,9 +55,8 @@ public class AddFarmActivity extends AppCompatActivity {
     }
 
     private void sendDataToDatabse(){
-        String url = "http://axxentfarms.com/farm/files/pages/apps/addact.php";
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_FARM_ACTIVITY_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -24,11 +24,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.Adapters.FarmsAdapter;
-import farm.gecdevelopers.com.farm.Adapters.ManagersAdapter;
+import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Farms;
-import farm.gecdevelopers.com.farm.models.Managers;
 
 public class FarmsList extends Fragment {
 
@@ -104,10 +103,8 @@ public class FarmsList extends Fragment {
 
     public static void getList(){
         farmsArrayList=new ArrayList<>();
-        final String url="http://axxentfarms.com/farm/files/pages/examples2/fetchtable.php?";
 
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.TABLE_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

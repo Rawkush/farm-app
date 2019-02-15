@@ -1,15 +1,13 @@
 package farm.gecdevelopers.com.farm.activity.admin;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -24,8 +22,8 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.activity.Login;
 
 public class CreateAccount extends AppCompatActivity {
     RadioButton rbType_2,rbType_3;
@@ -83,9 +81,8 @@ public class CreateAccount extends AppCompatActivity {
             String password=edPassword.getText().toString();
             final String id=edId.getText().toString();
             String type=String.valueOf(this.type);
-            String url="http://http://axxentfarms.com/farm/files/pages/examples2/createaccount.php?";
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.CREATE_ACCOUNT_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

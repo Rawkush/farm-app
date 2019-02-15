@@ -24,12 +24,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.Adapters.FAdapter;
-import farm.gecdevelopers.com.farm.Adapters.FarmsAdapter;
-import farm.gecdevelopers.com.farm.Adapters.PlotAdapter;
+import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.FarmActivity;
-import farm.gecdevelopers.com.farm.models.Plot;
 
 public class FarmactivityList extends Fragment {
     View root;
@@ -102,10 +100,9 @@ public class FarmactivityList extends Fragment {
 
     public static void getList(){
         farmActivityArrayList=new ArrayList<>();
-        final String url="http://axxentfarms.com/farm/files/pages/examples2/fetchtable.php?";
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.TABLE_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -119,20 +116,10 @@ public class FarmactivityList extends Fragment {
                                 String desc=eachMan.getString("activity_disc");
                                 String activity=eachMan.getString("activity_name");
 
-
-
-
-
                                 item=new FarmActivity(desc,activity);
                                 item.setDesc(desc);
                                 item.setActivity(activity);
-
-
                                 farmActivityArrayList.add(item) ;
-
-
-
-
 
                                 int a=farmActivityArrayList.size();
                                 adapter = new FAdapter(ctx,farmActivityArrayList);
