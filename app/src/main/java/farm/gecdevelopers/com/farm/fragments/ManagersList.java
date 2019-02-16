@@ -35,12 +35,12 @@ import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Managers;
 
 public class ManagersList extends Fragment {
-    View root;
-    static Context ctx;
-    static ArrayList<Managers> managersList;
-    static RecyclerView recyclerView;
+    private View root;
+    private Context ctx;
+    private ArrayList<Managers> managersList;
+    private RecyclerView recyclerView;
 
-   static ManagersAdapter adapter;
+    private ManagersAdapter adapter;
 
     public static String type="";
 
@@ -73,7 +73,7 @@ public class ManagersList extends Fragment {
         return root;
     }
 
-    public static void getList() {
+    public void getList() {
         managersList=new ArrayList<>();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.TABLE_URL,
@@ -144,6 +144,7 @@ public class ManagersList extends Fragment {
                 ((DashBoardActivity) getActivity()).toggleVisiblity(View.INVISIBLE);
 */
                 Intent intent = new Intent(getActivity(), CreateAccount.class);
+                intent.putExtra("type", "1");
                 startActivity(intent);
 
             }

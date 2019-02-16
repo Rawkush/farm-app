@@ -5,12 +5,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.fragments.AddManagers;
 import farm.gecdevelopers.com.farm.fragments.AuditorsList;
 import farm.gecdevelopers.com.farm.fragments.FarmactivityList;
 import farm.gecdevelopers.com.farm.fragments.FarmsList;
@@ -68,18 +65,8 @@ public class DashBoardActivity extends AppCompatActivity {
 
             Log.d("value",""+i);
             LinearLayout tab = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-
             TextView tab_label =tab.findViewById(R.id.nav_label);
-
             tab_label.setText(navLabels[i]);
-
-                /*if(i == 0) {
-                    tab_label.setTextColor(getResources().getColor(R.color.red_web));
-                    tab_icon.setImageResource(navIconsActive[i]);
-                } else {
-                    tab_icon.setImageResource(navIcons[i]);
-                }
-*/
             tabLayout.getTabAt(i).setCustomView(tab);
         }
 
@@ -129,70 +116,6 @@ public class DashBoardActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
-
-
-    public void switchToSecondFragment(String TAG) {
-
-        Fragment fragment = new Fragment();
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-
-        switch (TAG) {
-
-            case MANAGER:
-                fragment = new AddManagers();
-                transaction.replace(R.id.fragment, fragment).addToBackStack(MANAGER);
-
-                break;
-
-            case PLOTS:
-
-                break;
-
-            case AUDITOR:
-
-
-            case FARMS:
-
-
-                break;
-
-            case FARM_ACTIVITY:
-                break;
-        }
-
-
-        transaction.commit();
-    }
-
-    public void toggleVisiblity(int visibility) {
-
-        switch (visibility) {
-
-            case View.INVISIBLE:
-                viewPager.setVisibility(View.INVISIBLE);
-                tabLayout.setVisibility(View.INVISIBLE);
-
-                break;
-
-            case View.VISIBLE:
-                viewPager.setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.VISIBLE);
-
-        }
-
-    }
-
-
-    @Override
-    public void onBackPressed() {
-
-
-        super.onBackPressed();
-
-
-    }
-
 
 
 

@@ -2,6 +2,7 @@ package farm.gecdevelopers.com.farm.activity.admin;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -54,43 +55,66 @@ public class AddFarmActivity extends AppCompatActivity {
 
     }
 
-    private void sendDataToDatabse(){
+    private void sendDataToDatabse() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_FARM_ACTIVITY_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+        final String actvityName = edActName.getText().toString();
+        final String description = edActDesc.getText().toString();
 
-                        //todo show a dialogbox instead of toast
-                        Toast.makeText(AddFarmActivity.this, response, Toast.LENGTH_SHORT).show();
+        if (isFormFilled()) {
 
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_FARM_ACTIVITY_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
-                        Log.i("Response is: ", response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(AddFarmActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                            //todo show a dialogbox instead of toast
+                            Toast.makeText(AddFarmActivity.this, response, Toast.LENGTH_SHORT).show();
 
 
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+                            Log.i("Response is: ", response);
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
 
-                Map<String,String> param= new HashMap<>();
-                param.put("actname",edActName.getText().toString());
-                param.put("actdisc",edActDesc.getText().toString());
-                return param;
-
-            }
-
-        };
+                    Toast.makeText(AddFarmActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
 
 
-        queue.add(stringRequest);
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
 
+                    Map<String, String> param = new HashMap<>();
+                    param.put("actname", actvityName);
+                    param.put("actdisc", description);
+                    return param;
+
+                }
+
+            };
+
+
+            queue.add(stringRequest);
+
+
+        }
+    }
+
+
+    private boolean isFormFilled() {
+
+        String actvityName = edActName.getText().toString();
+        String description = edActDesc.getText().toString();
+        if (TextUtils.isEmpty(actvityName)) {
+            edActName.setError(getString(R.string.cant_be_empty));
+            return false;
+        }
+        if (TextUtils.isEmpty(description)) {
+            edActDesc.setError(getString(R.string.cant_be_empty));
+            return false;
+        }
+        return true;
 
     }
 

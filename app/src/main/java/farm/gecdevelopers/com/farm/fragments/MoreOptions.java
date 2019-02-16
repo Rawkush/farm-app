@@ -10,11 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
@@ -24,16 +20,12 @@ public class MoreOptions extends Fragment {
     View root;
 
     ImageView logout,itemTypes ;
-FrameLayout frame;
     FragmentManager fManager;
     FragmentTransaction fTransaction;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_more_options, container, false);
-
-        frame=root.findViewById(R.id.frame);
-
 
         logout=root.findViewById(R.id.logout_btn);
         itemTypes=root.findViewById(R.id.item_types_btn);

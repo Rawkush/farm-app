@@ -1,9 +1,11 @@
 package farm.gecdevelopers.com.farm.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,84 +28,48 @@ import java.util.ArrayList;
 import farm.gecdevelopers.com.farm.Adapters.PlotAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.admin.AddPlot;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Plot;
 
 public class PlotsList extends Fragment {
     View root;
-    static Context ctx;
-    static ArrayList<Plot> plotArrayList;
-    static RecyclerView recyclerView;
+    private Context ctx;
+    private ArrayList<Plot> plotArrayList;
+    private RecyclerView recyclerView;
+    private FloatingActionButton floatingActionButton;
 
-    static PlotAdapter adapter;
+    private PlotAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_plots, container, false);
-
         ctx=getActivity();
         recyclerView=root.findViewById(R.id.man_rv);
-        String json="";
-        /*URL url=NetworkUtility.buildUrl();
-        try {
-            json=NetworkUtility.getResponseFromHttpUrl(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
-//json= NetworkUtility.hitApi();
-
-        //getManList(json);
 
         getList();
 
         return root;
     }
-    public static void getManList(String jsonfile)  {
-
-        // String res= NetworkUtility.hitApi();
-
-        // Log.d("STING KI MAA KI",""+res);
-        try{
-            if(jsonfile!=null){
-                JSONObject root=new JSONObject(jsonfile);
-                JSONArray user=root.getJSONArray("add_farm");
-                Plot item;
-
-                for(int i=0;i<user.length();i++){
-                    JSONObject eachMan=user.getJSONObject(i);
-                    String desc=eachMan.getString("farm_disc");
-                    String plotname=eachMan.getString("farm_name");
-                    String size=eachMan.getString("farm_size");
-                    String location=eachMan.getString("farm_location");
-                    String manager=eachMan.getString("farm_manager");
 
 
-                    item=new Plot(desc,plotname,size,manager,location);
-                    item.setSize(size);
-                    item.setDesc(desc);
-                    item.setPlotname(plotname);
-                    item.setManager(manager);
-                    item.setLocation(location);
-
-
-
-                    plotArrayList.add(item) ;
-
-
-                    //  Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
-
-                }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        floatingActionButton = view.findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddPlot.class);
+                startActivity(intent);
             }
+        });
 
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
-    public static void getList(){
+    public void getList() {
         plotArrayList=new ArrayList<>();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.TABLE_URL,
@@ -123,24 +89,13 @@ public class PlotsList extends Fragment {
                                 String location=eachMan.getString("farm_location");
                                 String manager=eachMan.getString("farm_manager");
 
-
-
-
-
                                 item=new Plot(desc,plotname,size,manager,location);
                                 item.setSize(size);
                                 item.setDesc(desc);
                                 item.setPlotname(plotname);
                                 item.setManager(manager);
                                 item.setLocation(location);
-
-
                                 plotArrayList.add(item) ;
-
-
-
-
-
                                 int a=plotArrayList.size();
                                 adapter = new PlotAdapter(ctx,plotArrayList);
                                 LinearLayoutManager llm = new LinearLayoutManager(ctx);

@@ -31,7 +31,7 @@ public class CreateAccount extends AppCompatActivity {
     Button btLogin;
     RadioGroup radioGroup;
     final String TAG="My Tag";
-    int type=0;
+    String type;
     RequestQueue queue;
 
 
@@ -54,7 +54,6 @@ public class CreateAccount extends AppCompatActivity {
             final String email=edEmail.getText().toString();
             final String password = edPassword.getText().toString();
             final String id=edId.getText().toString();
-            final String type = String.valueOf(this.type);
             final String phone = edPhone.getText().toString();
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.CREATE_ACCOUNT_URL,
@@ -146,11 +145,6 @@ public class CreateAccount extends AppCompatActivity {
         }
 
 
-        if (type == 0) {
-            Toast.makeText(this, getString(R.string.select_type), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
 
         Log.v(TAG,"Form is filled properly");
         return  true;
@@ -158,11 +152,7 @@ public class CreateAccount extends AppCompatActivity {
     }
 
 
-    private boolean isTypeSelected(){
 
-        return rbType_3.isSelected() || rbType_2.isSelected() ;
-
-    }
 
     private void initViews() {
         queue = Volley.newRequestQueue(this);
@@ -176,28 +166,7 @@ public class CreateAccount extends AppCompatActivity {
         edUserName=findViewById(R.id.username);
         btLogin= findViewById(R.id.button);
         radioGroup=findViewById(R.id.rdGroup);
-
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
-
-                RadioButton checkedRadioButton = (RadioButton) radioGroup.findViewById(i);
-                // This puts the value (true/false) into the variable
-                boolean isChecked = checkedRadioButton.isChecked();
-                // If the radiobutton that has changed in check state is now checked...
-                if (isChecked) {
-                    // Changes the textview's text to "Checked: example radiobutton text"
-                    if (R.id.type_2 == i) {
-                        type = 2;
-                    } else
-                        type = 3;
-
-                }
-            }
-
-        });
+        type = getIntent().getStringExtra("type");
 
 
         btLogin.setOnClickListener(new View.OnClickListener() {
