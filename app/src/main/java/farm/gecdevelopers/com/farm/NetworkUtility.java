@@ -2,7 +2,7 @@ package farm.gecdevelopers.com.farm;
 
 public class NetworkUtility {
 
-    public final static String LOGIN_URL = "axxentfarms.com/farm/files/pages/app/login.php";
+    public final static String LOGIN_URL = "http://axxentfarms.com/farm/files/pages/app/login.php";
     public final static String CREATE_ACCOUNT_URL = "http://axxentfarms.com/farm/files/pages/app/createaccount.php";
     public final static String ADD_FARM_URL = "http://axxentfarms.com/farm/files/pages/app/addf.php";
     public final static String ADD_FARM_ACTIVITY_URL = "http://axxentfarms.com/farm/files/pages/app/addact.php";

@@ -14,15 +14,17 @@
         <activity android:name=".activity.Login" />
         <activity android:name=".activity.admin.CreateAccount" />
         <activity android:name=".activity.admin.DashBoardActivity">
+
+        </activity>
+        <activity android:name=".activity.manager.Manager_DashBoardActivity" />
+        <activity android:name=".activity.admin.ItemTypesActivity" />
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.manager.Manager_DashBoardActivity" />
-        <activity android:name=".activity.admin.ItemTypesActivity" />
-        <activity android:name=".activity.SplashActivity" />
         <activity android:name=".activity.admin.AddFarmActivity" />
         <activity android:name=".activity.admin.AddItems"></activity>
         <activity android:name=".activity.admin.AddPlot" />

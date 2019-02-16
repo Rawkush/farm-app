@@ -1,5 +1,6 @@
 package farm.gecdevelopers.com.farm.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import farm.gecdevelopers.com.farm.Adapters.PlotAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.AddPlot;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Plot;
@@ -38,6 +40,7 @@ public class PlotsList extends Fragment {
     private ArrayList<Plot> plotArrayList;
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
+    private String type;
 
     private PlotAdapter adapter;
 
@@ -53,15 +56,18 @@ public class PlotsList extends Fragment {
         return root;
     }
 
-
+    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         floatingActionButton = view.findViewById(R.id.fab);
+        type = SplashActivity.type;
 
-        String user = getArguments().getString("user");
+        if (type.equals("1")) {
 
-        if (user.equals("auditor")) {
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else if (type.equals("3")) {
             floatingActionButton.setVisibility(View.GONE);
         }
         floatingActionButton.setOnClickListener(new View.OnClickListener() {

@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import farm.gecdevelopers.com.farm.Adapters.ManagersAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.CreateAccount;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Managers;
@@ -40,6 +41,7 @@ public class AuditorsList extends Fragment {
     private ArrayList<Managers> managersList;
     private RecyclerView recyclerView;
     private ManagersAdapter adapter;
+    private String type;
 
     @Nullable
     @Override
@@ -56,11 +58,13 @@ public class AuditorsList extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         floatingActionButton = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.man_rv);
+        type = SplashActivity.type;
 
+        if (type.equals("1")) {
 
-        String user = getArguments().getString("user");
+            floatingActionButton.setVisibility(View.VISIBLE);
 
-        if (user.equals("auditor")) {
+        } else if (type.equals("3")) {
             floatingActionButton.setVisibility(View.GONE);
         }
 

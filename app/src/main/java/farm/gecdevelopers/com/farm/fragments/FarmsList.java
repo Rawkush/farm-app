@@ -62,12 +62,15 @@ public class FarmsList extends Fragment {
 
         floatingActionButton = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.man_rv);
-        String user = getArguments().getString("user");
+        type = SplashActivity.type;
 
-        if (user.equals("auditor")) {
+        if (type.equals("1")) {
+
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else if (type.equals("3")) {
             floatingActionButton.setVisibility(View.GONE);
         }
-
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
