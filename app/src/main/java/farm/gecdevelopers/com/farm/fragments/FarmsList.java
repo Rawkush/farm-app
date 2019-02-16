@@ -62,6 +62,12 @@ public class FarmsList extends Fragment {
 
         floatingActionButton = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.man_rv);
+        String user = getArguments().getString("user");
+
+        if (user.equals("auditor")) {
+            floatingActionButton.setVisibility(View.GONE);
+        }
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

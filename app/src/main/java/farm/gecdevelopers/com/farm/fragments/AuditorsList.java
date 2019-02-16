@@ -1,5 +1,6 @@
 package farm.gecdevelopers.com.farm.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -49,17 +50,27 @@ public class AuditorsList extends Fragment {
     }
 
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         floatingActionButton = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.man_rv);
+
+
+        String user = getArguments().getString("user");
+
+        if (user.equals("auditor")) {
+            floatingActionButton.setVisibility(View.GONE);
+        }
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), CreateAccount.class);
                 intent.putExtra("type", getString(R.string.type_auditor));
                 startActivity(intent);
+
             }
         });
         getList();

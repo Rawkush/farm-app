@@ -57,6 +57,14 @@ public class FarmactivityList extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ctx = getActivity();
         floatingActionButton = view.findViewById(R.id.fab);
+
+        String user = getArguments().getString("user");
+
+        if (user.equals("auditor")) {
+            floatingActionButton.setVisibility(View.GONE);
+        }
+
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -58,6 +58,12 @@ public class PlotsList extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         floatingActionButton = view.findViewById(R.id.fab);
+
+        String user = getArguments().getString("user");
+
+        if (user.equals("auditor")) {
+            floatingActionButton.setVisibility(View.GONE);
+        }
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

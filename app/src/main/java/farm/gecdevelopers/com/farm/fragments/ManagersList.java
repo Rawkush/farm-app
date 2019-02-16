@@ -59,6 +59,12 @@ public class ManagersList extends Fragment {
         floatingActionButton = root.findViewById(R.id.add_manager_btn);
         type=SplashActivity.type;
 
+        String user = getArguments().getString("user");
+
+        if (user.equals("auditor")) {
+            floatingActionButton.setVisibility(View.GONE);
+        }
+
         ctx=getActivity();
         recyclerView=root.findViewById(R.id.man_rv);
 

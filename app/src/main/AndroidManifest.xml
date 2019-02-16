@@ -27,6 +27,10 @@
         <activity android:name=".activity.admin.AddItems"></activity>
         <activity android:name=".activity.admin.AddPlot" />
         <activity android:name=".activity.admin.AddFarm"></activity>
+        <activity android:name=".activity.auditor.AuditorDashBoard">
+
+        </activity>
+
     </application>
 
 </manifest>
