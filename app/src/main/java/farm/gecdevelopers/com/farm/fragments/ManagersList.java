@@ -39,39 +39,59 @@ public class ManagersList extends Fragment {
     private Context ctx;
     private ArrayList<Managers> managersList;
     private RecyclerView recyclerView;
-
     private ManagersAdapter adapter;
+    FloatingActionButton floatingActionButton;
+    private String type;
 
-    public static String type="";
-
-    FloatingActionButton add;
-
-
-
-
-    @SuppressLint("RestrictedApi")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_managers, container, false);
 
-        add=root.findViewById(R.id.add_manager_btn);
-        type=SplashActivity.type;
-        if(type.equals("1"))
-        {
-           add.setVisibility(View.VISIBLE);
-        }
-        else if(type.equals("3")){
-            add.setVisibility(View.GONE);
-        }
-        ctx=getActivity();
-        recyclerView=root.findViewById(R.id.man_rv);
-
-
-        getList();
 
         return root;
     }
+
+    @SuppressLint("RestrictedApi")
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        floatingActionButton = root.findViewById(R.id.add_manager_btn);
+        type=SplashActivity.type;
+
+        ctx=getActivity();
+        recyclerView=root.findViewById(R.id.man_rv);
+
+        getList();
+
+        if (type.equals("1")) {
+
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else if (type.equals("3")) {
+            floatingActionButton.setVisibility(View.GONE);
+        }
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*((DashBoardActivity) getActivity()).switchToSecondFragment(DashBoardActivity.MANAGER);
+                ((DashBoardActivity) getActivity()).toggleVisiblity(View.INVISIBLE);
+*/
+                Intent intent = new Intent(getActivity(), CreateAccount.class);
+                intent.putExtra("type", getString(R.string.type_manager));
+                startActivity(intent);
+
+            }
+        });
+
+
+    }
+
+
+
+
+
 
     public void getList() {
         managersList=new ArrayList<>();
@@ -133,25 +153,7 @@ public class ManagersList extends Fragment {
          DashBoardActivity.queue.add(stringRequest);
      }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*((DashBoardActivity) getActivity()).switchToSecondFragment(DashBoardActivity.MANAGER);
-                ((DashBoardActivity) getActivity()).toggleVisiblity(View.INVISIBLE);
-*/
-                Intent intent = new Intent(getActivity(), CreateAccount.class);
-                intent.putExtra("type", "1");
-                startActivity(intent);
-
-            }
-        });
-
-
-    }
 
 
 }

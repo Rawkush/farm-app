@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -31,74 +32,39 @@ import farm.gecdevelopers.com.farm.models.FarmActivity;
 
 public class FarmactivityList extends Fragment {
     View root;
-    static Context ctx;
-    static ArrayList<FarmActivity> farmActivityArrayList;
-    static RecyclerView recyclerView;
+    private Context ctx;
+    private ArrayList<FarmActivity> farmActivityArrayList;
+    private RecyclerView recyclerView;
 
-    static FAdapter adapter;
+    private FAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_activity, container, false);
 
-        ctx=getActivity();
-        recyclerView=root.findViewById(R.id.man_rv);
-        String json="";
-        /*URL url=NetworkUtility.buildUrl();
-        try {
-            json=NetworkUtility.getResponseFromHttpUrl(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
-//json= NetworkUtility.hitApi();
-
-        //getManList(json);
-
-        getList();
 
         return root;
     }
-    public static void getManList(String jsonfile)  {
-
-        // String res= NetworkUtility.hitApi();
-
-        // Log.d("STING KI MAA KI",""+res);
-        try{
-            if(jsonfile!=null){
-                JSONObject root=new JSONObject(jsonfile);
-                JSONArray user=root.getJSONArray("addfarmactivity");
-                FarmActivity item;
-
-                for(int i=0;i<user.length();i++){
-                    JSONObject eachMan=user.getJSONObject(i);
-                    String desc=eachMan.getString("activity_disc");
-                    String activity=eachMan.getString("activity_name");
-
-                    item=new FarmActivity(desc,activity);
-
-                    item.setDesc(desc);
-
-                    item.setActivity(activity);
 
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ctx = getActivity();
+        recyclerView = root.findViewById(R.id.man_rv);
 
-                    farmActivityArrayList.add(item) ;
+        getList();
 
 
-                    //  Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
-    public static void getList(){
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    private void getList() {
         farmActivityArrayList=new ArrayList<>();
 
 
@@ -147,6 +113,8 @@ public class FarmactivityList extends Fragment {
         });
         DashBoardActivity.queue.add(stringRequest);
     }
+
+
 }
 
 

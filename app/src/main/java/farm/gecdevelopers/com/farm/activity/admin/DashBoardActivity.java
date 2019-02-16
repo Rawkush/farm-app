@@ -84,7 +84,6 @@ public class DashBoardActivity extends AppCompatActivity {
         adapter.addFrag(new PlotsList(), "Plots");
         adapter.addFrag(new FarmactivityList(), "Activities");
         adapter.addFrag(new MoreOptions(), "More Options");
-
         viewPager.setAdapter(adapter);
     }
 

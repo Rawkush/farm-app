@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,7 +28,6 @@ public class CreateAccount extends AppCompatActivity {
     RadioButton rbType_2,rbType_3;
     EditText edUserName,edPassword, edEmail,edId,edPhone,edName;
     Button btLogin;
-    RadioGroup radioGroup;
     final String TAG="My Tag";
     String type;
     RequestQueue queue;
@@ -144,6 +142,10 @@ public class CreateAccount extends AppCompatActivity {
             return false;
         }
 
+        if (!(type.equals("1") || type.equals("2") || type.equals("3"))) {
+            Toast.makeText(this, "type not found", Toast.LENGTH_LONG).show();
+            return false;
+        }
 
 
         Log.v(TAG,"Form is filled properly");
@@ -157,18 +159,13 @@ public class CreateAccount extends AppCompatActivity {
     private void initViews() {
         queue = Volley.newRequestQueue(this);
         edName=findViewById(R.id.name);
-        rbType_2=findViewById(R.id.type_2);
-        rbType_3= findViewById(R.id.type_3);
         edId=findViewById(R.id.id);
         edEmail=findViewById(R.id.email);
         edPhone=findViewById(R.id.phone_number);
         edPassword=findViewById(R.id.password);
         edUserName=findViewById(R.id.username);
         btLogin= findViewById(R.id.button);
-        radioGroup=findViewById(R.id.rdGroup);
         type = getIntent().getStringExtra("type");
-
-
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

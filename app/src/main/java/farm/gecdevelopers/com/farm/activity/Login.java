@@ -108,16 +108,15 @@ public class Login extends AppCompatActivity {
 
                                 switch (type) {
                                     case ADMIN: {
-                                        session.createLoginSession(username, password, "1");
-                                        SplashActivity.type = "1";
-                                        //todo directing to dash board
+                                        session.createLoginSession(username, password, ADMIN);
+                                        SplashActivity.type = ADMIN;
                                         Intent intent = new Intent(Login.this, DashBoardActivity.class);
                                         startActivity(intent);
                                         break;
                                     }
                                     case MANAGER: {
-                                        session.createLoginSession(username, password, "2");
-                                        SplashActivity.type = "2";
+                                        session.createLoginSession(username, password, MANAGER);
+                                        SplashActivity.type = MANAGER;
 
                                         Intent intent = new Intent(Login.this, Manager_DashBoardActivity.class);
                                         startActivity(intent);
@@ -125,8 +124,8 @@ public class Login extends AppCompatActivity {
                                         break;
                                     }
                                     case AUDITOR: {
-                                        session.createLoginSession(username, password, "3");
-                                        SplashActivity.type = "3";
+                                        session.createLoginSession(username, password, AUDITOR);
+                                        SplashActivity.type = AUDITOR;
                                         Intent intent = new Intent(Login.this, DashBoardActivity.class);
                                         startActivity(intent);
                                         break;

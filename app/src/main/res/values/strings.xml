@@ -12,4 +12,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <!-- Do not change the string below -->
+
+    <string name="type_manager">2</string>
+    <string name="type_auditor">3</string>
+    <string name="type_admin">1</string>
+
+
 </resources>

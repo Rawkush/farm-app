@@ -1,9 +1,12 @@
 package farm.gecdevelopers.com.farm.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,82 +29,59 @@ import java.util.ArrayList;
 import farm.gecdevelopers.com.farm.Adapters.FarmsAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.admin.AddFarm;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Farms;
 
 public class FarmsList extends Fragment {
 
     View root;
-    static Context ctx;
-    static ArrayList<Farms> farmsArrayList;
-    static RecyclerView recyclerView;
+    FloatingActionButton floatingActionButton;
+    private Context ctx;
+    private ArrayList<Farms> farmsArrayList;
+    private RecyclerView recyclerView;
+    private FarmsAdapter adapter;
+    private String type;
 
-    static FarmsAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_farms, container, false);
-
         ctx=getActivity();
-        recyclerView=root.findViewById(R.id.man_rv);
-        String json="";
-        /*URL url=NetworkUtility.buildUrl();
-        try {
-            json=NetworkUtility.getResponseFromHttpUrl(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+        return root;
+    }
 
-//json= NetworkUtility.hitApi();
 
-        //getManList(json);
+    @SuppressLint("RestrictedApi")
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        floatingActionButton = view.findViewById(R.id.add_manager_btn);
+        recyclerView = view.findViewById(R.id.man_rv);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddFarm.class);
+                startActivity(intent);
+            }
+        });
+
 
         getList();
 
-        return root;
-    }
-    public static void getManList(String jsonfile)  {
+        if (type.equals("1")) {
 
-        // String res= NetworkUtility.hitApi();
+            floatingActionButton.setVisibility(View.VISIBLE);
 
-        // Log.d("STING KI MAA KI",""+res);
-        try{
-            if(jsonfile!=null){
-                JSONObject root=new JSONObject(jsonfile);
-                JSONArray user=root.getJSONArray("add_f");
-                Farms item;
-
-                for(int i=0;i<user.length();i++){
-                    JSONObject eachMan=user.getJSONObject(i);
-                    String desc=eachMan.getString("farm_d");
-                    String name=eachMan.getString("farm_n");
-                    String size=eachMan.getString("farm_s");
-
-
-
-
-                        item=new Farms(desc,name,size);
-                        item.setSize(size);
-                        item.setDesc(desc);
-                        item.setName(name);
-
-
-                        farmsArrayList.add(item) ;
-
-
-                    //  Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } else if (type.equals("3")) {
+            floatingActionButton.setVisibility(View.GONE);
         }
+
     }
 
-    public static void getList(){
+    public void getList() {
         farmsArrayList=new ArrayList<>();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.TABLE_URL,
@@ -118,22 +98,11 @@ public class FarmsList extends Fragment {
                                 String desc=eachMan.getString("farm_d");
                                 String name=eachMan.getString("farm_n");
                                 String size=eachMan.getString("farm_s");
-
-
-
-
                                 item=new Farms(desc,name,size);
                                 item.setSize(size);
                                 item.setDesc(desc);
                                 item.setName(name);
-
-
                                 farmsArrayList.add(item) ;
-
-
-
-
-
                                 int a=farmsArrayList.size();
                                 adapter = new FarmsAdapter(ctx,farmsArrayList);
                                 LinearLayoutManager llm = new LinearLayoutManager(ctx);
@@ -141,7 +110,6 @@ public class FarmsList extends Fragment {
                                 recyclerView.setLayoutManager(llm);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setAdapter(adapter);
-
 
                                 // Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
 
@@ -160,6 +128,8 @@ public class FarmsList extends Fragment {
         });
         DashBoardActivity.queue.add(stringRequest);
     }
+
+
 }
 
 
