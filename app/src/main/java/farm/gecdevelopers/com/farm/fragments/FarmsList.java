@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import farm.gecdevelopers.com.farm.Adapters.FarmsAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.AddFarm;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Farms;
@@ -57,8 +58,9 @@ public class FarmsList extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        type = SplashActivity.type;
 
-        floatingActionButton = view.findViewById(R.id.add_manager_btn);
+        floatingActionButton = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.man_rv);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

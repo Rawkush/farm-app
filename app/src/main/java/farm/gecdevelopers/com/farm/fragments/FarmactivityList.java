@@ -1,9 +1,11 @@
 package farm.gecdevelopers.com.farm.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 import farm.gecdevelopers.com.farm.Adapters.FAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.admin.AddFarmActivity;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.FarmActivity;
 
@@ -35,7 +38,8 @@ public class FarmactivityList extends Fragment {
     private Context ctx;
     private ArrayList<FarmActivity> farmActivityArrayList;
     private RecyclerView recyclerView;
-
+    FloatingActionButton floatingActionButton;
+    private String type;
     private FAdapter adapter;
 
     @Nullable
@@ -52,6 +56,15 @@ public class FarmactivityList extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ctx = getActivity();
+        floatingActionButton = view.findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddFarmActivity.class);
+                startActivity(intent);
+            }
+        });
+
         recyclerView = root.findViewById(R.id.man_rv);
 
         getList();

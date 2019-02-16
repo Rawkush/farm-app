@@ -52,7 +52,7 @@ public class AuditorsList extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        floatingActionButton = view.findViewById(R.id.add_manager_btn);
+        floatingActionButton = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.man_rv);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
