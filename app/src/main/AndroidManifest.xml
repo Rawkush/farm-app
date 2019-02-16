@@ -13,17 +13,22 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.Login" />
         <activity android:name=".activity.admin.CreateAccount" />
-        <activity android:name=".activity.admin.DashBoardActivity" />
-        <activity android:name=".activity.manager.Manager_DashBoardActivity" />
-        <activity android:name=".activity.admin.ItemTypesActivity" />
-        <activity android:name=".activity.SplashActivity"></activity>
-        <activity android:name=".activity.admin.AddFarmActivity"></activity>
-        <activity android:name=".activity.admin.AddItems">
+        <activity android:name=".activity.admin.DashBoardActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+
+        <activity android:name=".activity.manager.Manager_DashBoardActivity" />
+        <activity android:name=".activity.admin.ItemTypesActivity" />
+        <activity android:name=".activity.SplashActivity"></activity>
+        <activity android:name=".activity.admin.AddFarmActivity"></activity>
+        <activity android:name=".activity.admin.AddItems">
+
         </activity>
         <activity android:name=".activity.admin.AddPlot"></activity>
     </application>

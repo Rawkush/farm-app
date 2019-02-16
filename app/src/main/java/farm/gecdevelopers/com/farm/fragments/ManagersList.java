@@ -2,6 +2,7 @@ package farm.gecdevelopers.com.farm.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,6 +30,7 @@ import farm.gecdevelopers.com.farm.Adapters.ManagersAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
+import farm.gecdevelopers.com.farm.activity.admin.CreateAccount;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Managers;
 
@@ -138,8 +140,11 @@ public class ManagersList extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((DashBoardActivity) getActivity()).switchToSecondFragment(DashBoardActivity.MANAGER);
+                /*((DashBoardActivity) getActivity()).switchToSecondFragment(DashBoardActivity.MANAGER);
                 ((DashBoardActivity) getActivity()).toggleVisiblity(View.INVISIBLE);
+*/
+                Intent intent = new Intent(getActivity(), CreateAccount.class);
+                startActivity(intent);
 
             }
         });

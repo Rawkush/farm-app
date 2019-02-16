@@ -3,6 +3,8 @@ package farm.gecdevelopers.com.farm.activity.admin;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -22,15 +24,29 @@ import farm.gecdevelopers.com.farm.R;
 public class AddPlot extends AppCompatActivity {
 
     RequestQueue queue;
+    EditText edLatOne, edLatTwo, edLatThree, edLatFour, edLongOne, geLongTwo, edLongThree, edLongFour;
+    Button submit;
+    EditText edSize, edDescription, edPlotName, edManager, edFarm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_plot);
-        queue = Volley.newRequestQueue(this);
-
+        bindViews();
     }
 
+    private void bindViews() {
+
+        queue = Volley.newRequestQueue(this);
+        edDescription = findViewById(R.id.description);
+        edFarm = findViewById(R.id.farm);
+        edLatFour = findViewById(R.id.latitude4);
+        edLatOne = findViewById(R.id.latitude1);
+        edLatThree = findViewById(R.id.latitude3);
+        edLatTwo = findViewById(R.id.latitude2);
+
+
+    }
 
     private void sendDataToDatabse() {
 
