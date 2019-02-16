@@ -93,7 +93,7 @@ public class AddFarm extends AppCompatActivity {
 
         if (isFormFilled()) {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_FARM_ACTIVITY_URL,
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_FARM_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
