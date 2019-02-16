@@ -30,7 +30,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmname"
-                android:text="farmname" />
+                android:hint="farmname" />
 
             <EditText
                 android:id="@+id/size"
@@ -41,7 +41,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmsize"
-                android:text="size" />
+                android:hint="size" />
 
             <EditText
                 android:id="@+id/description"
@@ -52,7 +52,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmdisc"
-                android:text="description" />
+                android:hint="description" />
 
 
             <EditText
@@ -63,7 +63,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude1"
@@ -73,7 +73,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
             <EditText
                 android:id="@+id/latitude2"
@@ -84,7 +84,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat2"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude2"
@@ -95,7 +95,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong2"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
             <EditText
                 android:id="@+id/latitude3"
@@ -106,7 +106,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat3"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude3"
@@ -117,7 +117,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong3"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
             <EditText
                 android:id="@+id/latitude4"
@@ -128,7 +128,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat4"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude4"
@@ -139,7 +139,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong4"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
             <EditText
                 android:id="@+id/latitude5"
@@ -150,7 +150,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat5"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude5"
@@ -161,7 +161,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong5"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
             <EditText
                 android:id="@+id/latitude6"
@@ -172,7 +172,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat6"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude6"
@@ -183,7 +183,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong6"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
             <EditText
                 android:id="@+id/latitude7"
@@ -193,7 +193,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat7"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude7"
@@ -204,7 +204,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong7"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
             <EditText
                 android:id="@+id/latitude8"
@@ -215,7 +215,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat8"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude8"
@@ -226,7 +226,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong8"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
             <EditText
                 android:id="@+id/latitude9"
@@ -237,7 +237,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat9"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude9"
@@ -248,7 +248,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong9"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
             <EditText
                 android:id="@+id/latitude10"
@@ -258,7 +258,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlat10"
-                android:text="latitude1" />
+                android:hint="latitude1" />
 
             <EditText
                 android:id="@+id/longitude10"
@@ -268,14 +268,14 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:tag="farmlong10"
-                android:text="longitude1" />
+                android:hint="longitude1" />
 
 
             <Button
                 android:id="@+id/submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:hint="Button" />
         </LinearLayout>
 
 

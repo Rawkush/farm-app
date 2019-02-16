@@ -14,7 +14,7 @@
         android:layout_marginTop="78dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Name" />
 
     <EditText
         android:id="@+id/description"
@@ -25,7 +25,7 @@
         android:layout_marginTop="218dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="description" />
 
     <EditText
         android:id="@+id/manufacturer"
@@ -36,7 +36,7 @@
         android:layout_marginBottom="209dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="manufacturer" />
 
     <Button
         android:id="@+id/submit"

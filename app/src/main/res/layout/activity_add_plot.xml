@@ -20,14 +20,14 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="lat1" />
+                android:hint="lat1" />
 
             <EditText
                 android:id="@+id/longitude1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="lon1" />
+                android:hint="lon1" />
 
 
             <EditText
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="lat2" />
+                android:hint="lat2" />
 
             <EditText
                 android:id="@+id/longitude2"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="long2" />
+                android:hint="long2" />
 
             <EditText
                 android:id="@+id/latitude3"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="lat3" />
+                android:hint="lat3" />
 
             <EditText
                 android:id="@+id/longitude3"
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="long3" />
+                android:hint="long3" />
 
             <EditText
                 android:id="@+id/latitude4"
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="lat4" />
+                android:hint="lat4" />
 
             <EditText
                 android:id="@+id/longitude4"
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="long4" />
+                android:hint="long4" />
 
 
             <EditText
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="plotName" />
+                android:hint="plotName" />
 
             <EditText
                 android:id="@+id/size"
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="size" />
+                android:hint="size" />
 
             <EditText
                 android:id="@+id/farm"
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="farm" />
+                android:hint="farm" />
 
             <EditText
                 android:id="@+id/manager"
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="manager" />
+                android:hint="manager" />
 
             <EditText
                 android:id="@+id/description"
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="desc" />
+                android:hint="desc" />
 
             <Button
                 android:id="@+id/submit"
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:text="Button" />
+                android:hint="Button" />
 
 
         </LinearLayout>
