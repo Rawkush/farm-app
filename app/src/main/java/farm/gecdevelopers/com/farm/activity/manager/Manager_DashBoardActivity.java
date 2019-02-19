@@ -1,5 +1,6 @@
 package farm.gecdevelopers.com.farm.activity.manager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -12,6 +13,9 @@ public class Manager_DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager__dash_board);
 
+
+        Intent intent = new Intent(this, RecordDailyActivity.class);
+        startActivity(intent);
 
     }
 
