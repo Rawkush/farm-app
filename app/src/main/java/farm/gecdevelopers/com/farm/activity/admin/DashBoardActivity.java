@@ -12,12 +12,10 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import farm.gecdevelopers.com.farm.FetchTable;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.fragments.AuditorsList;
 import farm.gecdevelopers.com.farm.fragments.FarmactivityList;
@@ -25,16 +23,10 @@ import farm.gecdevelopers.com.farm.fragments.FarmsList;
 import farm.gecdevelopers.com.farm.fragments.ManagersList;
 import farm.gecdevelopers.com.farm.fragments.MoreOptions;
 import farm.gecdevelopers.com.farm.fragments.PlotsList;
-import farm.gecdevelopers.com.farm.models.DailyActivity_Data;
-import farm.gecdevelopers.com.farm.models.DailyExpense_Data;
-import farm.gecdevelopers.com.farm.models.Document_Data;
 
 public class DashBoardActivity extends AppCompatActivity {
 
-    public static RequestQueue queue;
-    ArrayList<DailyActivity_Data> dailyActivity_data;
-    ArrayList<DailyExpense_Data> dailyExpense_data;
-    ArrayList<Document_Data> document_data;
+    public static FetchTable data;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     public static final String MANAGER = "Manager", AUDITOR = "Auditors", FARMS = "Farms", PLOTS = "Plots", FARM_ACTIVITY = "Farm Activities";
@@ -48,14 +40,12 @@ public class DashBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
-        queue =  Volley.newRequestQueue(this);
-        dailyActivity_data= new ArrayList<>();
-        dailyExpense_data= new ArrayList<DailyExpense_Data>();
-        document_data= new ArrayList<>();
-
         bindView();
 
+        /* starting connection to fetch data*/
 
+        data = new FetchTable(this);
+        data.startConnection();
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);

@@ -1,7 +1,7 @@
 package farm.gecdevelopers.com.farm.activity.manager;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import farm.gecdevelopers.com.farm.R;
 

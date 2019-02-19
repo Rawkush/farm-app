@@ -13,9 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.Login" />
         <activity android:name=".activity.admin.CreateAccount" />
-        <activity android:name=".activity.admin.DashBoardActivity">
-
-        </activity>
+        <activity android:name=".activity.admin.DashBoardActivity"></activity>
         <activity android:name=".activity.manager.Manager_DashBoardActivity" />
         <activity android:name=".activity.admin.ItemTypesActivity" />
         <activity android:name=".activity.SplashActivity">
@@ -26,13 +24,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.admin.AddFarmActivity" />
-        <activity android:name=".activity.admin.AddItems"></activity>
+        <activity android:name=".activity.admin.AddItems" />
         <activity android:name=".activity.admin.AddPlot" />
-        <activity android:name=".activity.admin.AddFarm"></activity>
-        <activity android:name=".activity.auditor.AuditorDashBoard">
-
-        </activity>
-
+        <activity android:name=".activity.admin.AddFarm" />
+        <activity android:name=".activity.auditor.AuditorDashBoard"></activity>
+        <activity android:name=".activity.manager.RecordDailyActivity"></activity>
     </application>
 
 </manifest>
