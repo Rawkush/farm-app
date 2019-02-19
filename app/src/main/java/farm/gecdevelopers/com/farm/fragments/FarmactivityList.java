@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import farm.gecdevelopers.com.farm.Adapters.FAdapter;
+import farm.gecdevelopers.com.farm.Adapters.FarmActivityAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
@@ -42,7 +42,7 @@ public class FarmactivityList extends Fragment {
     private RecyclerView recyclerView;
     FloatingActionButton floatingActionButton;
     private String type;
-    private FAdapter adapter;
+    private FarmActivityAdapter adapter;
 
     @Nullable
     @Override
@@ -115,7 +115,7 @@ public class FarmactivityList extends Fragment {
                                 farmActivityArrayList.add(item) ;
 
                                 int a=farmActivityArrayList.size();
-                                adapter = new FAdapter(ctx,farmActivityArrayList);
+                                adapter = new FarmActivityAdapter(ctx,farmActivityArrayList);
                                 LinearLayoutManager llm = new LinearLayoutManager(ctx);
                                 llm.setOrientation(LinearLayoutManager.VERTICAL);
                                 recyclerView.setLayoutManager(llm);

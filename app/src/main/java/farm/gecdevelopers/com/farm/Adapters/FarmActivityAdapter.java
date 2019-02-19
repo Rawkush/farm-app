@@ -12,14 +12,13 @@ import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.models.FarmActivity;
-import farm.gecdevelopers.com.farm.models.Plot;
 
-public class FAdapter  extends RecyclerView.Adapter<FAdapter.FarmActivityViewHolder> {
+public class FarmActivityAdapter extends RecyclerView.Adapter<FarmActivityAdapter.FarmActivityViewHolder> {
 
     private Context ctx;
     ArrayList<FarmActivity> list;
 
-    public FAdapter(Context ctx, ArrayList<FarmActivity> list) {
+    public FarmActivityAdapter(Context ctx, ArrayList<FarmActivity> list) {
         this.ctx = ctx;
         this.list = list;
     }
