@@ -44,8 +44,6 @@ public class DashBoardActivity extends AppCompatActivity {
 
         /* starting connection to fetch data*/
 
-        data = new FetchTable(this);
-        data.startConnection();
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
