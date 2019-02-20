@@ -16,6 +16,7 @@
     <color name="colorGray">#bdbdbd</color>
 
 
+    <color name="colorGray_arrow">#515151</color>
 
     <color name="green_bkg_website">#33cc66</color>
     <color name="dark_green_bkg_website">#339966</color>

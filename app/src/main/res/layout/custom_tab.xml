@@ -4,9 +4,17 @@
     android:id="@+id/nav_tab"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorLightGray"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="2dp"
+
+        android:scaleType="centerInside"
+        android:id="@+id/nav_icon" />
 
     <TextView
         android:id="@+id/nav_label"
@@ -14,5 +22,8 @@
         android:layout_height="wrap_content"
         android:shadowColor="@android:color/black"
         android:textColor="@color/dark_grey"
-        android:textSize="13sp" />
+        android:text="dnndfnfjknfj0njnjknmmnbmnmnbmnbmnbmnbmnbnbbmnbmbmnmnbmnbmbmbmmmbmnbmn"
+        android:layout_marginBottom="2dp"
+        android:singleLine="true"
+        android:textSize="10sp"/>
 </LinearLayout>
