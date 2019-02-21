@@ -37,12 +37,12 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="wrap_content"
             android:background="@color/colorLightGray"
             app:tabIndicatorColor="@color/white"
-            app:tabInlineLabel="false"
-            app:tabTextAppearance="@style/TextAppearance.AppCompat" />
-
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            />
 
     </LinearLayout>
 

@@ -22,8 +22,7 @@
         android:layout_height="wrap_content"
         android:shadowColor="@android:color/black"
         android:textColor="@color/dark_grey"
+        android:textAlignment="center"
         android:text="dnndfnfjknfj0njnjknmmnbmnmnbmnbmnbmnbmnbnbbmnbmbmnmnbmnbmbmbmmmbmnbmn"
-        android:layout_marginBottom="2dp"
-        android:singleLine="true"
-        android:textSize="10sp"/>
+        android:textSize="8sp"/>
 </LinearLayout>
