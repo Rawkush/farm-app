@@ -9,6 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.SessionManagement;
@@ -19,13 +23,18 @@ public class SplashActivity extends AppCompatActivity {
 
     public static String type = "";
     public static SessionManagement session;
-    int SPLASH_TIME_OUT = 3000;
+    int SPLASH_TIME_OUT = 2200;
     String signedIn = "";
+    View parent;
+    TextView axxent;
+    Animation transit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        axxent = findViewById(R.id.axxent);
+
         session = new SessionManagement(SplashActivity.this);
         signedIn = session.pref.getString(SessionManagement.IS_SIGNED_IN, "");
         if (Build.VERSION.SDK_INT >= 21) {
@@ -33,7 +42,8 @@ public class SplashActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
 
-
+        transit = AnimationUtils.loadAnimation(this, R.anim.transit);
+        axxent.setAnimation(transit);
         new Handler().postDelayed(new Runnable() {
 
             @Override
@@ -63,5 +73,23 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
+
+
+
+   /*     runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //add your code here
+                    }
+                }, 1000);
+
+            }
+        });*/
+
     }
 }
