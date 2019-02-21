@@ -8,6 +8,8 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/cLightGray"
+
         android:id="@+id/man_rv">
 
     </android.support.v7.widget.RecyclerView>
@@ -18,7 +20,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="25dp"
-        android:src="@android:drawable/ic_menu_add"
+        android:src="@drawable/add"
         app:backgroundTint="@color/colorPrimary" />
 
 </FrameLayout>
