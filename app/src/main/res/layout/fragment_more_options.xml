@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+
         android:paddingBottom="72dp">
 
 
@@ -19,12 +20,25 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/img_itemtypes"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/item_types" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
+                    android:layout_toRightOf="@+id/img_itemtypes"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="25dp"
                     android:text="Item Types"
                     android:textSize="24sp" />
 
@@ -53,10 +67,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/img_daily_exp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/daily_expenses" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
+                    android:layout_toRightOf="@id/img_daily_exp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="25dp"
                     android:text="Daily Expenses"
                     android:textSize="24sp" />
 
@@ -86,12 +112,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/img_daily_act"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/daily_activities" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
+                    android:layout_toRightOf="@id/img_daily_act"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="25dp"
                     android:text="Daily Activities"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:paddingTop="25dp" />
 
                 <ImageView
                     android:id="@+id/daily_act_btn"
@@ -119,10 +157,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/img_doc"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/documents" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
+                    android:layout_toRightOf="@id/img_doc"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="25dp"
                     android:text="Documents"
                     android:textSize="24sp" />
 
@@ -152,10 +202,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/img_chng_pwd"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/change_pwd" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
+                    android:layout_toRightOf="@id/img_chng_pwd"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="25dp"
                     android:text="Change Password"
                     android:textSize="24sp" />
 
@@ -185,10 +247,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/img_logout"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logout" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
+                    android:layout_toRightOf="@id/img_logout"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="25dp"
                     android:text="Logout"
                     android:textSize="24sp" />
 

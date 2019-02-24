@@ -2,14 +2,14 @@ package farm.gecdevelopers.com.farm.models;
 
 public class ItemType_Data {
 
-    private long itemId;
-    private String name,description,date,manufacturer;
 
-    public long getItemId() {
+    private String name,description,date,manufacturer, itemId;
+
+    public String getItemId() {
         return itemId;
     }
 
-    public void setItemId(long itemId) {
+    public void setItemId(String itemId) {
         this.itemId = itemId;
     }
 
@@ -33,8 +33,17 @@ public class ItemType_Data {
         return date;
     }
 
+    public ItemType_Data(String itemId, String name, String description, String date, String manufacturer) {
+        this.itemId = itemId;
+        this.name = name;
+        this.description = description;
+        this.date = date;
+        this.manufacturer = manufacturer;
+    }
+
     public void setDate(String date) {
         this.date = date;
+
     }
 
     public String getManufacturer() {
@@ -45,7 +54,4 @@ public class ItemType_Data {
         this.manufacturer = manufacturer;
     }
 
-    public ItemType_Data() {
-
-    }
 }

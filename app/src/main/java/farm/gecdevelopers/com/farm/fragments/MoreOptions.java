@@ -56,6 +56,7 @@ public class MoreOptions extends Fragment {
             public void onClick(View v) {
                 SplashActivity.session.logoutUser();
 
+
                 //Toast.makeText(getActivity(),"Thanks for Visiting",Toast.LENGTH_SHORT).show();
             }
         });

@@ -38,10 +38,11 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabGravity="fill"
+            android:background="@color/colorLightGray"
             app:tabIndicatorColor="@color/white"
-            app:tabMode="fixed" />
-
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            />
 
     </LinearLayout>
 
