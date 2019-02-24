@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.admin.DailyExpense;
 
 public class Manager_DashBoardActivity extends AppCompatActivity {
 
@@ -14,7 +15,7 @@ public class Manager_DashBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manager__dash_board);
 
 
-        Intent intent = new Intent(this, RecordDailyActivity.class);
+        Intent intent = new Intent(this, DailyExpense.class);
         startActivity(intent);
 
     }

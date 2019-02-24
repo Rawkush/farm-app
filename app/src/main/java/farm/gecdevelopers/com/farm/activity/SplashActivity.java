@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import farm.gecdevelopers.com.farm.FetchTable;
 import farm.gecdevelopers.com.farm.R;
@@ -55,6 +54,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 if (signedIn.equals("true")) {
                     type = session.pref.getString(SessionManagement.TYPE, "0");
+
 
                     if (type.equals("1")) {
                         Intent intent = new Intent(SplashActivity.this, DashBoardActivity.class);

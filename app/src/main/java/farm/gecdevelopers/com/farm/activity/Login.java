@@ -92,8 +92,6 @@ public class Login extends AppCompatActivity {
     }
 
 
-
-
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -111,7 +109,7 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void run() {
-                doubleBackToExitPressedOnce=false;
+                doubleBackToExitPressedOnce = false;
             }
         }, 2000);
     }
@@ -158,9 +156,9 @@ public class Login extends AppCompatActivity {
 
                                 finish();
 
-                            }else{
+                            } else {
                                 Toast.makeText(Login.this,"Invalid Credential",Toast.LENGTH_SHORT).show();
-mLoginProgress.dismiss();
+                                mLoginProgress.dismiss();
 
                             }
 

@@ -5,32 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.admin.ItemTypesActivity">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/item_types_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
+            android:background="@color/cLightGray">
 
+        </android.support.v7.widget.RecyclerView>
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:id="@+id/item_types_rv"
-        android:background="@color/cLightGray"
-
-        android:layout_height="match_parent">
-
-    </android.support.v7.widget.RecyclerView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp"
-        android:src="@android:drawable/ic_menu_add"
-        app:backgroundTint="@color/colorPrimary" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:src="@android:drawable/ic_menu_add"
+            app:backgroundTint="@color/colorPrimary" />
     </FrameLayout>
 
 </RelativeLayout>

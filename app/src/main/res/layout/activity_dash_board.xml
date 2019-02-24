@@ -41,8 +41,7 @@
             android:background="@color/colorLightGray"
             app:tabIndicatorColor="@color/white"
             app:tabGravity="fill"
-            app:tabMode="fixed"
-            />
+            app:tabMode="fixed" />
 
     </LinearLayout>
 

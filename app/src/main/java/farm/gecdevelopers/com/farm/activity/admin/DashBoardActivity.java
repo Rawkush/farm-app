@@ -32,7 +32,7 @@ public class DashBoardActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     public static final String MANAGER = "Manager", AUDITOR = "Auditors", FARMS = "Farms", PLOTS = "Plots",
-            FARM_ACTIVITY = "Farm Activities",MORE_OPTIONS="More Options";
+            FARM_ACTIVITY = "Farm Activities", MORE_OPTIONS = "More Options";
 
 
 
@@ -56,7 +56,6 @@ public class DashBoardActivity extends AppCompatActivity {
             R.drawable.plots,
             R.drawable.farm_activities,
             R.drawable.more_options
-
 
 
     };
@@ -108,11 +107,11 @@ public class DashBoardActivity extends AppCompatActivity {
             LinearLayout tab = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
 
             TextView tab_label =tab.findViewById(R.id.nav_label);
-            ImageView tab_icon =tab.findViewById(R.id.nav_icon);
+            ImageView tab_icon = tab.findViewById(R.id.nav_icon);
 
             tab_label.setText(navLabels[i]);
 
-            if(i == 0) {
+            if (i == 0) {
                 tab_label.setTextColor(getResources().getColor(R.color.green_bkg_website));
                 tab_icon.setImageResource(navIconsActive[i]);
             } else {

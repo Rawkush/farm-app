@@ -15,8 +15,8 @@ import farm.gecdevelopers.com.farm.models.ItemType_Data;
 
 public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.ItemTypesViewHolder> {
 
-    private Context ctx;
     ArrayList<ItemType_Data> list;
+    private Context ctx;
 
     public ItemTypesAdapter(Context ctx, ArrayList<ItemType_Data> list) {
         this.ctx = ctx;
@@ -32,17 +32,15 @@ public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.Item
     }
 
 
-
     @Override
     public void onBindViewHolder(@NonNull ItemTypesAdapter.ItemTypesViewHolder itemTypesViewHolder, int i) {
 
         ItemType_Data man = list.get(i);
 
         //binding the data with the viewholder views
-        itemTypesViewHolder.name.setText(""+man.getName());
-        itemTypesViewHolder.manufacturer.setText("Manufacturer "+man.getManufacturer());
-        itemTypesViewHolder.desc.setText("Description: "+man.getDescription());
-
+        itemTypesViewHolder.name.setText("" + man.getName());
+        itemTypesViewHolder.manufacturer.setText("Manufacturer " + man.getManufacturer());
+        itemTypesViewHolder.desc.setText("Description: " + man.getDescription());
 
 
     }
@@ -58,10 +56,9 @@ public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.Item
         public ItemTypesViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name=itemView.findViewById(R.id.item_name);
-            manufacturer =itemView.findViewById(R.id.manufacture_id);
-            desc=itemView.findViewById(R.id.description);
-
+            name = itemView.findViewById(R.id.item_name);
+            manufacturer = itemView.findViewById(R.id.manufacture_id);
+            desc = itemView.findViewById(R.id.description);
 
 
         }

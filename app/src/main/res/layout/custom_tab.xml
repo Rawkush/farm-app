@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_tab"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,12 +8,12 @@
     android:gravity="center_horizontal">
 
     <ImageView
+        android:id="@+id/nav_icon"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="2dp"
 
-        android:scaleType="centerInside"
-        android:id="@+id/nav_icon" />
+        android:layout_marginTop="2dp"
+        android:scaleType="centerInside" />
 
     <TextView
         android:id="@+id/nav_label"
@@ -22,7 +21,7 @@
         android:layout_height="wrap_content"
         android:shadowColor="@android:color/black"
         android:textColor="@color/dark_grey"
-        android:textAlignment="center"
         android:text="dnndfnfjknfj0njnjknmmnbmnmnbmnbmnbmnbmnbnbbmnbmbmnmnbmnbmbmbmmmbmnbmn"
-        android:textSize="8sp"/>
+        android:textAlignment="center"
+        android:textSize="8sp" />
 </LinearLayout>

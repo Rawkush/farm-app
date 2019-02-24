@@ -2,52 +2,47 @@ package farm.gecdevelopers.com.farm.models;
 
 public class DailyExpense_Data {
 
-    public long getId() {
+    private String id, unit, unitPrice, total, userId;
+    private String farmId;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public long getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-    public void setUnit(long unit) {
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 
-    public long getUnitPrice() {
+    public String getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(long unitPrice) {
+    public void setUnitPrice(String unitPrice) {
         this.unitPrice = unitPrice;
     }
 
-    public long getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(long total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public int getFarmId() {
-        return farmId;
-    }
-
-    public void setFarmId(int farmId) {
-        this.farmId = farmId;
     }
 
     public String getPurpose() {
@@ -82,8 +77,13 @@ public class DailyExpense_Data {
         this.dateAndTime = dateAndTime;
     }
 
-    private  long id,unit,unitPrice,total,userId;
-    private int farmId;
+    public String getFarmId() {
+        return farmId;
+    }
+
+    public void setFarmId(String farmId) {
+        this.farmId = farmId;
+    }
     private String purpose,supplier, description,dateAndTime;
 
 

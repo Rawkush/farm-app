@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
+import farm.gecdevelopers.com.farm.activity.admin.DailyExpense;
 import farm.gecdevelopers.com.farm.activity.admin.ItemTypesActivity;
 
 public class MoreOptions extends Fragment {
@@ -22,6 +24,10 @@ public class MoreOptions extends Fragment {
     ImageView logout,itemTypes ;
     FragmentManager fManager;
     FragmentTransaction fTransaction;
+    CardView cardView;
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,7 +39,6 @@ public class MoreOptions extends Fragment {
 
 
 
-
         return root;
     }
 
@@ -41,6 +46,15 @@ public class MoreOptions extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        cardView = view.findViewById(R.id.daily_expense);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DailyExpense.class);
+                startActivity(intent);
+            }
+        });
 
 
         itemTypes.setOnClickListener(new View.OnClickListener() {

@@ -14,12 +14,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,8 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import farm.gecdevelopers.com.farm.Adapters.FAdapter;
-import farm.gecdevelopers.com.farm.NetworkUtility;
+import farm.gecdevelopers.com.farm.Adapters.FarmActivityAdapter;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.AddFarmActivity;
@@ -42,7 +35,7 @@ public class FarmactivityList extends Fragment {
     private RecyclerView recyclerView;
     FloatingActionButton floatingActionButton;
     private String type;
-    private FAdapter adapter;
+    private FarmActivityAdapter adapter;
 
     @Nullable
     @Override
@@ -100,25 +93,25 @@ public class FarmactivityList extends Fragment {
             FarmActivity item;
 
 
-                            for(int i=0;i<user.length();i++){
-                                JSONObject eachMan=user.getJSONObject(i);
-                                String desc=eachMan.getString("activity_disc");
-                                String activity=eachMan.getString("activity_name");
+            for (int i = 0; i < user.length(); i++) {
+                JSONObject eachMan = user.getJSONObject(i);
+                String desc = eachMan.getString("activity_disc");
+                String activity = eachMan.getString("activity_name");
 
-                                item=new FarmActivity(desc,activity);
-                                item.setDesc(desc);
-                                item.setActivity(activity);
-                                farmActivityArrayList.add(item) ;
+                item = new FarmActivity(desc, activity);
+                item.setDesc(desc);
+                item.setActivity(activity);
+                farmActivityArrayList.add(item);
 
-                                int a=farmActivityArrayList.size();
-                                adapter = new FarmActivityAdapter(ctx,farmActivityArrayList);
-                                LinearLayoutManager llm = new LinearLayoutManager(ctx);
-                                llm.setOrientation(LinearLayoutManager.VERTICAL);
-                                recyclerView.setLayoutManager(llm);
-                                recyclerView.setHasFixedSize(true);
-                                recyclerView.setAdapter(adapter);
+                int a = farmActivityArrayList.size();
+                adapter = new FarmActivityAdapter(ctx, farmActivityArrayList);
+                LinearLayoutManager llm = new LinearLayoutManager(ctx);
+                llm.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(llm);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setAdapter(adapter);
 
-                                // Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
+                // Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
 
             }
         } catch (JSONException e) {

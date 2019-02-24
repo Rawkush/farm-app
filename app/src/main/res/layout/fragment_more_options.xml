@@ -20,8 +20,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/img_itemtypes"
@@ -58,6 +57,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/daily_expense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardUseCompatPadding="true"
@@ -126,10 +126,10 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/img_daily_act"
                     android:paddingLeft="5dp"
-                    android:paddingBottom="25dp"
+                    android:paddingTop="25dp"
                     android:text="Daily Activities"
-                    android:textSize="24sp"
-                    android:paddingTop="25dp" />
+                    android:paddingBottom="25dp"
+                    android:textSize="24sp" />
 
                 <ImageView
                     android:id="@+id/daily_act_btn"

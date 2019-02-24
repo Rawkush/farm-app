@@ -83,4 +83,14 @@ public class FetchTable {
     }
 
 
+    public final JSONArray getItemsType() {
+        return table.optJSONArray("additem");
+    }
+
+
+    public final JSONArray getDailyExpense() {
+        return table.optJSONArray("dailyexpenses");
+    }
+
+
 }
