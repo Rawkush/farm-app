@@ -24,7 +24,7 @@ import java.util.Map;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 
-public class AddFarm extends AppCompatActivity {
+public class AddFarm extends AppCompatActivity implements NetworkUtility {
 
 
     Button btnSubmit;
@@ -34,6 +34,7 @@ public class AddFarm extends AppCompatActivity {
 
     LinearLayout linearLayout;
     RequestQueue queue;
+
 
 
     @Override
@@ -93,7 +94,7 @@ public class AddFarm extends AppCompatActivity {
 
         if (isFormFilled()) {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_FARM_URL,
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_FARM_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

@@ -1,7 +1,7 @@
 package farm.gecdevelopers.com.farm;
 
-public class NetworkUtility {
-
+public interface NetworkUtility {
+    public final static String ADMIN = "1", MANAGER = "2", AUDITOR = "3";
     public final static String LOGIN_URL = "http://axxentfarms.com/farm/files/pages/app/login.php";
     public final static String CREATE_ACCOUNT_URL = "http://axxentfarms.com/farm/files/pages/app/createaccount.php";
     public final static String ADD_FARM_URL = "http://axxentfarms.com/farm/files/pages/app/addf.php";

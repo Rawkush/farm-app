@@ -39,13 +39,12 @@ import farm.gecdevelopers.com.farm.activity.manager.Manager_DashBoardActivity;
 
 import static farm.gecdevelopers.com.farm.activity.SplashActivity.session;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements NetworkUtility {
 
     final static int MY_SOCKET_TIMEOUT_MS=30000;
     private EditText mLoginEmail;
     private EditText mLoginPassword;
     private ProgressDialog mLoginProgress;
-    private final String ADMIN = "1", MANAGER = "2", AUDITOR = "3";
     boolean doubleBackToExitPressedOnce = false;
 
     Button button;
@@ -54,8 +53,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         initActivityComponents();
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +114,7 @@ public class Login extends AppCompatActivity {
     }
     private void login(final String username, final String password){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.LOGIN_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

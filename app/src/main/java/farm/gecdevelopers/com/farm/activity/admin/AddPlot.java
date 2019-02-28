@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -17,11 +19,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.models.Farms;
+import farm.gecdevelopers.com.farm.models.LoginUser;
+import farm.gecdevelopers.com.farm.spinnerAdapter.FarmSpinnerAdapter;
 
 public class AddPlot extends AppCompatActivity {
 
@@ -29,16 +39,52 @@ public class AddPlot extends AppCompatActivity {
     EditText edLatOne, edLatTwo, edLatThree, edLatFour, edLongOne, edLongTwo, edLongThree, edLongFour;
     Button btnSubmit;
     EditText edSize, edDescription, edPlotName, edManager, edFarm;
+    Spinner spnFarm, spnManager;
+    String farm = "";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_plot);
         bindViews();
+
+
+        init();
+    }
+
+    private void init() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendDataToDatabse();
+            }
+        });
+        FarmSpinnerAdapter farmSpinnerAdapter;
+        farmSpinnerAdapter = new FarmSpinnerAdapter(this, getFarmList());
+        spnFarm.setAdapter(farmSpinnerAdapter);
+        spnFarm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Farms fm = (Farms) parent.getItemAtPosition(position);
+                farm = fm.getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
     }
 
     private void bindViews() {
 
+        spnManager = findViewById(R.id.manager_spinner);
+        spnFarm = findViewById(R.id.farm_spinner);
         queue = Volley.newRequestQueue(this);
         edDescription = findViewById(R.id.description);
         edFarm = findViewById(R.id.farm);
@@ -54,17 +100,12 @@ public class AddPlot extends AppCompatActivity {
         edSize = findViewById(R.id.size);
         edPlotName = findViewById(R.id.plot_name);
         edManager = findViewById(R.id.manager);
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendDataToDatabse();
-            }
-        });
+
 
     }
 
     private void sendDataToDatabse() {
-        final String latitude1, latitude2, latitude3, latitude4, longitude1, longitude2, longitude3, longitude4, size, description, plotname, farm, manager;
+        final String latitude1, latitude2, latitude3, latitude4, longitude1, longitude2, longitude3, longitude4, size, description, plotname, manager;
 
         latitude1 = edLatOne.getText().toString();
         latitude2 = edLatTwo.getText().toString();
@@ -79,7 +120,6 @@ public class AddPlot extends AppCompatActivity {
         size = edSize.getText().toString();
         description = edDescription.getText().toString();
         plotname = edPlotName.getText().toString();
-        farm = edFarm.getText().toString();
         manager = edManager.getText().toString();
 
         if (isFormFilled()) {
@@ -230,5 +270,51 @@ public class AddPlot extends AppCompatActivity {
 
 
     }
+
+
+    public ArrayList<Farms> getFarmList() {
+        ArrayList<Farms> farmsArrayList = new ArrayList<>();
+
+
+        try {
+            JSONArray user = DashBoardActivity.data.getFarms();
+            for (int i = 0; i < user.length(); i++) {
+                JSONObject eachMan = user.getJSONObject(i);
+                String name = eachMan.getString("farm_n");
+                String id = eachMan.getString("id");
+                farmsArrayList.add(new Farms(name, id));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return farmsArrayList;
+    }
+
+
+    public ArrayList<LoginUser> getManagerList() {
+        ArrayList<LoginUser> managerList = new ArrayList<>();
+
+
+        try {
+            JSONArray user = DashBoardActivity.data.getAllUsers();
+            for (int i = 0; i < user.length(); i++) {
+                JSONObject eachMan = user.getJSONObject(i);
+
+                String type = eachMan.getString("type");
+
+                if (type.equals())
+                    String name = eachMan.getString("name");
+                String id = eachMan.getString("id");
+                managerList.add(new LoginUser(name, id));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return managerList;
+    }
+
+
 
 }

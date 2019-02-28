@@ -80,20 +80,6 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-   /*     runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //add your code here
-                    }
-                }, 1000);
-
-            }
-        });*/
 
     }
 }

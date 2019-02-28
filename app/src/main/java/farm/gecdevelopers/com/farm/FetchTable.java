@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class FetchTable {
+public class FetchTable implements NetworkUtility {
 
     private RequestQueue queue;
     private Context context;
@@ -31,7 +31,7 @@ public class FetchTable {
     }
 
     private void fetchTable() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.TABLE_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, TABLE_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

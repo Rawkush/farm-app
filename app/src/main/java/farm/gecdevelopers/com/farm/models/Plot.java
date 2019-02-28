@@ -7,8 +7,8 @@ public class Plot {
         this.size = size;
         this.plotname = plotname;
         this.desc = desc;
-        this.location= this.location;
-        this.manager= this.manager;
+        this.location = location;
+        this.manager = manager;
     }
 
     public String getSize() {

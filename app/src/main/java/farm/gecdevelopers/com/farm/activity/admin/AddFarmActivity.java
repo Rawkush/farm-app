@@ -23,7 +23,7 @@ import java.util.Map;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 
-public class AddFarmActivity extends AppCompatActivity {
+public class AddFarmActivity extends AppCompatActivity implements NetworkUtility {
 
 
 
@@ -62,7 +62,7 @@ public class AddFarmActivity extends AppCompatActivity {
 
         if (isFormFilled()) {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_FARM_ACTIVITY_URL,
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_FARM_ACTIVITY_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

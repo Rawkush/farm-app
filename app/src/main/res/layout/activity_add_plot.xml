@@ -87,6 +87,17 @@
                 android:inputType="textPersonName"
                 android:hint="plotName" />
 
+            <Spinner
+                android:id="@+id/farm_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <Spinner
+                android:id="@+id/manager_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <EditText
                 android:id="@+id/size"
                 android:layout_width="wrap_content"
@@ -95,13 +106,6 @@
                 android:inputType="textPersonName"
                 android:hint="size" />
 
-            <EditText
-                android:id="@+id/farm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="farm" />
 
             <EditText
                 android:id="@+id/manager"
