@@ -11,13 +11,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.models.Farms;
+import farm.gecdevelopers.com.farm.models.LoginUser;
 
 public class ManagerSpinnerAdapter
         extends
-        ArrayAdapter<Farms> {
+        ArrayAdapter<LoginUser> {
 
-    public ManagerSpinnerAdapter(@NonNull Context context, @NonNull ArrayList<Farms> objects) {
+    public ManagerSpinnerAdapter(@NonNull Context context, @NonNull ArrayList<LoginUser> objects) {
         super(context, 0, objects);
     }
 
@@ -45,8 +45,8 @@ public class ManagerSpinnerAdapter
         TextView main_text = (TextView) convertView
                 .findViewById(R.id.item);
 
-        Farms farms = getItem(position);
-        main_text.setText(farms.getName());
+        LoginUser user = getItem(position);
+        main_text.setText(user.getName());
 
         return convertView;
     }

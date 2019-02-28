@@ -22,7 +22,7 @@ import java.util.Map;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 
-public class AddItems extends AppCompatActivity {
+public class AddItems extends AppCompatActivity implements NetworkUtility {
 
     RequestQueue queue;
     private EditText edItemName, edDescription, edManufacturer;
@@ -55,7 +55,7 @@ public class AddItems extends AppCompatActivity {
 
     private void sendDataToDatabse() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_ITEM_TYPE_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_ITEM_TYPE_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -32,15 +32,16 @@ import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.models.Farms;
 import farm.gecdevelopers.com.farm.models.LoginUser;
 import farm.gecdevelopers.com.farm.spinnerAdapter.FarmSpinnerAdapter;
+import farm.gecdevelopers.com.farm.spinnerAdapter.ManagerSpinnerAdapter;
 
-public class AddPlot extends AppCompatActivity {
+public class AddPlot extends AppCompatActivity implements NetworkUtility {
 
     RequestQueue queue;
     EditText edLatOne, edLatTwo, edLatThree, edLatFour, edLongOne, edLongTwo, edLongThree, edLongFour;
     Button btnSubmit;
-    EditText edSize, edDescription, edPlotName, edManager, edFarm;
+    EditText edSize, edDescription, edPlotName;
     Spinner spnFarm, spnManager;
-    String farm = "";
+    String farm = "", manager = "";
 
 
 
@@ -50,9 +51,9 @@ public class AddPlot extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_plot);
         bindViews();
-
-
         init();
+
+
     }
 
     private void init() {
@@ -78,6 +79,21 @@ public class AddPlot extends AppCompatActivity {
             }
         });
 
+        ManagerSpinnerAdapter managerSpinnerAdapter = new ManagerSpinnerAdapter(this, getManagerList());
+        spnManager.setAdapter(managerSpinnerAdapter);
+        spnManager.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                LoginUser user = (LoginUser) parent.getItemAtPosition(position);
+                manager = user.getId();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -87,7 +103,6 @@ public class AddPlot extends AppCompatActivity {
         spnFarm = findViewById(R.id.farm_spinner);
         queue = Volley.newRequestQueue(this);
         edDescription = findViewById(R.id.description);
-        edFarm = findViewById(R.id.farm);
         edLatFour = findViewById(R.id.latitude4);
         edLatOne = findViewById(R.id.latitude1);
         edLatThree = findViewById(R.id.latitude3);
@@ -99,31 +114,27 @@ public class AddPlot extends AppCompatActivity {
         btnSubmit = findViewById(R.id.submit);
         edSize = findViewById(R.id.size);
         edPlotName = findViewById(R.id.plot_name);
-        edManager = findViewById(R.id.manager);
 
 
     }
 
     private void sendDataToDatabse() {
-        final String latitude1, latitude2, latitude3, latitude4, longitude1, longitude2, longitude3, longitude4, size, description, plotname, manager;
+        final String latitude1, latitude2, latitude3, latitude4, longitude1, longitude2, longitude3, longitude4, size, description, plotname;
 
         latitude1 = edLatOne.getText().toString();
         latitude2 = edLatTwo.getText().toString();
         latitude3 = edLatThree.getText().toString();
         latitude4 = edLatFour.getText().toString();
-
         longitude1 = edLongOne.getText().toString();
         longitude2 = edLongTwo.getText().toString();
         longitude3 = edLongThree.getText().toString();
         longitude4 = edLongFour.getText().toString();
-
         size = edSize.getText().toString();
         description = edDescription.getText().toString();
         plotname = edPlotName.getText().toString();
-        manager = edManager.getText().toString();
 
         if (isFormFilled()) {
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_PLOT_URL,
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_PLOT_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -177,7 +188,7 @@ public class AddPlot extends AppCompatActivity {
     private boolean isFormFilled() {
 
 
-        String latitude1, latitude2, latitude3, latitude4, longitude1, longitude2, longitude3, longitude4, size, description, plotname, farm, manager;
+        String latitude1, latitude2, latitude3, latitude4, longitude1, longitude2, longitude3, longitude4, size, description, plotname;
 
         latitude1 = edLatOne.getText().toString();
         latitude2 = edLatTwo.getText().toString();
@@ -192,9 +203,6 @@ public class AddPlot extends AppCompatActivity {
         size = edSize.getText().toString();
         description = edDescription.getText().toString();
         plotname = edPlotName.getText().toString();
-        farm = edFarm.getText().toString();
-        manager = edManager.getText().toString();
-
 
         if (TextUtils.isEmpty(latitude1)) {
             edLatOne.setError(getString(R.string.cant_be_empty));
@@ -249,13 +257,13 @@ public class AddPlot extends AppCompatActivity {
 
         }
         if (TextUtils.isEmpty(farm)) {
-            edFarm.setError(getString(R.string.cant_be_empty));
+            Toast.makeText(this, "select farm", Toast.LENGTH_SHORT).show();
             return false;
 
         }
 
         if (TextUtils.isEmpty(manager)) {
-            edManager.setError(getString(R.string.cant_be_empty));
+            Toast.makeText(this, "select Manager", Toast.LENGTH_SHORT).show();
             return false;
 
         }
@@ -302,10 +310,12 @@ public class AddPlot extends AppCompatActivity {
                 JSONObject eachMan = user.getJSONObject(i);
 
                 String type = eachMan.getString("type");
+                if (!type.equals(MANAGER))
+                    continue;
 
-                if (type.equals())
-                    String name = eachMan.getString("name");
+                String name = eachMan.getString("name");
                 String id = eachMan.getString("id");
+
                 managerList.add(new LoginUser(name, id));
             }
         } catch (JSONException e) {
