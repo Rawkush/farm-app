@@ -6,22 +6,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.models.Farms;
-import farm.gecdevelopers.com.farm.models.Managers;
+import farm.gecdevelopers.com.farm.models.FarmData;
 
 public class FarmsAdapter  extends RecyclerView.Adapter<FarmsAdapter.FarmsViewHolder> {
 
     private Context ctx;
-    ArrayList<Farms> list;
+    ArrayList<FarmData> list;
 
-    public FarmsAdapter(Context ctx, ArrayList<Farms> list) {
+    public FarmsAdapter(Context ctx, ArrayList<FarmData> list) {
         this.ctx = ctx;
         this.list = list;
     }
@@ -37,7 +34,7 @@ public class FarmsAdapter  extends RecyclerView.Adapter<FarmsAdapter.FarmsViewHo
     @Override
     public void onBindViewHolder(@NonNull FarmsViewHolder farmsViewHolder, int i) {
 
-        Farms man = list.get(i);
+        FarmData man = list.get(i);
 
         //binding the data with the viewholder views
         farmsViewHolder.name.setText("Farm Name: "+man.getName());

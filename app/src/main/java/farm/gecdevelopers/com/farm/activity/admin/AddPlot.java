@@ -29,7 +29,7 @@ import java.util.Map;
 
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.models.Farms;
+import farm.gecdevelopers.com.farm.models.FarmData;
 import farm.gecdevelopers.com.farm.models.LoginUser;
 import farm.gecdevelopers.com.farm.spinnerAdapter.FarmSpinnerAdapter;
 import farm.gecdevelopers.com.farm.spinnerAdapter.ManagerSpinnerAdapter;
@@ -69,7 +69,7 @@ public class AddPlot extends AppCompatActivity implements NetworkUtility {
         spnFarm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Farms fm = (Farms) parent.getItemAtPosition(position);
+                FarmData fm = (FarmData) parent.getItemAtPosition(position);
                 farm = fm.getId();
             }
 
@@ -280,8 +280,8 @@ public class AddPlot extends AppCompatActivity implements NetworkUtility {
     }
 
 
-    public ArrayList<Farms> getFarmList() {
-        ArrayList<Farms> farmsArrayList = new ArrayList<>();
+    public ArrayList<FarmData> getFarmList() {
+        ArrayList<FarmData> farmsArrayList = new ArrayList<>();
 
 
         try {
@@ -290,7 +290,7 @@ public class AddPlot extends AppCompatActivity implements NetworkUtility {
                 JSONObject eachMan = user.getJSONObject(i);
                 String name = eachMan.getString("farm_n");
                 String id = eachMan.getString("id");
-                farmsArrayList.add(new Farms(name, id));
+                farmsArrayList.add(new FarmData(name, id));
             }
         } catch (JSONException e) {
             e.printStackTrace();

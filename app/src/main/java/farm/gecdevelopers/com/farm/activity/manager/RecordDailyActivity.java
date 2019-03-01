@@ -14,11 +14,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,14 +31,24 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
+import farm.gecdevelopers.com.farm.models.FarmActivityData;
+import farm.gecdevelopers.com.farm.models.PlotData;
+import farm.gecdevelopers.com.farm.spinnerAdapter.FarmActivitySpinnerAdapter;
+import farm.gecdevelopers.com.farm.spinnerAdapter.PlotNameSpinnerAdapter;
 
 public class RecordDailyActivity extends AppCompatActivity {
 
@@ -44,9 +56,11 @@ public class RecordDailyActivity extends AppCompatActivity {
     RequestQueue queue;
     private final int GALLERY_REQUEST = 1;
     Button btnImage, btnVideo, btnDocument;
-    EditText edPlot, edDate, edFarmActivity, edAcresCovered, edResources, edComments;
+    EditText edDate, edAcresCovered, edResources, edComments;
     ImageView imageView;
     ImageButton ibCalendar;
+    Spinner spnPlotName, spnFarmActivity;
+    String plotId = "", actId = "";
     int day = 0, month = 0, year = 0;
 
     @Override
@@ -55,8 +69,6 @@ public class RecordDailyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_record_daily);
         bindViews();
         init();
-        queue = Volley.newRequestQueue(this);
-
         sendDataToDatabse();
 
     }
@@ -64,6 +76,40 @@ public class RecordDailyActivity extends AppCompatActivity {
     private void init() {
 
         setDefaultTime();
+
+        PlotNameSpinnerAdapter plotNameSpinnerAdapter = new PlotNameSpinnerAdapter(this, getPlotList());
+        spnPlotName.setAdapter(plotNameSpinnerAdapter);
+        spnPlotName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                PlotData fm = (PlotData) parent.getItemAtPosition(position);
+                plotId = fm.getFarmId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        FarmActivitySpinnerAdapter spinnerAdapter = new FarmActivitySpinnerAdapter(this, getFarmActivity());
+        spnFarmActivity.setAdapter(spinnerAdapter);
+        spnFarmActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                FarmActivityData fm = (FarmActivityData) parent.getItemAtPosition(position);
+                actId = fm.getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
 
         ibCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,16 +145,16 @@ public class RecordDailyActivity extends AppCompatActivity {
     }
 
     private void bindViews() {
-
+        queue = Volley.newRequestQueue(this);
+        spnFarmActivity = findViewById(R.id.farm_activity_spinner);
+        spnPlotName = findViewById(R.id.plotname_spinner);
         btnDocument = findViewById(R.id.upload_document);
         btnImage = findViewById(R.id.upload_image);
         btnVideo = findViewById(R.id.upload_video);
         edAcresCovered = findViewById(R.id.acres_covered);
-        edPlot = findViewById(R.id.plot);
         edComments = findViewById(R.id.comments);
         edDate = findViewById(R.id.date);
         edResources = findViewById(R.id.resources);
-        edFarmActivity = findViewById(R.id.farm_activity);
         imageView = findViewById(R.id.imageView);
         ibCalendar = findViewById(R.id.ib_date);
 
@@ -189,6 +235,8 @@ public class RecordDailyActivity extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
 
                     Map<String, String> param = new HashMap<>();
+                    param.put("loan_type", plotId);
+                    param.put("act", actId);
 
 
                     return param;
@@ -207,12 +255,10 @@ public class RecordDailyActivity extends AppCompatActivity {
     private boolean isFormFilled() {
 
 
-        String plotname, date, comment, resources, farmActivity, acresCovered;
-        plotname = edPlot.getText().toString();
+        String date, comment, resources, acresCovered;
         date = edDate.getText().toString();
         comment = edComments.getText().toString();
         resources = edResources.getText().toString();
-        farmActivity = edFarmActivity.getText().toString();
         acresCovered = edAcresCovered.getText().toString();
 
 
@@ -230,8 +276,9 @@ public class RecordDailyActivity extends AppCompatActivity {
             return false;
 
         }
-        if (TextUtils.isEmpty(farmActivity)) {
-            edFarmActivity.setError(getString(R.string.cant_be_empty));
+        if (TextUtils.isEmpty(actId)) {
+
+            Toast.makeText(this, "select Farm Activity", Toast.LENGTH_SHORT).show();
             return false;
 
         }
@@ -240,8 +287,8 @@ public class RecordDailyActivity extends AppCompatActivity {
             return false;
         }
 
-        if (TextUtils.isEmpty(plotname)) {
-            edPlot.setError(getString(R.string.cant_be_empty));
+        if (TextUtils.isEmpty(plotId)) {
+            Toast.makeText(this, "select Plot", Toast.LENGTH_SHORT).show();
             return false;
 
         }
@@ -274,5 +321,54 @@ public class RecordDailyActivity extends AppCompatActivity {
 
 
     }
+
+
+    public ArrayList<PlotData> getPlotList() {
+        ArrayList<PlotData> plotArrayList = new ArrayList<>();
+
+
+        try {
+            JSONArray jsonArray = DashBoardActivity.data.getPlots();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject eachMan = jsonArray.getJSONObject(i);
+                String user = eachMan.getString("farm_manager");
+                /* TODO get curent user from shared preference
+                if(!user.equals(currentuser))
+                   {
+                   continue;
+                   }
+
+                 */
+                String name = eachMan.getString("farm_name");
+                String farmId = eachMan.getString("farm_id");
+                plotArrayList.add(new PlotData(name, farmId));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return plotArrayList;
+    }
+
+    public ArrayList<FarmActivityData> getFarmActivity() {
+        ArrayList<FarmActivityData> farmActivities = new ArrayList<>();
+        try {
+            JSONArray jsonArray = DashBoardActivity.data.getFarmActivity();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject eachMan = jsonArray.getJSONObject(i);
+
+
+                String name = eachMan.getString("activity_name");
+                String id = eachMan.getString("activity_id");
+                farmActivities.add(new FarmActivityData(name, id, null));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return farmActivities;
+    }
+
+
 
 }

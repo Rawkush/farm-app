@@ -1,19 +1,19 @@
 package farm.gecdevelopers.com.farm.models;
 
-public class Farms {
+public class FarmData {
     String size;
     String name;
     String desc;
     String id;
 
-    public Farms(String size, String name, String desc, String id) {
+    public FarmData(String size, String name, String desc, String id) {
         this.size = size;
         this.name = name;
         this.desc = desc;
         this.id = id;
     }
 
-    public Farms(String name, String id) {
+    public FarmData(String name, String id) {
         this.name = name;
         this.id = id;
     }
@@ -23,7 +23,7 @@ public class Farms {
         return id;
     }
 
-    public Farms(String size, String name, String desc) {
+    public FarmData(String size, String name, String desc) {
         this.size = size;
         this.name = name;
         this.desc = desc;

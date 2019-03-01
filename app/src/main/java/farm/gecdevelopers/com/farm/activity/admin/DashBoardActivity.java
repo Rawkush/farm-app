@@ -31,7 +31,7 @@ public class DashBoardActivity extends AppCompatActivity {
     public static FetchTable data;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public static final String MANAGER = "Manager", AUDITOR = "Auditors", FARMS = "Farms", PLOTS = "Plots",
+    public static final String MANAGER = "Manager", AUDITOR = "Auditors", FARMS = "FarmData", PLOTS = "Plots",
             FARM_ACTIVITY = "Farm Activities", MORE_OPTIONS = "More Options";
 
 
@@ -130,7 +130,7 @@ public class DashBoardActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new ManagersList(), "Managers");
         adapter.addFrag(new AuditorsList(), "Auditors");
-        adapter.addFrag(new FarmsList(),"Farms");
+        adapter.addFrag(new FarmsList(), "FarmData");
         adapter.addFrag(new PlotsList(), "Plots");
         adapter.addFrag(new FarmactivityList(), "Activities");
         adapter.addFrag(new MoreOptions(), "More Options");

@@ -11,14 +11,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.models.FarmActivity;
+import farm.gecdevelopers.com.farm.models.FarmActivityData;
 
 public class FarmActivityAdapter extends RecyclerView.Adapter<FarmActivityAdapter.FarmActivityViewHolder> {
 
     private Context ctx;
-    ArrayList<FarmActivity> list;
+    ArrayList<FarmActivityData> list;
 
-    public FarmActivityAdapter(Context ctx, ArrayList<FarmActivity> list) {
+    public FarmActivityAdapter(Context ctx, ArrayList<FarmActivityData> list) {
         this.ctx = ctx;
         this.list = list;
     }
@@ -34,7 +34,7 @@ public class FarmActivityAdapter extends RecyclerView.Adapter<FarmActivityAdapte
     @Override
     public void onBindViewHolder(@NonNull FarmActivityViewHolder farmActivityViewHolder, int i) {
 
-        FarmActivity man = list.get(i);
+        FarmActivityData man = list.get(i);
 
         //binding the data with the viewholder views
 

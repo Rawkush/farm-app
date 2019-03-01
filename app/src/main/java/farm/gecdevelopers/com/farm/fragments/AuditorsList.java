@@ -21,13 +21,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.Adapters.ManagersAdapter;
+import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.CreateAccount;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Managers;
 
-public class AuditorsList extends Fragment {
+public class AuditorsList extends Fragment implements NetworkUtility {
     View root;
     FloatingActionButton floatingActionButton;
     private Context ctx;
@@ -53,11 +54,11 @@ public class AuditorsList extends Fragment {
         recyclerView = view.findViewById(R.id.man_rv);
         type = SplashActivity.type;
 
-        if (type.equals("1")) {
+        if (type.equals(ADMIN)) {
 
             floatingActionButton.setVisibility(View.VISIBLE);
 
-        } else if (type.equals("3")) {
+        } else if (type.equals(AUDITOR)) {
             floatingActionButton.setVisibility(View.GONE);
         }
 
@@ -65,7 +66,7 @@ public class AuditorsList extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), CreateAccount.class);
-                intent.putExtra("type", getString(R.string.type_auditor));
+                intent.putExtra("type", AUDITOR);
                 startActivity(intent);
 
             }

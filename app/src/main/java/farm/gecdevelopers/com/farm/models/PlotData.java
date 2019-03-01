@@ -1,14 +1,27 @@
 package farm.gecdevelopers.com.farm.models;
 
-public class Plot {
-    String size, plotname, desc,manager, location;
+public class PlotData {
+    private String size, plotname, desc, manager, location, farmId;
 
-    public Plot(String size, String plotname, String desc, String manager, String location) {
+    public PlotData(String plotname, String farmId) {
+        this.plotname = plotname;
+        this.farmId = farmId;
+    }
+
+    public PlotData(String size, String plotname, String desc, String manager, String location) {
         this.size = size;
         this.plotname = plotname;
         this.desc = desc;
         this.location = location;
         this.manager = manager;
+    }
+
+    public String getFarmId() {
+        return farmId;
+    }
+
+    public void setFarmId(String farmId) {
+        this.farmId = farmId;
     }
 
     public String getSize() {
@@ -52,4 +65,7 @@ public class Plot {
 
     public void setLocation(String location) {
         this.location = location;
-    }}
+    }
+
+
+}

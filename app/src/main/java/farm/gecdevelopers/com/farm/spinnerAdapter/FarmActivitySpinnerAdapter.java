@@ -11,12 +11,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.models.FarmData;
+import farm.gecdevelopers.com.farm.models.FarmActivityData;
 
-public class FarmSpinnerAdapter extends
-        ArrayAdapter<FarmData> {
+public class FarmActivitySpinnerAdapter extends
+        ArrayAdapter<FarmActivityData> {
 
-    public FarmSpinnerAdapter(@NonNull Context context, @NonNull ArrayList<FarmData> objects) {
+    public FarmActivitySpinnerAdapter(@NonNull Context context, @NonNull ArrayList<FarmActivityData> objects) {
         super(context, 0, objects);
     }
 
@@ -44,10 +44,11 @@ public class FarmSpinnerAdapter extends
         TextView main_text = (TextView) convertView
                 .findViewById(R.id.item);
 
-        FarmData farms = getItem(position);
-        main_text.setText(farms.getName());
+        FarmActivityData farms = getItem(position);
+        main_text.setText(farms.getActivity());
 
         return convertView;
     }
+
 
 }

@@ -11,15 +11,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.models.Farms;
-import farm.gecdevelopers.com.farm.models.Plot;
+import farm.gecdevelopers.com.farm.models.PlotData;
 
 public class PlotAdapter  extends RecyclerView.Adapter<PlotAdapter.PlotViewHolder> {
 
     private Context ctx;
-    ArrayList<Plot> list;
+    ArrayList<PlotData> list;
 
-    public PlotAdapter(Context ctx, ArrayList<Plot> list) {
+    public PlotAdapter(Context ctx, ArrayList<PlotData> list) {
         this.ctx = ctx;
         this.list = list;
     }
@@ -35,10 +34,10 @@ public class PlotAdapter  extends RecyclerView.Adapter<PlotAdapter.PlotViewHolde
     @Override
     public void onBindViewHolder(@NonNull PlotViewHolder plotViewHolder, int i) {
 
-        Plot man = list.get(i);
+        PlotData man = list.get(i);
 
         //binding the data with the viewholder views
-        plotViewHolder.plotname.setText("Plot Name: "+man.getPlotname());
+        plotViewHolder.plotname.setText("PlotData Name: " + man.getPlotname());
         plotViewHolder.size.setText("Plotsize: "+man.getSize());
         plotViewHolder.desc.setText("Description: "+man.getDesc());
         plotViewHolder.manager.setText("Manager: "+man.getDesc());

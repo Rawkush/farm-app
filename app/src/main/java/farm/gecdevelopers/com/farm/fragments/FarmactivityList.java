@@ -22,16 +22,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.Adapters.FarmActivityAdapter;
+import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.AddFarmActivity;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
-import farm.gecdevelopers.com.farm.models.FarmActivity;
+import farm.gecdevelopers.com.farm.models.FarmActivityData;
 
-public class FarmactivityList extends Fragment {
+public class FarmactivityList extends Fragment implements NetworkUtility {
     View root;
     private Context ctx;
-    private ArrayList<FarmActivity> farmActivityArrayList;
+    private ArrayList<FarmActivityData> farmActivityArrayList;
     private RecyclerView recyclerView;
     FloatingActionButton floatingActionButton;
     private String type;
@@ -55,11 +56,11 @@ public class FarmactivityList extends Fragment {
         floatingActionButton = view.findViewById(R.id.fab);
         type = SplashActivity.type;
 
-        if (type.equals("1")) {
+        if (type.equals(ADMIN)) {
 
             floatingActionButton.setVisibility(View.VISIBLE);
 
-        } else if (type.equals("3")) {
+        } else if (type.equals(AUDITOR)) {
             floatingActionButton.setVisibility(View.GONE);
         }
 
@@ -90,7 +91,7 @@ public class FarmactivityList extends Fragment {
 
         try {
             JSONArray user = DashBoardActivity.data.getFarmActivity();
-            FarmActivity item;
+            FarmActivityData item;
 
 
             for (int i = 0; i < user.length(); i++) {
@@ -98,7 +99,7 @@ public class FarmactivityList extends Fragment {
                 String desc = eachMan.getString("activity_disc");
                 String activity = eachMan.getString("activity_name");
 
-                item = new FarmActivity(desc, activity);
+                item = new FarmActivityData(desc, activity);
                 item.setDesc(desc);
                 item.setActivity(activity);
                 farmActivityArrayList.add(item);

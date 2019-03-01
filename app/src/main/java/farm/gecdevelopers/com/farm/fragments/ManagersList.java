@@ -21,13 +21,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.Adapters.ManagersAdapter;
+import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.CreateAccount;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.Managers;
 
-public class ManagersList extends Fragment {
+public class ManagersList extends Fragment implements NetworkUtility {
     private View root;
     private Context ctx;
     private ArrayList<Managers> managersList;
@@ -97,7 +98,7 @@ public class ManagersList extends Fragment {
                 String email = eachMan.getString("email");
                 String phn = eachMan.getString("phone");
                 String manId = eachMan.getString("client_num");
-                if (type.equals("2")) {
+                if (type.equals(MANAGER)) {
                     item = new Managers(manId, name, email, phn, uname);
                     item.setManEmail(email);
                     item.setManId(manId);

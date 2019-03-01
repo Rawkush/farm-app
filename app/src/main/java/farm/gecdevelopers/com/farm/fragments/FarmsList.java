@@ -21,18 +21,19 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.Adapters.FarmsAdapter;
+import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.AddFarm;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
-import farm.gecdevelopers.com.farm.models.Farms;
+import farm.gecdevelopers.com.farm.models.FarmData;
 
-public class FarmsList extends Fragment {
+public class FarmsList extends Fragment implements NetworkUtility {
 
     View root;
     FloatingActionButton floatingActionButton;
     private Context ctx;
-    private ArrayList<Farms> farmsArrayList;
+    private ArrayList<FarmData> farmsArrayList;
     private RecyclerView recyclerView;
     private FarmsAdapter adapter;
     private String type;
@@ -57,11 +58,11 @@ public class FarmsList extends Fragment {
         recyclerView = view.findViewById(R.id.man_rv);
         type = SplashActivity.type;
 
-        if (type.equals("1")) {
+        if (type.equals(ADMIN)) {
 
             floatingActionButton.setVisibility(View.VISIBLE);
 
-        } else if (type.equals("3")) {
+        } else if (type.equals(AUDITOR)) {
             floatingActionButton.setVisibility(View.GONE);
         }
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -75,13 +76,7 @@ public class FarmsList extends Fragment {
 
         getList();
 
-        if (type.equals("1")) {
 
-            floatingActionButton.setVisibility(View.VISIBLE);
-
-        } else if (type.equals("3")) {
-            floatingActionButton.setVisibility(View.GONE);
-        }
 
     }
 
@@ -91,14 +86,14 @@ public class FarmsList extends Fragment {
 
         try {
             JSONArray user = DashBoardActivity.data.getFarms();
-            Farms item;
+            FarmData item;
 
             for (int i = 0; i < user.length(); i++) {
                 JSONObject eachMan = user.getJSONObject(i);
                 String desc = eachMan.getString("farm_d");
                 String name = eachMan.getString("farm_n");
                 String size = eachMan.getString("farm_s");
-                item = new Farms(desc, name, size);
+                item = new FarmData(desc, name, size);
                 item.setSize(size);
                 item.setDesc(desc);
                 item.setName(name);
