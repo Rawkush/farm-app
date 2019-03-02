@@ -1,7 +1,7 @@
 package farm.gecdevelopers.com.farm.activity.admin;
 
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,14 +28,11 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
 
 
     Button btnSubmit;
-    TextInputLayout edLatitude1, edLatitude2, edLatitude3, edLatitude4, edLatitude5, edLatitude6, edLatitude7, edLatitude8, edLatitude9,
+    TextInputEditText edLatitude1, edLatitude2, edLatitude3, edLatitude4, edLatitude5, edLatitude6, edLatitude7, edLatitude8, edLatitude9,
             edLatitude10, edLongitude1, edLongitude2, edLongitude3, edLongitude4, edLongitude5, edLongitude6, edLongitude7,
             edLongitude8, edLongitude9, edLongitude10, edSize, edFarmName, edDescription;
-
     LinearLayout linearLayout;
     RequestQueue queue;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,10 +87,7 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
 
 
     private void sendDataToDatabse() {
-
-
         if (isFormFilled()) {
-
             StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_FARM_URL,
                     new Response.Listener<String>() {
                         @Override
@@ -101,8 +95,6 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
 
                             //todo show a dialogbox instead of toast
                             Toast.makeText(AddFarm.this, response, Toast.LENGTH_SHORT).show();
-
-
                             Log.i("Response is: ", response);
                         }
                     }, new Response.ErrorListener() {
@@ -110,8 +102,6 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
                 public void onErrorResponse(VolleyError error) {
 
                     Toast.makeText(AddFarm.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-
-
                 }
             }) {
                 @Override
@@ -122,82 +112,51 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
                     final int childCount = linearLayout.getChildCount();
 
                     for (int i = 0; i < childCount; i++) {
-
                         View v = linearLayout.getChildAt(i);
-
-                        if (v instanceof TextInputLayout) {
-                            String tag = ((TextInputLayout) v).getEditText().getTag().toString();
-                            String value = ((TextInputLayout) v).getEditText().getText().toString();
+                        if (v instanceof TextInputEditText) {
+                            String tag = v.getTag().toString();
+                            String value = ((TextInputEditText) v).getText().toString();
 
                             if (TextUtils.isEmpty(value)) {
                                 continue;
                             }
-
                             param.put(tag, value);
-
                         }
-
-
                     }
-
-
                     return param;
-
                 }
-
             };
-
-
             queue.add(stringRequest);
-
-
         }
 
     }
 
-
     private boolean isFormFilled() {
 
-        String latitude1 = edLatitude1.getEditText().getText().toString();
-        String longitude1 = edLongitude1.getEditText().getText().toString();
-        String farmName = edFarmName.getEditText().getText().toString();
-        String description = edDescription.getEditText().getText().toString();
-        String size = edSize.getEditText().getText().toString();
 
-        edDescription.setErrorEnabled(false);
-        edDescription.setError(null);
-        edLongitude1.setErrorEnabled(false);
-        edLongitude1.setError(null);
-        edLatitude1.setErrorEnabled(false);
-        edSize.setErrorEnabled(false);
-        edSize.setError(null);
-        edLatitude1.setError(null);
-        edFarmName.setErrorEnabled(true);
-        edFarmName.setError(null);
+        String latitude1 = edLatitude1.getText().toString();
+        String longitude1 = edLongitude1.getText().toString();
+        String farmName = edFarmName.getText().toString();
+        String description = edDescription.getText().toString();
+        String size = edSize.getText().toString();
 
         if (TextUtils.isEmpty(description)) {
-            edDescription.setErrorEnabled(true);
             edDescription.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(size)) {
-            edSize.setErrorEnabled(true);
             edSize.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(farmName)) {
-            edFarmName.setErrorEnabled(true);
             edFarmName.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(latitude1)) {
-            edLatitude1.setErrorEnabled(true);
-
             edLatitude1.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(longitude1)) {
-            edLongitude1.setErrorEnabled(true);
             edLongitude1.setError(getString(R.string.cant_be_empty));
             return false;
         }

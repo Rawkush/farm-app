@@ -1,6 +1,7 @@
 package farm.gecdevelopers.com.farm.activity.admin;
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -37,7 +38,7 @@ import farm.gecdevelopers.com.farm.spinnerAdapter.ManagerSpinnerAdapter;
 public class AddPlot extends AppCompatActivity implements NetworkUtility {
 
     RequestQueue queue;
-    EditText edLatOne, edLatTwo, edLatThree, edLatFour, edLongOne, edLongTwo, edLongThree, edLongFour;
+    TextInputEditText edLatOne, edLatTwo, edLatThree, edLatFour, edLongOne, edLongTwo, edLongThree, edLongFour;
     Button btnSubmit;
     EditText edSize, edDescription, edPlotName;
     Spinner spnFarm, spnManager;
@@ -108,7 +109,7 @@ public class AddPlot extends AppCompatActivity implements NetworkUtility {
         edLatThree = findViewById(R.id.latitude3);
         edLatTwo = findViewById(R.id.latitude2);
         edLongFour = findViewById(R.id.longitude4);
-        edLongOne = (EditText) findViewById(R.id.longitude1);
+        edLongOne = findViewById(R.id.longitude1);
         edLongTwo = findViewById(R.id.longitude2);
         edLongThree = findViewById(R.id.longitude3);
         btnSubmit = findViewById(R.id.submit);

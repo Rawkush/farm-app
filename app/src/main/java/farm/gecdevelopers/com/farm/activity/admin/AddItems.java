@@ -1,7 +1,7 @@
 package farm.gecdevelopers.com.farm.activity.admin;
 
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,9 +27,9 @@ public class AddItems extends AppCompatActivity implements NetworkUtility {
 
     RequestQueue queue;
 
-    private TextInputLayout edItemName;
-    private TextInputLayout edDescription;
-    private TextInputLayout edManufacturer;
+    private TextInputEditText edItemName;
+    private TextInputEditText edDescription;
+    private TextInputEditText edManufacturer;
 
 
     private Button btnSubmit;
@@ -68,9 +68,9 @@ public class AddItems extends AppCompatActivity implements NetworkUtility {
     private void sendDataToDatabse() {
         if (isFormFilled()) {
 
-            final String itemName = edItemName.getEditText().getText().toString();
-            final String description = edDescription.getEditText().getText().toString();
-            final String manufacturer = edManufacturer.getEditText().getText().toString();
+            final String itemName = edItemName.getText().toString();
+            final String description = edDescription.getText().toString();
+            final String manufacturer = edManufacturer.getText().toString();
 
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_ITEM_TYPE_URL,
@@ -115,34 +115,20 @@ public class AddItems extends AppCompatActivity implements NetworkUtility {
 
     private boolean isFormFilled() {
 
-        String itemName = edItemName.getEditText().getText().toString();
-        String description = edDescription.getEditText().getText().toString();
-        String manufacturer = edManufacturer.getEditText().getText().toString();
-
-
-        edDescription.setErrorEnabled(false);
-        edDescription.setError(null);
-        edItemName.setErrorEnabled(false);
-        edItemName.setError(null);
-        edManufacturer.setErrorEnabled(false);
-        edManufacturer.setError(null);
+        String itemName = edItemName.getText().toString();
+        String description = edDescription.getText().toString();
+        String manufacturer = edManufacturer.getText().toString();
 
         if (TextUtils.isEmpty(itemName)) {
-
-            edItemName.setErrorEnabled(true);
             edItemName.setError(getString(R.string.cant_be_empty));
             return false;
         }
 
         if (TextUtils.isEmpty(description)) {
-
-            edDescription.setErrorEnabled(true);
             edDescription.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(manufacturer)) {
-
-            edManufacturer.setErrorEnabled(true);
             edManufacturer.setError(getString(R.string.cant_be_empty));
             return false;
         }

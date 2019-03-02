@@ -1,12 +1,12 @@
 package farm.gecdevelopers.com.farm.activity.admin;
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -26,9 +26,7 @@ import farm.gecdevelopers.com.farm.R;
 public class AddFarmActivity extends AppCompatActivity implements NetworkUtility {
 
 
-
-
-    EditText edActName,edActDesc;
+    TextInputEditText edActName, edActDesc;
     Button button;
     RequestQueue queue;
     @Override
@@ -57,47 +55,48 @@ public class AddFarmActivity extends AppCompatActivity implements NetworkUtility
 
     private void sendDataToDatabse() {
 
-        final String actvityName = edActName.getText().toString();
-        final String description = edActDesc.getText().toString();
-
         if (isFormFilled()) {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_FARM_ACTIVITY_URL,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
+            final String actvityName = edActName.getText().toString();
+            final String description = edActDesc.getText().toString();
 
-                            //todo show a dialogbox instead of toast
-                            Toast.makeText(AddFarmActivity.this, response, Toast.LENGTH_SHORT).show();
+            if (isFormFilled()) {
 
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_FARM_ACTIVITY_URL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
 
-                            Log.i("Response is: ", response);
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
+                                //todo show a dialogbox instead of toast
+                                Toast.makeText(AddFarmActivity.this, response, Toast.LENGTH_SHORT).show();
+                                Log.i("Response is: ", response);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
-                    Toast.makeText(AddFarmActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-
-
-                }
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-
-                    Map<String, String> param = new HashMap<>();
-                    param.put("actname", actvityName);
-                    param.put("actdisc", description);
-                    return param;
-
-                }
-
-            };
+                        Toast.makeText(AddFarmActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
 
 
-            queue.add(stringRequest);
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+
+                        Map<String, String> param = new HashMap<>();
+                        param.put("actname", actvityName);
+                        param.put("actdisc", description);
+                        return param;
+
+                    }
+
+                };
 
 
+                queue.add(stringRequest);
+
+
+            }
         }
     }
 
@@ -106,6 +105,8 @@ public class AddFarmActivity extends AppCompatActivity implements NetworkUtility
 
         String actvityName = edActName.getText().toString();
         String description = edActDesc.getText().toString();
+
+
         if (TextUtils.isEmpty(actvityName)) {
             edActName.setError(getString(R.string.cant_be_empty));
             return false;
