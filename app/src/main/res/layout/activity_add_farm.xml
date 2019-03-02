@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/farm_name"
 
                     android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                     android:inputType="textPersonName"
                     android:tag="farmname" />
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:id="@+id/size"
 
                     android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     android:inputType="textPersonName"
                     android:tag="farmsize" />
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:id="@+id/description"
 
                     android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                     android:tag="farmdisc" />
 
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:id="@+id/latitude1"
 
                     android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                     android:tag="farmlat" />
 
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:id="@+id/longitude1"
 
                     android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                     android:tag="farmlong" />
 
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/latitude2"
 
@@ -89,7 +89,7 @@
                     android:tag="farmlat2" />
 
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -101,7 +101,7 @@
                     android:tag="farmlong2" />
 
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/latitude3"
 
@@ -113,8 +113,7 @@
                     android:tag="farmlat3" />
 
 
-
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/longitude3"
 
@@ -126,7 +125,7 @@
                     android:tag="farmlong3" />
 
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:id="@+id/latitude4"
 
                     android:layout_width="match_parent"
@@ -138,7 +137,7 @@
                     android:hint="Latitude 4" />
 
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/longitude4"
 
@@ -150,7 +149,7 @@
                     android:hint="Longitude 4" />
 
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/latitude5"
 
@@ -161,7 +160,7 @@
                 android:tag="farmlat5"
                 android:hint="Latitude 5" />
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/longitude5"
 
@@ -172,7 +171,7 @@
                 android:tag="farmlong5"
                 android:hint="Longitude 6" />
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/latitude6"
 
                 android:layout_width="match_parent"
@@ -184,7 +183,7 @@
                 android:hint="Latitude 6" />
 
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/longitude6"
 
@@ -196,7 +195,7 @@
                 android:hint="Longitude 6" />
 
 
-                <EditText
+            <android.support.design.widget.TextInputEditText
                     android:id="@+id/latitude7"
 
                     android:layout_width="match_parent"
@@ -207,7 +206,7 @@
                 android:tag="farmlat7"
                     android:hint="Latitude 7" />
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/longitude7"
 
@@ -219,7 +218,7 @@
                 android:hint="Longitude 7" />
 
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/latitude8"
 
@@ -230,7 +229,7 @@
                 android:tag="farmlat8"
                 android:hint="Latitude 8" />
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/longitude8"
 
@@ -241,7 +240,7 @@
                 android:tag="farmlong8"
                 android:hint="Longitude 8" />
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/latitude9"
 
@@ -253,7 +252,7 @@
                 android:hint="Latitude 9" />
 
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/longitude9"
 
@@ -264,7 +263,7 @@
                 android:tag="farmlong9"
                 android:hint="Longitude 9" />
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/latitude10"
 
                 android:layout_width="match_parent"
@@ -275,7 +274,7 @@
                 android:tag="farmlat10"
                 android:hint="Latitude 10" />
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/longitude10"
 
                 android:layout_width="match_parent"
