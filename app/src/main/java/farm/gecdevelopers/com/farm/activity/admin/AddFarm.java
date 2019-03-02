@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -126,9 +125,9 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
 
                         View v = linearLayout.getChildAt(i);
 
-                        if (v instanceof EditText) {
-                            String tag = v.getTag().toString();
-                            String value = ((EditText) v).getText().toString();
+                        if (v instanceof TextInputLayout) {
+                            String tag = ((TextInputLayout) v).getEditText().getTag().toString();
+                            String value = ((TextInputLayout) v).getEditText().getText().toString();
 
                             if (TextUtils.isEmpty(value)) {
                                 continue;
