@@ -69,7 +69,7 @@ public class RecordDailyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_record_daily);
         bindViews();
         init();
-        sendDataToDatabse();
+        //  sendDataToDatabse();   // do this in submit button listner
 
     }
 
@@ -132,6 +132,7 @@ public class RecordDailyActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
 
@@ -211,7 +212,7 @@ public class RecordDailyActivity extends AppCompatActivity {
         if (isFormFilled()) {
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_FARM_URL,
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, NetworkUtility.ADD_DAILY_ACTIVITY,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

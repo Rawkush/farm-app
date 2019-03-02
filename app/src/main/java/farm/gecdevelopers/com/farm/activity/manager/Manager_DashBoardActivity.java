@@ -14,7 +14,7 @@ public class Manager_DashBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manager__dash_board);
 
 
-        Intent intent = new Intent(this, RecordDailyActivity.class);
+        Intent intent = new Intent(this, RecordDailyExpense.class);
         startActivity(intent);
 
     }

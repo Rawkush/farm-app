@@ -16,7 +16,6 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -68,8 +67,20 @@ public class Login extends AppCompatActivity implements NetworkUtility {
                     mLoginProgress.setMessage("Please wait while we check your credentials.");
                     mLoginProgress.setCanceledOnTouchOutside(false);
                     mLoginProgress.show();
-
                     login(email, password);
+
+                } else {
+
+                    if (!TextUtils.isEmpty(email)) {
+                        mLoginEmail.setError(getString(R.string.cant_be_empty));
+
+                    }
+
+                    if (!TextUtils.isEmpty(password)) {
+                        mLoginEmail.setError(getString(R.string.cant_be_empty));
+
+                    }
+
 
                 }
 
@@ -175,7 +186,7 @@ public class Login extends AppCompatActivity implements NetworkUtility {
 
                 mLoginProgress.dismiss();
 
-                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                if (error instanceof TimeoutError) {
                     //This indicates that the reuest has either time out or there is no connection
                     Toast.makeText(Login.this,"time out",Toast.LENGTH_SHORT).show();
 
@@ -189,8 +200,9 @@ public class Login extends AppCompatActivity implements NetworkUtility {
                     //Indicates that there was network error while performing the request
                     Toast.makeText(Login.this,"Network error",Toast.LENGTH_SHORT).show();
 
-                } else if (error instanceof ParseError) {
+                } else if (error instanceof NoConnectionError) {
                     // Indicates that the server response could not be parsed
+                    Toast.makeText(Login.this, "No network Connection", Toast.LENGTH_SHORT).show();
                 }
 
             }

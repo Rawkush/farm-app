@@ -12,6 +12,8 @@ public interface NetworkUtility {
     public final static String UPLOAD_DOCUMENT_URL = "http://axxentfarms.com/farm/files/pages/app/uploaddocument.php";
     public final static String TABLE_URL = "http://axxentfarms.com/farm/files/pages/app/fetchtable.php";
     public final static String ADD_PLOT_URL = "http://axxentfarms.com/farm/files/pages/app/addfarm.php";
+    public final static String ADD_DAILY_EXPENSE = "http://axxentfarms.com/farm/files/pages/app/recordexp.php";
+    public final static String ADD_DAILY_ACTIVITY = "http://axxentfarms.com/farm/files/pages/app/recordact.php";
 
     }
 
