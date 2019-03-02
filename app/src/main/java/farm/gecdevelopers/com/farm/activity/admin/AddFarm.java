@@ -1,6 +1,7 @@
 package farm.gecdevelopers.com.farm.activity.admin;
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,7 +29,7 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
 
 
     Button btnSubmit;
-    EditText edLatitude1, edLatitude2, edLatitude3, edLatitude4, edLatitude5, edLatitude6, edLatitude7, edLatitude8, edLatitude9,
+    TextInputLayout edLatitude1, edLatitude2, edLatitude3, edLatitude4, edLatitude5, edLatitude6, edLatitude7, edLatitude8, edLatitude9,
             edLatitude10, edLongitude1, edLongitude2, edLongitude3, edLongitude4, edLongitude5, edLongitude6, edLongitude7,
             edLongitude8, edLongitude9, edLongitude10, edSize, edFarmName, edDescription;
 
@@ -158,11 +159,11 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
 
     private boolean isFormFilled() {
 
-        String latitude1 = edLatitude1.getText().toString();
-        String longitude1 = edLongitude1.getText().toString();
-        String farmName = edFarmName.getText().toString();
-        String description = edDescription.getText().toString();
-        String size = edSize.getText().toString();
+        String latitude1 = edLatitude1.getEditText().getText().toString();
+        String longitude1 = edLongitude1.getEditText().getText().toString();
+        String farmName = edFarmName.getEditText().getText().toString();
+        String description = edDescription.getEditText().getText().toString();
+        String size = edSize.getEditText().getText().toString();
 
         if (TextUtils.isEmpty(description)) {
             edDescription.setError(getString(R.string.cant_be_empty));
