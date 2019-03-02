@@ -119,17 +119,31 @@ public class AddItems extends AppCompatActivity implements NetworkUtility {
         String description = edDescription.getEditText().getText().toString();
         String manufacturer = edManufacturer.getEditText().getText().toString();
 
+
+        edDescription.setErrorEnabled(false);
+        edDescription.setError(null);
+        edItemName.setErrorEnabled(false);
+        edItemName.setError(null);
+        edManufacturer.setErrorEnabled(false);
+        edManufacturer.setError(null);
+
         if (TextUtils.isEmpty(itemName)) {
-            edItemName.getEditText().setError(getString(R.string.cant_be_empty));
+
+            edItemName.setErrorEnabled(true);
+            edItemName.setError(getString(R.string.cant_be_empty));
             return false;
         }
 
         if (TextUtils.isEmpty(description)) {
-            edDescription.getEditText().setError(getString(R.string.cant_be_empty));
+
+            edDescription.setErrorEnabled(true);
+            edDescription.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(manufacturer)) {
-            edManufacturer.getEditText().setError(getString(R.string.cant_be_empty));
+
+            edManufacturer.setErrorEnabled(true);
+            edManufacturer.setError(getString(R.string.cant_be_empty));
             return false;
         }
 

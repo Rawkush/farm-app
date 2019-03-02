@@ -164,23 +164,40 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
         String description = edDescription.getEditText().getText().toString();
         String size = edSize.getEditText().getText().toString();
 
+        edDescription.setErrorEnabled(false);
+        edDescription.setError(null);
+        edLongitude1.setErrorEnabled(false);
+        edLongitude1.setError(null);
+        edLatitude1.setErrorEnabled(false);
+        edSize.setErrorEnabled(false);
+        edSize.setError(null);
+        edLatitude1.setError(null);
+        edFarmName.setErrorEnabled(true);
+        edFarmName.setError(null);
+
         if (TextUtils.isEmpty(description)) {
+            edDescription.setErrorEnabled(true);
             edDescription.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(size)) {
+            edSize.setErrorEnabled(true);
             edSize.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(farmName)) {
+            edFarmName.setErrorEnabled(true);
             edFarmName.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(latitude1)) {
+            edLatitude1.setErrorEnabled(true);
+
             edLatitude1.setError(getString(R.string.cant_be_empty));
             return false;
         }
         if (TextUtils.isEmpty(longitude1)) {
+            edLongitude1.setErrorEnabled(true);
             edLongitude1.setError(getString(R.string.cant_be_empty));
             return false;
         }
