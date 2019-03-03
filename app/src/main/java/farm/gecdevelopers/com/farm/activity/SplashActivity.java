@@ -26,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
     View parent;
     TextView axxent;
     Animation transit;
+    public static FetchTable data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,11 @@ public class SplashActivity extends AppCompatActivity {
         session = new SessionManagement(SplashActivity.this);
         signedIn = session.pref.getString(SessionManagement.IS_SIGNED_IN, "");
 
+        data=new FetchTable(this);
+        data.startConnection();
 
-        DashBoardActivity.data = new FetchTable(this);
-        DashBoardActivity.data.startConnection();
+        /*DashBoardActivity.data = new FetchTable(this);
+        DashBoardActivity.data.startConnection();*/
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);

@@ -19,6 +19,7 @@ import java.util.List;
 
 import farm.gecdevelopers.com.farm.FetchTable;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.fragments.AuditorsList;
 import farm.gecdevelopers.com.farm.fragments.FarmactivityList;
 import farm.gecdevelopers.com.farm.fragments.FarmsList;
@@ -28,7 +29,7 @@ import farm.gecdevelopers.com.farm.fragments.PlotsList;
 
 public class DashBoardActivity extends AppCompatActivity {
 
-    public static FetchTable data;
+    public static FetchTable data=SplashActivity.data;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     public static final String MANAGER = "Manager", AUDITOR = "Auditors", FARMS = "FarmData", PLOTS = "Plots",
