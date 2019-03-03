@@ -17,9 +17,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/farm_name"
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/farm_name"
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -27,8 +31,14 @@
                     android:hint="Farm Name *"
                     android:inputType="textPersonName"
                     android:tag="farmname" />
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/size"
 
                     android:layout_width="match_parent"
@@ -39,8 +49,15 @@
                     android:hint="Size *"
                     android:inputType="textPersonName"
                     android:tag="farmsize" />
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/description"
 
                     android:layout_width="match_parent"
@@ -52,8 +69,15 @@
                     android:inputType="textPersonName"
                     android:tag="farmdisc" />
 
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/latitude1"
 
                     android:layout_width="match_parent"
@@ -65,7 +89,15 @@
                     android:tag="farmlat" />
 
 
-            <android.support.design.widget.TextInputEditText
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/longitude1"
 
                     android:layout_width="match_parent"
@@ -76,8 +108,15 @@
                     android:inputType="textPersonName"
                     android:tag="farmlong" />
 
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/latitude2"
 
@@ -88,8 +127,15 @@
                     android:inputType="textPersonName"
                     android:tag="farmlat2" />
 
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -99,9 +145,15 @@
                     android:hint="Longitude 2"
                     android:inputType="textPersonName"
                     android:tag="farmlong2" />
+            </android.support.design.widget.TextInputLayout>
 
 
-            <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/latitude3"
 
@@ -111,9 +163,15 @@
                     android:hint="Latitude 3"
                     android:inputType="textPersonName"
                     android:tag="farmlat3" />
+            </android.support.design.widget.TextInputLayout>
 
 
-            <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/longitude3"
 
@@ -125,165 +183,272 @@
                     android:tag="farmlong3" />
 
 
-            <android.support.design.widget.TextInputEditText
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/latitude4"
 
                     android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlat4"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlat4"
                     android:hint="Latitude 4" />
 
 
-            <android.support.design.widget.TextInputEditText
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/longitude4"
 
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlong4"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlong4"
                     android:hint="Longitude 4" />
 
 
-            <android.support.design.widget.TextInputEditText
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:id="@+id/latitude5"
+                android:layout_height="wrap_content">
 
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlat5"
-                android:hint="Latitude 5" />
 
-            <android.support.design.widget.TextInputEditText
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/latitude5"
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlat5"
+                    android:hint="Latitude 5" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:id="@+id/longitude5"
+                android:layout_height="wrap_content">
 
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlong5"
-                android:hint="Longitude 6" />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/latitude6"
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/longitude5"
 
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlong5"
+                    android:hint="Longitude 6" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlat6"
-                android:hint="Latitude 6" />
+                android:layout_height="wrap_content">
 
 
-            <android.support.design.widget.TextInputEditText
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/latitude6"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlat6"
+                    android:hint="Latitude 6" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:id="@+id/longitude6"
-
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlong6"
-                android:hint="Longitude 6" />
+                android:layout_height="wrap_content">
 
 
-            <android.support.design.widget.TextInputEditText
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/longitude6"
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlong6"
+                    android:hint="Longitude 6" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/latitude7"
 
                     android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlat7"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlat7"
                     android:hint="Latitude 7" />
 
-            <android.support.design.widget.TextInputEditText
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:id="@+id/longitude7"
-
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlong7"
-                android:hint="Longitude 7" />
+                android:layout_height="wrap_content">
 
 
-            <android.support.design.widget.TextInputEditText
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/longitude7"
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlong7"
+                    android:hint="Longitude 7" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:id="@+id/latitude8"
+                android:layout_height="wrap_content">
 
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlat8"
-                android:hint="Latitude 8" />
 
-            <android.support.design.widget.TextInputEditText
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/latitude8"
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlat8"
+                    android:hint="Latitude 8" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:id="@+id/longitude8"
+                android:layout_height="wrap_content">
 
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlong8"
-                android:hint="Longitude 8" />
 
-            <android.support.design.widget.TextInputEditText
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/longitude8"
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlong8"
+                    android:hint="Longitude 8" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:id="@+id/latitude9"
-
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlat9"
-                android:hint="Latitude 9" />
+                android:layout_height="wrap_content">
 
 
-            <android.support.design.widget.TextInputEditText
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/latitude9"
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlat9"
+                    android:hint="Latitude 9" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:id="@+id/longitude9"
+                android:layout_height="wrap_content">
 
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlong9"
-                android:hint="Longitude 9" />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/latitude10"
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/longitude9"
 
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlong9"
+                    android:hint="Longitude 9" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlat10"
-                android:hint="Latitude 10" />
+                android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/longitude10"
 
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/latitude10"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlat10"
+                    android:hint="Latitude 10" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:tag="farmlong10"
-                android:hint="Longitude 10" />
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/longitude10"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:tag="farmlong10"
+                    android:hint="Longitude 10" />
+            </android.support.design.widget.TextInputLayout>
 
 
             <Button

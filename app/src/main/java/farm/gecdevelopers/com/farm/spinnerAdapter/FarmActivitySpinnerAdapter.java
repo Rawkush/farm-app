@@ -43,12 +43,26 @@ public class FarmActivitySpinnerAdapter extends
 
         TextView main_text = (TextView) convertView
                 .findViewById(R.id.item);
+        if (position == 0) {
+            // Set the hint text color gray
+            main_text.setText("Select Farm Activity");
+        } else {
+            FarmActivityData farms = getItem(position);
+            main_text.setText(farms.getActivity());
 
-        FarmActivityData farms = getItem(position);
-        main_text.setText(farms.getActivity());
+        }
 
         return convertView;
     }
 
-
+    @Override
+    public boolean isEnabled(int position) {
+        if (position == 0) {
+            // Disable the first item from Spinner
+            // First item will be use for hint
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

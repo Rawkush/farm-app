@@ -22,59 +22,89 @@
             android:textAlignment="center"
             android:textSize="44sp" />
 
-        <EditText
-            android:id="@+id/name"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:ems="10"
-            android:hint="Enter your name"
-            android:inputType="textPersonName"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/password"
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:ems="10"
+                android:hint="Enter your name"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter your password"
-            android:inputType="textPersonName"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/email"
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter your password"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter your Email id"
-            android:inputType="textEmailAddress" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/id"
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter your Email id"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter your client id"
-            android:inputType="phone" />
+            android:layout_height="wrap_content">
 
-        <EditText
+            <EditText
+                android:id="@+id/id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter your client id"
+                android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
 
-            android:id="@+id/phone_number"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:ems="10"
-            android:hint="Enter your phone number"
-            android:inputType="phone" />
+            android:layout_height="wrap_content">
 
+            <EditText
 
-        <EditText
-            android:id="@+id/username"
+                android:id="@+id/phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:ems="10"
+                android:hint="Enter your phone number"
+                android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Enter the username" />
+            android:layout_height="wrap_content">
+
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Enter the username" />
+        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
 

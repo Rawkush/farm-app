@@ -17,11 +17,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.Adapters.ItemTypesAdapter;
+import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.models.ItemType_Data;
 
-public class ItemTypesActivity extends AppCompatActivity {
+public class ItemTypesActivity extends AppCompatActivity implements NetworkUtility {
     FloatingActionButton floatingActionButton;
     private Context ctx;
     private ArrayList<ItemType_Data> itemTypesArrayList;
@@ -43,11 +44,11 @@ public class ItemTypesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.item_types_rv);
         type = SplashActivity.type;
 
-        if (type.equals("1")) {
+        if (type.equals(ADMIN)) {
 
             floatingActionButton.setVisibility(View.VISIBLE);
 
-        } else if (type.equals("3")) {
+        } else if (type.equals(AUDITOR)) {
             floatingActionButton.setVisibility(View.GONE);
         }
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -61,13 +62,7 @@ public class ItemTypesActivity extends AppCompatActivity {
 
         getList();
 
-        if (type.equals("1")) {
 
-            floatingActionButton.setVisibility(View.VISIBLE);
-
-        } else if (type.equals("3")) {
-            floatingActionButton.setVisibility(View.GONE);
-        }
 
     }
 
