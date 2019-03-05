@@ -32,11 +32,11 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/actname"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:hint="Enter the activity name" />
+                    android:hint="Activity Name" />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -79,13 +79,12 @@
                 <android.support.design.widget.TextInputEditText
 
                     android:id="@+id/desc"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="92dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:hint="enter activity description" />
+                    android:hint="Description" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView

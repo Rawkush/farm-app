@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:ems="10"
-                android:hint="Enter your name"
+                android:hint="Name"
                 android:inputType="textPersonName"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter your password"
+                android:hint="Password"
                 android:inputType="textPersonName"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
@@ -148,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter your Email id"
+                android:hint="Email"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
@@ -194,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter your client id"
+                android:hint="Client ID"
                 android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
@@ -243,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:ems="10"
-                android:hint="Enter your phone number"
+                        android:hint="Phone Number"
                 android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
@@ -291,7 +291,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="Enter the username" />
+                android:hint="Username" />
         </android.support.design.widget.TextInputLayout>
 
                 <TextView
