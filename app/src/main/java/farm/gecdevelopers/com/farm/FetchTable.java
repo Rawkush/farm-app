@@ -19,7 +19,7 @@ public class FetchTable implements NetworkUtility {
 
     private RequestQueue queue;
     private Context context;
-    private JSONObject table;
+    private static JSONObject table;
 
     public FetchTable(Context context) {
         this.context = context;

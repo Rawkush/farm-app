@@ -224,8 +224,6 @@ public class Login extends AppCompatActivity implements NetworkUtility {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         queue.add(stringRequest);
-
-
     }
 
 
