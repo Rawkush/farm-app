@@ -17,8 +17,8 @@ public class DailyExpenses extends Fragment implements NetworkUtility {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_daily_expenses, container, false);
-
-
         return root;
     }
+
+
 }

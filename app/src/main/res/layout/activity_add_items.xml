@@ -79,11 +79,11 @@
 
 
                 <android.support.design.widget.TextInputEditText
-            android:id="@+id/manufacturer"
+                    android:id="@+id/manufacturer"
                     android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="manufacturer"
+                    android:hint="Manufacturer"
             android:inputType="textPersonName" />
     </android.support.design.widget.TextInputLayout>
 

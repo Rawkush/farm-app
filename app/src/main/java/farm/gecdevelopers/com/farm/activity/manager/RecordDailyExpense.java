@@ -249,6 +249,8 @@ public class RecordDailyExpense extends AppCompatActivity {
                     param.put("uprice", unitPrice);
                     param.put("total", total);
                     param.put("loan_type", plotId);
+                    param.put("user_id", "2");
+
                     return param;
 
                 }

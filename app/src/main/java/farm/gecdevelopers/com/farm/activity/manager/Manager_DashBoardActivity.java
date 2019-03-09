@@ -19,16 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.activity.admin.AddFarm;
-import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
-import farm.gecdevelopers.com.farm.fragments.AuditorsList;
 import farm.gecdevelopers.com.farm.fragments.DailyActivities;
 import farm.gecdevelopers.com.farm.fragments.DailyExpenses;
-import farm.gecdevelopers.com.farm.fragments.FarmactivityList;
-import farm.gecdevelopers.com.farm.fragments.FarmsList;
-import farm.gecdevelopers.com.farm.fragments.ManagersList;
 import farm.gecdevelopers.com.farm.fragments.MoreOptions;
-import farm.gecdevelopers.com.farm.fragments.PlotsList;
 
 public class Manager_DashBoardActivity extends AppCompatActivity {
 
@@ -61,6 +54,10 @@ public class Manager_DashBoardActivity extends AppCompatActivity {
         bindView();
 
         /* starting connection to fetch data*/
+
+
+        Intent intent = new Intent(this, RecordDailyActivity.class);
+        startActivity(intent);
 
 
         setupViewPager(viewPager);
