@@ -1,5 +1,6 @@
 package farm.gecdevelopers.com.farm.activity.manager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -32,6 +33,7 @@ import java.util.Map;
 
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.SessionManagement;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.PlotData;
 import farm.gecdevelopers.com.farm.spinnerAdapter.PlotNameSpinnerAdapter;
@@ -45,7 +47,7 @@ public class RecordDailyExpense extends AppCompatActivity {
     Button btnSubmit;
     RequestQueue queue;
     String plotId = "", unit = "", unitPrice = "";
-
+    String userIdfromSP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,11 @@ public class RecordDailyExpense extends AppCompatActivity {
 
 
     private void init() {
+
+        SharedPreferences sp = getSharedPreferences("FarmPref", MODE_PRIVATE);
+        userIdfromSP = sp.getString(SessionManagement.USERID, "");
+
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -267,19 +274,17 @@ public class RecordDailyExpense extends AppCompatActivity {
     public ArrayList<PlotData> getPlotList() {
         ArrayList<PlotData> plotArrayList = new ArrayList<>();
 
-
         try {
             JSONArray jsonArray = DashBoardActivity.data.getPlots();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject eachMan = jsonArray.getJSONObject(i);
                 String user = eachMan.getString("farm_manager");
-                /* TODO get curent user from shared preference
-                if(!user.equals(currentuser))
+                if (!user.equals(userIdfromSP))
                    {
                    continue;
                    }
 
-                 */
+
                 String name = eachMan.getString("farm_name");
                 String farmId = eachMan.getString("farm_id");
                 plotArrayList.add(new PlotData(name, farmId));

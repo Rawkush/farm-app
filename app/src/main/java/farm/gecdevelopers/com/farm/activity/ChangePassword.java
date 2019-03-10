@@ -1,5 +1,6 @@
 package farm.gecdevelopers.com.farm.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -22,13 +23,14 @@ import java.util.Map;
 
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.SessionManagement;
 
 public class ChangePassword extends AppCompatActivity {
 
 
     TextInputEditText edOldPassword, edNewPassword, edConfirmPassword;
     Button btnsubmit;
-    String userId = "2";// TODO chnage it to current user
+    String userId;
     RequestQueue queue;
 
 
@@ -51,6 +53,8 @@ public class ChangePassword extends AppCompatActivity {
     }
 
     private void init() {
+        SharedPreferences sp = getSharedPreferences("FarmPref", MODE_PRIVATE);
+        userId = sp.getString(SessionManagement.USERID, "");
 
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override

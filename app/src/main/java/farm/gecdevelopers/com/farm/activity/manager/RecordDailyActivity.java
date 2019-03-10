@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -48,6 +49,7 @@ import java.util.Map;
 
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.SessionManagement;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.FarmActivityData;
 import farm.gecdevelopers.com.farm.models.PlotData;
@@ -81,6 +83,7 @@ public class RecordDailyActivity extends AppCompatActivity implements UploadCall
     Bitmap bitmap = null;
     ProgressDialog dialog;
     String[] mediaColumns = {MediaStore.Video.Media._ID};
+    private String userIdfromSP;
 
 
     private ApiConfig getAPIUpload() {
@@ -99,6 +102,11 @@ public class RecordDailyActivity extends AppCompatActivity implements UploadCall
     }
 
     private void init() {
+
+        SharedPreferences sp = getSharedPreferences("FarmPref", MODE_PRIVATE);
+        userIdfromSP = sp.getString(SessionManagement.USERID, "");
+
+
 
 
         mServices = getAPIUpload();
@@ -510,13 +518,11 @@ public class RecordDailyActivity extends AppCompatActivity implements UploadCall
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject eachMan = jsonArray.getJSONObject(i);
                 String user = eachMan.getString("farm_manager");
-                /* TODO get curent user from shared preference
-                if(!user.equals(currentuser))
+                if (!user.equals(userIdfromSP))
                    {
                    continue;
                    }
 
-                 */
                 String name = eachMan.getString("farm_name");
                 String farmId = eachMan.getString("farm_id");
                 plotArrayList.add(new PlotData(name, farmId));
