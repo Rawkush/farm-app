@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="farm.gecdevelopers.com.farm">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,6 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.admin.DailyActivity"></activity>
+        <activity android:name=".activity.ChangePassword" />
         <activity android:name=".activity.Login" />
         <activity android:name=".activity.admin.CreateAccount" />
         <activity android:name=".activity.admin.DashBoardActivity" />
@@ -31,7 +34,7 @@
         <activity android:name=".activity.auditor.AuditorDashBoard" />
         <activity android:name=".activity.manager.RecordDailyActivity" />
         <activity android:name=".activity.admin.DailyExpense" />
-        <activity android:name=".activity.manager.RecordDailyExpense"></activity>
+        <activity android:name=".activity.manager.RecordDailyExpense" />
     </application>
 
 </manifest>

@@ -54,7 +54,7 @@ public class ItemTypesActivity extends AppCompatActivity implements NetworkUtili
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ItemTypesActivity.this, AddFarm.class);
+                Intent intent = new Intent(ItemTypesActivity.this, AddItems.class);
                 startActivity(intent);
             }
         });

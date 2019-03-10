@@ -20,6 +20,7 @@
 
     <color name="green_bkg_website">#33cc66</color>
     <color name="dark_green_bkg_website">#339966</color>
+    <color name="red">#FF0000</color>
 
 
 </resources>

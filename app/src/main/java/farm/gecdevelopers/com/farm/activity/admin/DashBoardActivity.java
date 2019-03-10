@@ -32,10 +32,9 @@ public class DashBoardActivity extends AppCompatActivity {
     public static FetchTable data=SplashActivity.data;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
     public static final String MANAGER = "Manager", AUDITOR = "Auditors", FARMS = "FarmData", PLOTS = "Plots",
             FARM_ACTIVITY = "Farm Activities", MORE_OPTIONS = "More Options";
-
-
 
     private String[] navLabels = {
             MANAGER, AUDITOR, FARMS, PLOTS, FARM_ACTIVITY, MORE_OPTIONS
@@ -63,6 +62,18 @@ public class DashBoardActivity extends AppCompatActivity {
 
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (!data.isDataAvailable()) {
+            data = new FetchTable(this);
+            data.startConnection();
+        }
+    }
+
+
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
@@ -70,6 +81,10 @@ public class DashBoardActivity extends AppCompatActivity {
 
         /* starting connection to fetch data*/
 
+        if (!data.isDataAvailable()) {
+            data = new FetchTable(this);
+            data.startConnection();
+        }
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);

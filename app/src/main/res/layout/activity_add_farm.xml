@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.admin.AddFarm">
 
     <ScrollView
@@ -17,28 +18,80 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/farm_name"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Farm Name *"
-                    android:inputType="textPersonName"
-                    android:tag="farmname" />
-            </android.support.design.widget.TextInputLayout>
+                    android:orientation="horizontal">
 
-            <android.support.design.widget.TextInputLayout
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.9">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/farm_name"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Farm Name"
+                            android:inputType="textPersonName"
+                            android:tag="farmname" />
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
 
-                <android.support.design.widget.TextInputEditText
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.9">
+
+
+                        <android.support.design.widget.TextInputEditText
                     android:id="@+id/size"
 
                     android:layout_width="match_parent"
@@ -46,166 +99,397 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:ems="10"
-                    android:hint="Size *"
+                            android:hint="Size "
                     android:inputType="textPersonName"
                     android:tag="farmsize" />
             </android.support.design.widget.TextInputLayout>
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
 
-            <android.support.design.widget.TextInputLayout
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/description"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:ems="10"
-                    android:hint="Description *"
-                    android:inputType="textPersonName"
-                    android:tag="farmdisc" />
-
-            </android.support.design.widget.TextInputLayout>
+                    android:orientation="horizontal">
 
 
-            <android.support.design.widget.TextInputLayout
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.9">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/description"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:ems="10"
+                            android:hint="Description "
+                            android:inputType="textPersonName"
+                            android:tag="farmdisc" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/latitude1"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:hint="Latitude 1 *"
-                    android:inputType="textPersonName"
-                    android:tag="farmlat" />
+                    android:orientation="horizontal">
 
 
-            </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.9"
+                        android:layout_height="wrap_content">
 
 
-            <android.support.design.widget.TextInputLayout
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/latitude1"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Latitude 1"
+                            android:inputType="textPersonName"
+                            android:tag="farmlat" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/longitude1"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:hint="Longitude 1"
-                    android:inputType="textPersonName"
-                    android:tag="farmlong" />
-
-            </android.support.design.widget.TextInputLayout>
+                    android:orientation="horizontal">
 
 
-            <android.support.design.widget.TextInputLayout
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.9"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/longitude1"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Longitude 1"
+                            android:inputType="textPersonName"
+                            android:tag="farmlong" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:id="@+id/latitude2"
-
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:hint="Latitude 2"
-                    android:inputType="textPersonName"
-                    android:tag="farmlat2" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:id="@+id/longitude2"
-
-                    android:hint="Longitude 2"
-                    android:inputType="textPersonName"
-                    android:tag="farmlong2" />
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:id="@+id/latitude3"
-
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:hint="Latitude 3"
-                    android:inputType="textPersonName"
-                    android:tag="farmlat3" />
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:id="@+id/longitude3"
-
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:hint="Longitude 3"
-                    android:inputType="textPersonName"
-                    android:tag="farmlong3" />
-
-
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/latitude4"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:tag="farmlat4"
-                    android:hint="Latitude 4" />
+                    android:orientation="horizontal">
 
 
-            </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputLayout
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/latitude2"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Latitude 2"
+                            android:inputType="textPersonName"
+                            android:tag="farmlat2" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/longitude2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+
+                            android:hint="Longitude 2"
+                            android:inputType="textPersonName"
+                            android:tag="farmlong2" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/latitude3"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Latitude 3"
+                            android:inputType="textPersonName"
+                            android:tag="farmlat3" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/longitude3"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Longitude 3"
+                            android:inputType="textPersonName"
+                            android:tag="farmlong3" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/latitude4"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Latitude 4"
+                            android:inputType="textPersonName"
+                            android:tag="farmlat4" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -224,7 +508,29 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -243,7 +549,29 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -261,84 +589,187 @@
 
             </android.support.design.widget.TextInputLayout>
 
+                </LinearLayout>
 
-            <android.support.design.widget.TextInputLayout
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/latitude6"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:tag="farmlat6"
-                    android:hint="Latitude 6" />
-
-            </android.support.design.widget.TextInputLayout>
+                    android:orientation="horizontal">
 
 
-            <android.support.design.widget.TextInputLayout
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/latitude6"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Latitude 6"
+                            android:inputType="textPersonName"
+                            android:tag="farmlat6" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:id="@+id/longitude6"
-
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:tag="farmlong6"
-                    android:hint="Longitude 6" />
-
-            </android.support.design.widget.TextInputLayout>
+                    android:orientation="horizontal">
 
 
-            <android.support.design.widget.TextInputLayout
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/longitude6"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Longitude 6"
+                            android:inputType="textPersonName"
+                            android:tag="farmlong6" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/latitude7"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:tag="farmlat7"
-                    android:hint="Latitude 7" />
-
-            </android.support.design.widget.TextInputLayout>
+                    android:orientation="horizontal">
 
 
-            <android.support.design.widget.TextInputLayout
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/latitude7"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Latitude 7"
+                            android:inputType="textPersonName"
+                            android:tag="farmlat7" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:id="@+id/longitude7"
-
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:tag="farmlong7"
-                    android:hint="Longitude 7" />
-
-            </android.support.design.widget.TextInputLayout>
+                    android:orientation="horizontal">
 
 
-            <android.support.design.widget.TextInputLayout
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/longitude7"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Longitude 7"
+                            android:inputType="textPersonName"
+                            android:tag="farmlong7" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -356,7 +787,29 @@
             </android.support.design.widget.TextInputLayout>
 
 
-            <android.support.design.widget.TextInputLayout
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -375,27 +828,70 @@
 
             </android.support.design.widget.TextInputLayout>
 
+                </LinearLayout>
 
-            <android.support.design.widget.TextInputLayout
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:id="@+id/latitude9"
-
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:tag="farmlat9"
-                    android:hint="Latitude 9" />
-
-            </android.support.design.widget.TextInputLayout>
+                    android:orientation="horizontal">
 
 
-            <android.support.design.widget.TextInputLayout
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/latitude9"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Latitude 9"
+                            android:inputType="textPersonName"
+                            android:tag="farmlat9" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -412,28 +908,71 @@
                     android:hint="Longitude 9" />
 
             </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
 
-            <android.support.design.widget.TextInputLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
 
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/latitude10"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:tag="farmlat10"
-                    android:hint="Latitude 10" />
+                    android:orientation="horizontal">
 
 
-            </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputLayout
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/latitude10"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:hint="Latitude 10"
+                            android:inputType="textPersonName"
+                            android:tag="farmlat10" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -449,6 +988,10 @@
                     android:tag="farmlong10"
                     android:hint="Longitude 10" />
             </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
 
             <Button

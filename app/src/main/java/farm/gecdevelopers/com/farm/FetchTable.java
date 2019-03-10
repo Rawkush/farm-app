@@ -19,7 +19,8 @@ public class FetchTable implements NetworkUtility {
 
     private RequestQueue queue;
     private Context context;
-    private JSONObject table;
+    private JSONObject table = null;
+
 
     public FetchTable(Context context) {
         this.context = context;
@@ -28,6 +29,11 @@ public class FetchTable implements NetworkUtility {
     }
 
     public FetchTable() {
+    }
+
+
+    public boolean isDataAvailable() {
+        return table != null;
     }
 
     private void fetchTable() {

@@ -22,14 +22,11 @@ import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.fragments.DailyActivitiesFragment;
 import farm.gecdevelopers.com.farm.fragments.DailyExpensesFragment;
-import farm.gecdevelopers.com.farm.fragments.MoreOptions;
 
 public class Manager_DashBoardActivity extends AppCompatActivity {
-    public static FetchTable data=SplashActivity.data;
-
+    public static FetchTable data = SplashActivity.data;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
     public static final String ACTIVITIES = "DailyActivities", EXPENSES = "DailyExpenses",  MORE_OPTIONS = "More Options";
 
 
@@ -56,7 +53,6 @@ public class Manager_DashBoardActivity extends AppCompatActivity {
         bindView();
 
         /* starting connection to fetch data*/
-
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);

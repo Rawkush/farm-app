@@ -16,16 +16,19 @@ import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.Adapters.DailyExpenseAdapter;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.SessionManagement;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
+import farm.gecdevelopers.com.farm.activity.manager.Manager_DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.DailyExpense_Data;
 
 public class DailyExpense extends AppCompatActivity {
-    FloatingActionButton floatingActionButton;
-    private Context ctx;
-    private ArrayList<DailyExpense_Data> itemTypesArrayList;
     private RecyclerView recyclerView;
     private DailyExpenseAdapter adapter;
+    FloatingActionButton floatingActionButton;
+    private ArrayList<DailyExpense_Data> expensesData;
+    private Context ctx;
     private String type;
+
 
     @SuppressLint("RestrictedApi")
 
@@ -36,51 +39,88 @@ public class DailyExpense extends AppCompatActivity {
         type = SplashActivity.type;
         ctx = DailyExpense.this;
         recyclerView = findViewById(R.id.expense);
-        type = SplashActivity.type;
-
-
         getList();
 
 
     }
 
-
     public void getList() {
-        itemTypesArrayList = new ArrayList<>();
+        expensesData = new ArrayList<>();
 
         try {
-            JSONArray user = DashBoardActivity.data.getDailyExpense();
-            DailyExpense_Data item;
-            for (int i = 0; i < user.length(); i++) {
-                JSONObject eachMan = user.getJSONObject(i);
-                String itemid = eachMan.getString("id");
-                String purpose = eachMan.getString("purpose");
-                String supplier = eachMan.getString("supplier");
-                String description = eachMan.getString("description");
-                String unit = eachMan.getString("unit");
-                String unitPrice = eachMan.getString("unitprice");
-                String total = eachMan.getString("total");
-                String date = eachMan.getString("datetime");
-                String userid = eachMan.getString("userid");
-                item = new DailyExpense_Data();
+            JSONArray dailyExpenses = Manager_DashBoardActivity.data.getDailyExpense();
+            JSONArray plots = Manager_DashBoardActivity.data.getPlots();
+            // JSONArray activities=DashBoardActivity.data.getFarmActivity();
 
-                item.setDateAndTime(date);
-                item.setDescription(description);
-                item.setId(itemid);
-                item.setPurpose(purpose);
-                item.setSupplier(supplier);
-                item.setUnit(unit);
-                item.setUnitPrice(unitPrice);
-                item.setTotal(total);
-                item.setUserId(userid);
-                itemTypesArrayList.add(item);
-                int a = itemTypesArrayList.size();
-                adapter = new DailyExpenseAdapter(itemTypesArrayList, ctx);
+
+            DailyExpense_Data item;
+
+            String userIdfromSP = SessionManagement.pref.getString(SessionManagement.USERID, "");
+
+
+            for (int i = 0; i < dailyExpenses.length(); i++) {
+                JSONObject eachActivity = dailyExpenses.getJSONObject(i);
+
+
+                String id = eachActivity.getString("id");
+                String farmID = eachActivity.getString("farmid");
+                String purpose = eachActivity.getString("purpose");
+                String supplier = eachActivity.getString("supplier");
+                String desc = eachActivity.getString("description");
+                String unit = eachActivity.getString("unit");
+                String unitPrice = eachActivity.getString("unitprice");
+                String total = eachActivity.getString("total");
+                String userid = eachActivity.getString("userid");
+                String datetime = eachActivity.getString("datetime");
+
+
+                String plotname = "";
+                for (int j = 0; j < plots.length(); j++) {
+                    JSONObject eachFarm = plots.getJSONObject(j);
+                    String farmid = eachFarm.getString("farm_id");
+                    if (farmid.equals(farmID)) {
+                        plotname = eachFarm.getString("farm_name");
+                        break;
+                    }
+
+                }
+                /*String activity="";
+                for(int j=0;j<activities.length();j++){
+                    JSONObject eachFarm=activities.getJSONObject(j);
+                    String actId=eachFarm.getString("activity_id");
+                    if(actId.equals(actID)){
+                        activity=eachFarm.getString("activity_name");
+                        break;
+
+                    }
+
+                }*/
+                if (userid.equals(userIdfromSP)) {
+                    item = new DailyExpense_Data(id, unit, unitPrice, total,
+                            userid, plotname, purpose, supplier, desc, datetime);
+                    item.setId(id);
+                    item.setPlotName(plotname);
+                    item.setUnit(unit);
+                    item.setUnitPrice(unitPrice);
+                    item.setUserId(userid);
+                    item.setPurpose(purpose);
+                    item.setSupplier(supplier);
+                    item.setDescription(desc);
+                    item.setDateAndTime(datetime);
+
+
+                    expensesData.add(item);
+
+
+                }
+                int a = expensesData.size();
+                adapter = new DailyExpenseAdapter(expensesData, ctx);
                 LinearLayoutManager llm = new LinearLayoutManager(ctx);
                 llm.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerView.setLayoutManager(llm);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setAdapter(adapter);
+
 
                 // Toast.makeText(ctx,"LISt ka size "+managersList.size(),Toast.LENGTH_SHORT).show();
 
@@ -88,7 +128,6 @@ public class DailyExpense extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
 
