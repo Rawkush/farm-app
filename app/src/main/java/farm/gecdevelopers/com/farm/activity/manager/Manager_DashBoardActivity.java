@@ -18,13 +18,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import farm.gecdevelopers.com.farm.FetchTable;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.fragments.DailyActivities;
 import farm.gecdevelopers.com.farm.fragments.DailyExpenses;
 import farm.gecdevelopers.com.farm.fragments.MoreOptions;
 
 public class Manager_DashBoardActivity extends AppCompatActivity {
-
+    public static FetchTable data = SplashActivity.data;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 

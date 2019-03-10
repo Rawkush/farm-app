@@ -1,4 +1,4 @@
-package farm.gecdevelopers.com.farm;
+package farm.gecdevelopers.com.farm.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -19,6 +19,9 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import farm.gecdevelopers.com.farm.NetworkUtility;
+import farm.gecdevelopers.com.farm.R;
 
 public class ChangePassword extends AppCompatActivity {
 
@@ -75,8 +78,8 @@ public class ChangePassword extends AppCompatActivity {
                         public void onResponse(String response) {
 
                             //todo show a dialogbox instead of toast
-                            Toast.makeText(ChangePassword.this, response, Toast.LENGTH_SHORT).show();
-                            Log.i("Response is: ", response);
+                            Toast.makeText(ChangePassword.this, response.trim(), Toast.LENGTH_SHORT).show();
+                            Log.i("Response is: ", response.trim());
                         }
                     }, new Response.ErrorListener() {
                 @Override

@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import farm.gecdevelopers.com.farm.ChangePassword;
 import farm.gecdevelopers.com.farm.R;
+import farm.gecdevelopers.com.farm.activity.ChangePassword;
 import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.DailyExpense;
 import farm.gecdevelopers.com.farm.activity.admin.ItemTypesActivity;
