@@ -14,6 +14,7 @@ public interface NetworkUtility {
     public final static String ADD_PLOT_URL = "http://axxentfarms.com/farm/files/pages/app/addfarm.php";
     public final static String ADD_DAILY_EXPENSE = "http://axxentfarms.com/farm/files/pages/app/recordexp.php";
     public final static String ADD_DAILY_ACTIVITY = "http://axxentfarms.com/farm/files/pages/app/recordact.php";
+    public final static String CHANGE_PASSWORD_URL = "http://axxentfarms.com/farm/files/pages/app/changepassword.php";
 
     }
 
