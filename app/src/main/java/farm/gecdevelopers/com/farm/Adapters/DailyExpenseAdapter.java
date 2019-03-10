@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.models.DailyExpense_Data;
 
-public class DailyExpenseAdapter extends RecyclerView.Adapter<DailyExpenseAdapter.DailyExpenseViewHolder> {
+public class    DailyExpenseAdapter extends RecyclerView.Adapter<DailyExpenseAdapter.DailyExpenseViewHolder> {
 
 
     ArrayList<DailyExpense_Data> list;
@@ -37,9 +37,9 @@ public class DailyExpenseAdapter extends RecyclerView.Adapter<DailyExpenseAdapte
         DailyExpense_Data data = list.get(i);
 
         dailyExpenseViewHolder.supplier.setText(data.getSupplier());
-        dailyExpenseViewHolder.total.setText(data.getTotal());
-        dailyExpenseViewHolder.purpose.setText(data.getPurpose());
-        dailyExpenseViewHolder.description.setText(data.getDescription());
+        dailyExpenseViewHolder.total.setText("Price: "+data.getTotal());
+        dailyExpenseViewHolder.purpose.setText("Purpose: \n"+data.getPurpose());
+        dailyExpenseViewHolder.description.setText("Description: \n"+data.getDescription());
 
 
     }

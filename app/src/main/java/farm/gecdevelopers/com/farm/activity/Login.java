@@ -108,7 +108,10 @@ public class Login extends AppCompatActivity implements NetworkUtility {
             super.onBackPressed();
             Intent startMain = new Intent(Intent.ACTION_MAIN);
             startMain.addCategory(Intent.CATEGORY_HOME);
-            startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+
+            startMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startMain.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(startMain);
         }
 
@@ -149,6 +152,9 @@ public class Login extends AppCompatActivity implements NetworkUtility {
                                     case MANAGER: {
                                         session.createLoginSession(username, password, MANAGER);
                                         SplashActivity.type = MANAGER;
+                                        String Userid=data.getString("id");
+                                        session.addUserId(Userid);
+
 
                                         Intent intent = new Intent(Login.this, Manager_DashBoardActivity.class);
                                         startActivity(intent);

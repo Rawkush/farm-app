@@ -92,5 +92,11 @@ public class FetchTable implements NetworkUtility {
         return table.optJSONArray("dailyexpenses");
     }
 
+    public final JSONArray getDailyActivities() {
+        return table.optJSONArray("dailyactivity");
+    }
+
+
+
 
 }

@@ -28,6 +28,8 @@ public class SessionManagement {
     public static final String USERNAME = "USERNAME";
     public static final String PASSWORD = "PWD";
     public static final String TYPE = "TYPE";
+    public static final String USERID = "USERID";
+
 
 
     public SessionManagement(Context context){
@@ -41,6 +43,13 @@ public class SessionManagement {
         editor.putString(USERNAME, username);
         editor.putString(PASSWORD, pwd);
         editor.putString(TYPE, type);
+
+        // commit changes
+        editor.commit();
+    }
+    public void addUserId(String userId){
+
+        editor.putString(USERID, userId);
 
         // commit changes
         editor.commit();

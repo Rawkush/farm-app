@@ -1,6 +1,5 @@
 package farm.gecdevelopers.com.farm.activity.manager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -18,19 +17,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import farm.gecdevelopers.com.farm.FetchTable;
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.activity.admin.AddFarm;
-import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
-import farm.gecdevelopers.com.farm.fragments.AuditorsList;
-import farm.gecdevelopers.com.farm.fragments.DailyActivities;
-import farm.gecdevelopers.com.farm.fragments.DailyExpenses;
-import farm.gecdevelopers.com.farm.fragments.FarmactivityList;
-import farm.gecdevelopers.com.farm.fragments.FarmsList;
-import farm.gecdevelopers.com.farm.fragments.ManagersList;
+import farm.gecdevelopers.com.farm.activity.SplashActivity;
+import farm.gecdevelopers.com.farm.fragments.DailyActivitiesFragment;
+import farm.gecdevelopers.com.farm.fragments.DailyExpensesFragment;
 import farm.gecdevelopers.com.farm.fragments.MoreOptions;
-import farm.gecdevelopers.com.farm.fragments.PlotsList;
 
 public class Manager_DashBoardActivity extends AppCompatActivity {
+    public static FetchTable data=SplashActivity.data;
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -121,9 +116,9 @@ public class Manager_DashBoardActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new DailyActivities(), ACTIVITIES);
-        adapter.addFrag(new DailyExpenses(), EXPENSES);
-        adapter.addFrag(new MoreOptions(), "More Options");
+        adapter.addFrag(new DailyActivitiesFragment(), ACTIVITIES);
+        adapter.addFrag(new DailyExpensesFragment(), EXPENSES);
+        adapter.addFrag(new MoreOptionsManagaer(), "More Options");
         viewPager.setAdapter(adapter);
     }
 

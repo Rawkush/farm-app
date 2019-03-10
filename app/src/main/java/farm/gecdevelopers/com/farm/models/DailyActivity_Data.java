@@ -2,37 +2,49 @@ package farm.gecdevelopers.com.farm.models;
 
 public class DailyActivity_Data {
 
-    private long dailyAcitvityID;
-    private long farmID;
-    private String imageName, docName, videoName, details, comments, farmLatitude, farmLongitude,dateAndTime, hect;
-    private int status,userId, reason;
-    private long actid;
+    private String dailyAcitvityID;
+    private String plotName;
+    private String imageName, docName, videoName, details, comments, farmLatitude, farmLongitude, dateAndTime, hect;
+    private String status, userId, reason;
+    private String activityName;
 
-    public DailyActivity_Data() {
+    public DailyActivity_Data(String dailyAcitvityID, String plotName, String imageName,
+                              String docName, String videoName, String details,
+                              String comments, String farmLatitude, String farmLongitude,
+                              String dateAndTime, String hect, String status,
+                              String userId, String reason, String actid) {
+        this.dailyAcitvityID = dailyAcitvityID;
+        this.plotName = plotName;
+        this.imageName = imageName;
+        this.docName = docName;
+        this.videoName = videoName;
+        this.details = details;
+        this.comments = comments;
+        this.farmLatitude = farmLatitude;
+        this.farmLongitude = farmLongitude;
+        this.dateAndTime = dateAndTime;
+        this.hect = hect;
+        this.status = status;
+        this.userId = userId;
+        this.reason = reason;
+        this.activityName = actid;
     }
 
-    public long getDailyAcitvityID() {
+    public String getDailyAcitvityID() {
+
         return dailyAcitvityID;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setDailyAcitvityID(long dailyAcitvityID) {
+    public void setDailyAcitvityID(String dailyAcitvityID) {
         this.dailyAcitvityID = dailyAcitvityID;
     }
 
-    public long getFarmID() {
-        return farmID;
+    public String getPlotName() {
+        return plotName;
     }
 
-    public void setFarmID(long farmID) {
-        this.farmID = farmID;
+    public void setPlotName(String plotName) {
+        this.plotName = plotName;
     }
 
     public String getImageName() {
@@ -107,27 +119,35 @@ public class DailyActivity_Data {
         this.hect = hect;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public int getReason() {
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getReason() {
         return reason;
     }
 
-    public void setReason(int reason) {
+    public void setReason(String reason) {
         this.reason = reason;
     }
 
-    public long getActid() {
-        return actid;
+    public String getActid() {
+        return activityName;
     }
 
-    public void setActid(long actid) {
-        this.actid = actid;
+    public void setActid(String actid) {
+        this.activityName = actid;
     }
 }

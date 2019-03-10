@@ -1,9 +1,12 @@
 package farm.gecdevelopers.com.farm.models;
 
+import farm.gecdevelopers.com.farm.activity.admin.DailyExpense;
+
 public class DailyExpense_Data {
 
     private String id, unit, unitPrice, total, userId;
-    private String farmId;
+    private String plotName;
+    private String purpose,supplier, description,dateAndTime;
 
     public String getId() {
         return id;
@@ -77,16 +80,28 @@ public class DailyExpense_Data {
         this.dateAndTime = dateAndTime;
     }
 
-    public String getFarmId() {
-        return farmId;
+    public String getPlotName() {
+        return plotName;
     }
 
-    public void setFarmId(String farmId) {
-        this.farmId = farmId;
+    public void setPlotName(String plotName) {
+        this.plotName = plotName;
     }
-    private String purpose,supplier, description,dateAndTime;
 
-
-    public DailyExpense_Data() {
+    public DailyExpense_Data(String id, String unit, String unitPrice,
+                             String total, String userId, String plotName,
+                             String purpose, String supplier,
+                             String description, String dateAndTime) {
+        this.id = id;
+        this.unit = unit;
+        this.unitPrice = unitPrice;
+        this.total = total;
+        this.userId = userId;
+        this.plotName = plotName;
+        this.purpose = purpose;
+        this.supplier = supplier;
+        this.description = description;
+        this.dateAndTime = dateAndTime;
     }
+    public DailyExpense_Data(){}
 }
