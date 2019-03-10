@@ -16,6 +16,7 @@ import farm.gecdevelopers.com.farm.models.FarmData;
 public class FarmSpinnerAdapter extends
         ArrayAdapter<FarmData> {
 
+    Context context;
     public FarmSpinnerAdapter(@NonNull Context context, @NonNull ArrayList<FarmData> objects) {
         super(context, 0, objects);
     }

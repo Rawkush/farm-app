@@ -16,8 +16,10 @@ import farm.gecdevelopers.com.farm.models.PlotData;
 public class PlotNameSpinnerAdapter extends
         ArrayAdapter<PlotData> {
 
+    Context context;
     public PlotNameSpinnerAdapter(@NonNull Context context, @NonNull ArrayList<PlotData> objects) {
         super(context, 0, objects);
+        this.context = context;
     }
 
 
@@ -45,7 +47,7 @@ public class PlotNameSpinnerAdapter extends
                 .findViewById(R.id.item);
         if (position == 0) {
             // Set the hint text color gray
-            main_text.setText("select plot");
+            main_text.setText(context.getString(R.string.select_plot));
         } else {
             PlotData plot = getItem(position);
             main_text.setText(plot.getPlotname());

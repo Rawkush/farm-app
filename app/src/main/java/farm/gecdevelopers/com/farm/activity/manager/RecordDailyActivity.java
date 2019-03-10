@@ -128,8 +128,11 @@ public class RecordDailyActivity extends AppCompatActivity implements UploadCall
         spnPlotName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                PlotData fm = (PlotData) parent.getItemAtPosition(position);
-                plotId = fm.getFarmId();
+
+                if (position != 0) {
+                    PlotData fm = (PlotData) parent.getItemAtPosition(position);
+                    plotId = fm.getFarmId();
+                }
             }
 
             @Override
@@ -144,8 +147,10 @@ public class RecordDailyActivity extends AppCompatActivity implements UploadCall
         spnFarmActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                FarmActivityData fm = (FarmActivityData) parent.getItemAtPosition(position);
-                actId = fm.getId();
+                if (position != 0) {
+                    FarmActivityData fm = (FarmActivityData) parent.getItemAtPosition(position);
+                    actId = fm.getId();
+                }
             }
 
             @Override

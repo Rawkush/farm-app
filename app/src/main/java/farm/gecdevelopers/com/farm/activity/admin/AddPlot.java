@@ -70,8 +70,11 @@ public class AddPlot extends AppCompatActivity implements NetworkUtility {
         spnFarm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                FarmData fm = (FarmData) parent.getItemAtPosition(position);
-                farm = fm.getId();
+                if (position != 0) {
+                    FarmData fm = (FarmData) parent.getItemAtPosition(position);
+                    farm = fm.getId();
+                }
+
             }
 
             @Override
@@ -85,9 +88,11 @@ public class AddPlot extends AppCompatActivity implements NetworkUtility {
         spnManager.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                LoginUser user = (LoginUser) parent.getItemAtPosition(position);
-                manager = user.getId();
 
+                if (position != 0) {
+                    LoginUser user = (LoginUser) parent.getItemAtPosition(position);
+                    manager = user.getId();
+                }
             }
 
             @Override

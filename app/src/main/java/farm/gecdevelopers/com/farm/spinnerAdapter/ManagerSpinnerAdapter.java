@@ -17,8 +17,11 @@ public class ManagerSpinnerAdapter
         extends
         ArrayAdapter<LoginUser> {
 
+
+    Context context;
     public ManagerSpinnerAdapter(@NonNull Context context, @NonNull ArrayList<LoginUser> objects) {
         super(context, 0, objects);
+        this.context = context;
     }
 
 
@@ -46,7 +49,7 @@ public class ManagerSpinnerAdapter
                 .findViewById(R.id.item);
         if (position == 0) {
             // Set the hint text color gray
-            main_text.setText("select Manager");
+            main_text.setText(context.getString(R.string.select_manager));
         } else {
 
             LoginUser user = getItem(position);

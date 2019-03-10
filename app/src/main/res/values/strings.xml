@@ -16,5 +16,8 @@
     <string name="type_auditor">3</string>
     <string name="type_admin">1</string>
     <string name="password_not_match">Password do not match</string>
+    <string name="select_plot">Select Plot</string>
+    <string name="select_manager">Select Manager</string>
+    <string name="select_farm">Select Farm</string>
 
 </resources>

@@ -46,12 +46,27 @@ public class Manager_DashBoardActivity extends AppCompatActivity {
 
 
     };
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!data.isDataAvailable()) {
+            data = new FetchTable(this);
+            data.startConnection();
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager__dash_board);
         bindView();
-
+        if (!data.isDataAvailable()) {
+            data = new FetchTable(this);
+            data.startConnection();
+        }
         /* starting connection to fetch data*/
 
         setupViewPager(viewPager);

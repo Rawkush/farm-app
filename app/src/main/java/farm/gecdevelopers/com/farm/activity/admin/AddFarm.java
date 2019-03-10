@@ -69,12 +69,10 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
         edLongitude8 = findViewById(R.id.longitude8);
         edLongitude9 = findViewById(R.id.longitude9);
         edLongitude10 = findViewById(R.id.longitude10);
-
         edSize = findViewById(R.id.size);
         edDescription = findViewById(R.id.description);
         edFarmName = findViewById(R.id.farm_name);
         btnSubmit = findViewById(R.id.submit);
-
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +86,33 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
 
     private void sendDataToDatabse() {
         if (isFormFilled()) {
+
+
+            final String latitude1 = edLatitude1.getText().toString();
+            final String longitude1 = edLongitude1.getText().toString();
+            final String farmName = edFarmName.getText().toString();
+            final String description = edDescription.getText().toString();
+            final String size = edSize.getText().toString();
+            final String latitude2 = edLatitude2.getText().toString();
+            final String longitude2 = edLongitude2.getText().toString();
+            final String latitude3 = edLatitude3.getText().toString();
+            final String longitude3 = edLongitude3.getText().toString();
+            final String latitude4 = edLatitude4.getText().toString();
+            final String longitude4 = edLongitude4.getText().toString();
+            final String latitude5 = edLatitude5.getText().toString();
+            final String longitude5 = edLongitude5.getText().toString();
+            final String latitude6 = edLatitude6.getText().toString();
+            final String longitude6 = edLongitude6.getText().toString();
+            final String latitude7 = edLatitude7.getText().toString();
+            final String longitude7 = edLongitude7.getText().toString();
+            final String latitude8 = edLatitude8.getText().toString();
+            final String longitude8 = edLongitude8.getText().toString();
+            final String latitude9 = edLatitude9.getText().toString();
+            final String longitude9 = edLongitude9.getText().toString();
+            final String latitude10 = edLatitude10.getText().toString();
+            final String longitude10 = edLongitude10.getText().toString();
+
+
             StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_FARM_URL,
                     new Response.Listener<String>() {
                         @Override
@@ -109,10 +134,43 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
 
                     Map<String, String> param = new HashMap<>();
 
+                    param.put("farmname", farmName);
+                    param.put("farmsize", size);
+                    param.put("farmdisc", description);
+                    param.put("farmlat", latitude1);
+                    param.put("farmlong", longitude1);
+                    param.put("farmlat2", latitude2);
+                    param.put("farmlat3", latitude3);
+                    param.put("farmlat4", latitude4);
+                    param.put("farmlat5", latitude5);
+                    param.put("farmlat6", latitude6);
+                    param.put("farmlat7", latitude7);
+                    param.put("farmlat8", latitude8);
+                    param.put("farmlat9", latitude9);
+                    param.put("farmlat10", latitude10);
+                    param.put("farmlong2", longitude2);
+                    param.put("farmlong3", longitude3);
+                    param.put("farmlong4", longitude4);
+                    param.put("farmlong5", longitude5);
+                    param.put("farmlong6", longitude6);
+                    param.put("farmlong7", longitude7);
+                    param.put("farmlong8", longitude8);
+                    param.put("farmlong9", longitude9);
+                    param.put("farmlong10", longitude10);
+
+
+                    /*
                     final int childCount = linearLayout.getChildCount();
 
                     for (int i = 0; i < childCount; i++) {
-                        View v = linearLayout.getChildAt(i);
+                        View cardview = linearLayout.getChildAt(i);
+                        View linear = ((ViewGroup)cardview).getChildAt(0);
+                        View textInputLayout = ((ViewGroup)linear).getChildAt(0);
+                        View v = ((ViewGroup)linear).getChildAt(0);
+
+
+
+
                         if (v instanceof TextInputEditText) {
                             String tag = v.getTag().toString();
                             String value = ((TextInputEditText) v).getText().toString();
@@ -121,8 +179,14 @@ public class AddFarm extends AppCompatActivity implements NetworkUtility {
                                 continue;
                             }
                             param.put(tag, value);
+
                         }
-                    }
+
+
+
+
+
+                    }*/
                     return param;
                 }
             };

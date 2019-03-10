@@ -123,8 +123,11 @@ public class RecordDailyExpense extends AppCompatActivity {
         spnPlot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                PlotData fm = (PlotData) parent.getItemAtPosition(position);
-                plotId = fm.getFarmId();
+
+                if (position != 0) {
+                    PlotData fm = (PlotData) parent.getItemAtPosition(position);
+                    plotId = fm.getFarmId();
+                }
             }
 
             @Override
