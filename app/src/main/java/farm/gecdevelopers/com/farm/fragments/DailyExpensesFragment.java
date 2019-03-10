@@ -1,5 +1,6 @@
 package farm.gecdevelopers.com.farm.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,14 +20,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import farm.gecdevelopers.com.farm.Adapters.DailyActivitiesAdapter;
 import farm.gecdevelopers.com.farm.Adapters.DailyExpenseAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.SessionManagement;
-import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
+import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.manager.Manager_DashBoardActivity;
-import farm.gecdevelopers.com.farm.activity.manager.RecordDailyActivity;
 import farm.gecdevelopers.com.farm.activity.manager.RecordDailyExpense;
 import farm.gecdevelopers.com.farm.models.DailyExpense_Data;
 
@@ -37,6 +36,8 @@ public class DailyExpensesFragment extends Fragment implements NetworkUtility {
     private ArrayList<DailyExpense_Data> expensesData;
     private Context ctx;
     FloatingActionButton floatingActionButton;
+    private String type;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,10 +47,19 @@ public class DailyExpensesFragment extends Fragment implements NetworkUtility {
         return root;
     }
 
+    @SuppressLint("RestrictedApi")
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        type = SplashActivity.type;
+        if (type.equals(ADMIN)) {
 
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else if (type.equals(AUDITOR)) {
+            floatingActionButton.setVisibility(View.GONE);
+        }
         floatingActionButton = root.findViewById(R.id.add_expenses_btn);
 
         ctx=getActivity();

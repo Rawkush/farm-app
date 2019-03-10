@@ -3,7 +3,6 @@ package farm.gecdevelopers.com.farm.activity.admin;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,18 +15,14 @@ import java.util.ArrayList;
 
 import farm.gecdevelopers.com.farm.Adapters.DailyExpenseAdapter;
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.SessionManagement;
-import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.manager.Manager_DashBoardActivity;
 import farm.gecdevelopers.com.farm.models.DailyExpense_Data;
 
 public class DailyExpense extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DailyExpenseAdapter adapter;
-    FloatingActionButton floatingActionButton;
     private ArrayList<DailyExpense_Data> expensesData;
     private Context ctx;
-    private String type;
 
 
     @SuppressLint("RestrictedApi")
@@ -36,11 +31,10 @@ public class DailyExpense extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_expense);
-        type = SplashActivity.type;
         ctx = DailyExpense.this;
-        recyclerView = findViewById(R.id.expense);
-        getList();
+        recyclerView = findViewById(R.id.daily_expenses_rv);
 
+        getList();
 
     }
 
@@ -55,12 +49,9 @@ public class DailyExpense extends AppCompatActivity {
 
             DailyExpense_Data item;
 
-            String userIdfromSP = SessionManagement.pref.getString(SessionManagement.USERID, "");
-
 
             for (int i = 0; i < dailyExpenses.length(); i++) {
                 JSONObject eachActivity = dailyExpenses.getJSONObject(i);
-
 
                 String id = eachActivity.getString("id");
                 String farmID = eachActivity.getString("farmid");
@@ -95,24 +86,23 @@ public class DailyExpense extends AppCompatActivity {
                     }
 
                 }*/
-                if (userid.equals(userIdfromSP)) {
-                    item = new DailyExpense_Data(id, unit, unitPrice, total,
-                            userid, plotname, purpose, supplier, desc, datetime);
-                    item.setId(id);
-                    item.setPlotName(plotname);
-                    item.setUnit(unit);
-                    item.setUnitPrice(unitPrice);
-                    item.setUserId(userid);
-                    item.setPurpose(purpose);
-                    item.setSupplier(supplier);
-                    item.setDescription(desc);
-                    item.setDateAndTime(datetime);
+
+                item = new DailyExpense_Data(id, unit, unitPrice, total,
+                        userid, plotname, purpose, supplier, desc, datetime);
+                item.setId(id);
+                item.setPlotName(plotname);
+                item.setUnit(unit);
+                item.setUnitPrice(unitPrice);
+                item.setUserId(userid);
+                item.setPurpose(purpose);
+                item.setSupplier(supplier);
+                item.setDescription(desc);
+                item.setDateAndTime(datetime);
 
 
                     expensesData.add(item);
 
 
-                }
                 int a = expensesData.size();
                 adapter = new DailyExpenseAdapter(expensesData, ctx);
                 LinearLayoutManager llm = new LinearLayoutManager(ctx);
@@ -129,6 +119,4 @@ public class DailyExpense extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-
 }

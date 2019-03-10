@@ -1,5 +1,6 @@
 package farm.gecdevelopers.com.farm.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +11,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.JsonReader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +25,7 @@ import farm.gecdevelopers.com.farm.Adapters.DailyActivitiesAdapter;
 import farm.gecdevelopers.com.farm.NetworkUtility;
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.SessionManagement;
+import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.activity.admin.DashBoardActivity;
 import farm.gecdevelopers.com.farm.activity.manager.RecordDailyActivity;
 import farm.gecdevelopers.com.farm.models.DailyActivity_Data;
@@ -38,23 +39,37 @@ public class DailyActivitiesFragment extends Fragment implements NetworkUtility 
     private ArrayList<DailyActivity_Data> activitiesList;
     private Context ctx;
     FloatingActionButton floatingActionButton;
+    private String type;
+
+
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_daily_activities, container, false);
-
-
         return root;
     }
+
+    @SuppressLint("RestrictedApi")
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        type = SplashActivity.type;
 
         floatingActionButton = root.findViewById(R.id.add_activiy_btn);
 
         ctx=getActivity();
         recyclerView=root.findViewById(R.id.daily_activity_rv);
+        if (type.equals(ADMIN)) {
+
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else if (type.equals(AUDITOR)) {
+            floatingActionButton.setVisibility(View.GONE);
+        }
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
