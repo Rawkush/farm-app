@@ -256,7 +256,7 @@ public class RecordDailyExpense extends AppCompatActivity {
                     param.put("uprice", unitPrice);
                     param.put("total", total);
                     param.put("loan_type", plotId);
-                    param.put("user_id", "2");
+                    param.put("user_id", userIdfromSP);
 
                     return param;
 
@@ -271,6 +271,9 @@ public class RecordDailyExpense extends AppCompatActivity {
         }
     }
 
+    /*
+    used for spinner
+     */
     public ArrayList<PlotData> getPlotList() {
         ArrayList<PlotData> plotArrayList = new ArrayList<>();
 
@@ -279,10 +282,9 @@ public class RecordDailyExpense extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject eachMan = jsonArray.getJSONObject(i);
                 String user = eachMan.getString("farm_manager");
-                if (!user.equals(userIdfromSP))
-                   {
-                   continue;
-                   }
+                if (!user.equals(userIdfromSP)) {
+                    continue;
+                }
 
 
                 String name = eachMan.getString("farm_name");

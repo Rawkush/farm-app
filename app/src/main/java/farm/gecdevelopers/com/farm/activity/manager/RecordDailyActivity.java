@@ -390,7 +390,7 @@ public class RecordDailyActivity extends AppCompatActivity implements UploadCall
                     param.put("hect", acresCovered);
                     param.put("det", resources);
                     param.put("cmts", comment);
-                    param.put("user_id", "2");
+                    param.put("user_id", userIdfromSP);
                     param.put("docfile", image);
 
 
