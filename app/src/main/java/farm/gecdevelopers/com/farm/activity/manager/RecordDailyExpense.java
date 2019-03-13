@@ -3,6 +3,7 @@ package farm.gecdevelopers.com.farm.activity.manager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -60,6 +61,13 @@ public class RecordDailyExpense extends AppCompatActivity {
 
 
     private void init() {
+
+
+        Toolbar toolbar = findViewById(R.id.add_farm_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Record Expense");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         SharedPreferences sp = getSharedPreferences("FarmPref", MODE_PRIVATE);
         userIdfromSP = sp.getString(SessionManagement.USERID, "");

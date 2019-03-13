@@ -106,8 +106,12 @@
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_marginStart="16dp"
+        android:background="@drawable/btn_style_cyan"
+        android:text="Submit"
+        android:textColor="@color/white" />
+
 </LinearLayout>

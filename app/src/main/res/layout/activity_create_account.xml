@@ -7,6 +7,318 @@
     tools:context=".activity.admin.CreateAccount">
 
 
+    <ScrollView
+        android:layout_below="@+id/RegisterL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_below="@+id/RegisterL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="14dp"
+                android:text="Create Account"
+                android:textAlignment="center"
+                android:textSize="44sp" />
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.9"
+                        android:layout_height="wrap_content">
+
+
+                        <EditText
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:ems="10"
+                            android:hint="Name"
+                            android:inputType="textPersonName"
+                            android:textSize="18sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.9"
+                        android:layout_height="wrap_content">
+
+
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Password"
+                            android:inputType="textPersonName"
+                            android:textSize="18sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.9"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.9"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Client ID"
+                            android:inputType="phone" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.9"
+                        android:layout_height="wrap_content">
+
+
+                        <EditText
+
+                            android:id="@+id/phone_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:ems="10"
+                            android:hint="Phone Number"
+                            android:inputType="phone" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.9"
+                        android:layout_height="wrap_content">
+
+
+                        <EditText
+                            android:id="@+id/username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:hint="Username" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.1"
+                        android:gravity="end|top"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/RegisterL"
@@ -45,311 +357,7 @@
     </LinearLayout>
 </RelativeLayout>
 
-    <LinearLayout
-    android:layout_below="@+id/RegisterL"
-    android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="14dp"
-            android:text="Create Account"
-            android:textAlignment="center"
-            android:textSize="44sp" />
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="3dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_weight="0.9"
-            android:layout_height="wrap_content">
-
-
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:ems="10"
-                android:hint="Name"
-                android:inputType="textPersonName"
-                android:textSize="18sp" />
-        </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="0.1"
-                    android:gravity="end|top"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="3dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_weight="0.9"
-            android:layout_height="wrap_content">
-
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPersonName"
-                android:textSize="18sp" />
-        </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="0.1"
-                    android:gravity="end|top"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="3dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_weight="0.9"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
-        </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="0.1"
-                    android:gravity="end|top"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="3dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_weight="0.9"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Client ID"
-                android:inputType="phone" />
-        </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="0.1"
-                    android:gravity="end|top"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="3dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_weight="0.9"
-            android:layout_height="wrap_content">
-
-
-                    <EditText
-
-                android:id="@+id/phone_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:ems="10"
-                        android:hint="Phone Number"
-                android:inputType="phone" />
-        </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="0.1"
-                    android:gravity="end|top"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="3dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_weight="0.9"
-            android:layout_height="wrap_content">
-
-
-            <EditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Username" />
-        </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="0.1"
-                    android:gravity="end|top"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/button"
@@ -357,7 +365,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:text="Create" />
-
+        android:background="@drawable/btn_style_cyan"
+        android:text="Create Account"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

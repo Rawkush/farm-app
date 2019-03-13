@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -44,6 +45,13 @@ public class ChangePassword extends AppCompatActivity {
     }
 
     private void bindViews() {
+        Toolbar toolbar = findViewById(R.id.add_farm_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Change Password");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
         edOldPassword = findViewById(R.id.old_password);
         edNewPassword = findViewById(R.id.new_password);
         edConfirmPassword = findViewById(R.id.confirm_password);

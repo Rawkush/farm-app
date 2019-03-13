@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -102,6 +103,13 @@ public class RecordDailyActivity extends AppCompatActivity implements UploadCall
     }
 
     private void init() {
+
+        Toolbar toolbar = findViewById(R.id.add_farm_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Record Activity");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         SharedPreferences sp = getSharedPreferences("FarmPref", MODE_PRIVATE);
         userIdfromSP = sp.getString(SessionManagement.USERID, "");

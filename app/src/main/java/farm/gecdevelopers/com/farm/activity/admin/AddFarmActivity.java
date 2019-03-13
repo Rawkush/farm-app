@@ -3,6 +3,7 @@ package farm.gecdevelopers.com.farm.activity.admin;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -46,9 +47,17 @@ public class AddFarmActivity extends AppCompatActivity implements NetworkUtility
     }
 
     private void bindViews(){
+
+        Toolbar toolbar = findViewById(R.id.add_farm_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Add Farm Activity");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
         edActDesc= findViewById(R.id.desc);
         edActName= findViewById(R.id.actname);
-        button= findViewById(R.id.button2);
+        button= findViewById(R.id.submit);
         queue=  Volley.newRequestQueue(this);
 
     }

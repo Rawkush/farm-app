@@ -3,6 +3,7 @@ package farm.gecdevelopers.com.farm.activity.admin;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -58,6 +59,15 @@ public class AddPlot extends AppCompatActivity implements NetworkUtility {
     }
 
     private void init() {
+
+        Toolbar toolbar = findViewById(R.id.add_farm_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Add Plot");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
