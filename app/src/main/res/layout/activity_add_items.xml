@@ -7,6 +7,10 @@
     android:orientation="vertical"
     tools:context=".activity.admin.AddItems">
 
+    <include
+        android:id="@+id/add_farm_app_bar"
+        layout="@layout/app_bar_layout" />
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

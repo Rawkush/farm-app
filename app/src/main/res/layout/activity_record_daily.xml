@@ -5,8 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".activity.manager.RecordDailyActivity">
 
+    <include
+        android:id="@+id/add_farm_app_bar"
+        layout="@layout/app_bar_layout" />
 
     <ScrollView
+        android:layout_below="@+id/add_farm_app_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

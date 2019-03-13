@@ -6,6 +6,9 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".activity.admin.AddFarmActivity">
+    <include
+        android:id="@+id/add_farm_app_bar"
+        layout="@layout/app_bar_layout" />
 
 
     <android.support.v7.widget.CardView
