@@ -105,7 +105,7 @@ public class ManagersAdapter  extends RecyclerView.Adapter<ManagersAdapter.Manag
                     filteredList = list;
                 } else {
                     ArrayList<Managers> filterLst = new ArrayList<>();
-                    for (Managers row : filteredList) {
+                    for (Managers row : list) {
                         // name match condition. this might differ depending on your requirement
                         // here we are looking for name or phone number match
                         if (row.getManName().toLowerCase().contains(charString.toLowerCase())) {

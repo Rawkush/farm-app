@@ -14,6 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.SimpleOnSearchActionListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +40,10 @@ public class ManagersList extends Fragment implements NetworkUtility {
     FloatingActionButton floatingActionButton;
     private String type;
 
+    private MaterialSearchBar searchBar;
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,11 +59,14 @@ public class ManagersList extends Fragment implements NetworkUtility {
         super.onViewCreated(view, savedInstanceState);
         floatingActionButton = root.findViewById(R.id.add_manager_btn);
         type=SplashActivity.type;
+        searchBar = view.findViewById(R.id.searchBar);
 
         ctx=getActivity();
         recyclerView=root.findViewById(R.id.man_rv);
 
+        init();
         getList();
+
 
         if (type.equals("1")) {
 
@@ -81,6 +91,46 @@ public class ManagersList extends Fragment implements NetworkUtility {
 
 
     }
+
+private void init(){
+
+    /*
+     * searchbar
+     */
+
+    searchBar.setHint("Search Manager using name,email...");
+    searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
+        @Override
+        public void onSearchStateChanged(boolean enabled) {
+            super.onSearchStateChanged(enabled);
+
+            if (!enabled) {
+                adapter.getFilter().filter("");   // filtering the result
+
+                //      recyclerView.setAdapter(duplicateAdapter);
+            } else{
+
+            }
+            //      recyclerView.setAdapter(adapter);
+
+        }
+
+        @Override
+        public void onSearchConfirmed(CharSequence text) {
+            super.onSearchConfirmed(text);
+
+            adapter.getFilter().filter(text);   // filtering the result
+        }
+
+
+
+        @Override
+        public void onButtonClicked(int buttonCode) {
+            super.onButtonClicked(buttonCode);
+
+        }
+    });
+}
 
 
     public void getList() {

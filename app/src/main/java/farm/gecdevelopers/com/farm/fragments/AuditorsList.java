@@ -42,8 +42,6 @@ public class AuditorsList extends Fragment implements NetworkUtility {
 
     private MaterialSearchBar searchBar;
 
-    private boolean isSearched=false;
-
 
 
     @Nullable
