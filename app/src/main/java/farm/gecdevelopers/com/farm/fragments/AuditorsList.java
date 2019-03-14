@@ -14,6 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.SimpleOnSearchActionListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +40,12 @@ public class AuditorsList extends Fragment implements NetworkUtility {
     private ManagersAdapter adapter;
     private String type;
 
+    private MaterialSearchBar searchBar;
+
+    private boolean isSearched=false;
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,13 +55,25 @@ public class AuditorsList extends Fragment implements NetworkUtility {
     }
 
 
-    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        searchBar = view.findViewById(R.id.searchBar);
         floatingActionButton = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.man_rv);
         type = SplashActivity.type;
+
+        init();
+
+
+        getList();
+
+
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void init(){
 
         if (type.equals(ADMIN)) {
 
@@ -71,10 +92,48 @@ public class AuditorsList extends Fragment implements NetworkUtility {
 
             }
         });
-        getList();
 
+        /*
+        * searchbar
+        */
+
+        searchBar.setHint("Enter Auditor to search");
+        searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+                super.onSearchStateChanged(enabled);
+
+                if (!enabled) {
+                    adapter.getFilter().filter("");   // filtering the result
+
+              //      recyclerView.setAdapter(duplicateAdapter);
+                } else{
+
+                }
+              //      recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                super.onSearchConfirmed(text);
+
+                  adapter.getFilter().filter(text);   // filtering the result
+            }
+
+
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+                super.onButtonClicked(buttonCode);
+
+            }
+        });
 
     }
+
+
+
 
     public void getList() {
         managersList = new ArrayList<>();
