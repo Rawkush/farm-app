@@ -14,6 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.SimpleOnSearchActionListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +40,7 @@ public class FarmsList extends Fragment implements NetworkUtility {
     private RecyclerView recyclerView;
     private FarmsAdapter adapter;
     private String type;
+    private MaterialSearchBar searchBar;
 
 
     @Nullable
@@ -73,6 +77,42 @@ public class FarmsList extends Fragment implements NetworkUtility {
             }
         });
 
+
+        /*
+         * searchbar
+         */
+
+        searchBar.setHint("Enter Auditor to search");
+        searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+                super.onSearchStateChanged(enabled);
+
+                if (!enabled) {
+                    adapter.getFilter().filter("");   // filtering the result
+
+                    //      recyclerView.setAdapter(duplicateAdapter);
+                } else {
+
+                }
+                //      recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                super.onSearchConfirmed(text);
+
+                adapter.getFilter().filter(text);   // filtering the result
+            }
+
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+                super.onButtonClicked(buttonCode);
+
+            }
+        });
 
         getList();
 

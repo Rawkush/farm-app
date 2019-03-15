@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.SimpleOnSearchActionListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,16 +27,54 @@ public class DailyActivity extends AppCompatActivity implements NetworkUtility {
     private DailyActivitiesAdapter adapter;
     private ArrayList<DailyActivity_Data> activitiesList;
     private String type;
+    private MaterialSearchBar searchBar;
 
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily);
+        searchBar = findViewById(R.id.searchBar);
 
         ctx = DailyActivity.this;
         recyclerView = findViewById(R.id.daily_activity_rv);
 
+
+        /*
+         * searchbar
+         */
+
+        searchBar.setHint("Enter Auditor to search");
+        searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+                super.onSearchStateChanged(enabled);
+
+                if (!enabled) {
+                    adapter.getFilter().filter("");   // filtering the result
+
+                    //      recyclerView.setAdapter(duplicateAdapter);
+                } else {
+
+                }
+                //      recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                super.onSearchConfirmed(text);
+
+                adapter.getFilter().filter(text);   // filtering the result
+            }
+
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+                super.onButtonClicked(buttonCode);
+
+            }
+        });
 
         getList();
 

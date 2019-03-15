@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.SimpleOnSearchActionListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +26,7 @@ public class DailyExpense extends AppCompatActivity {
     private DailyExpenseAdapter adapter;
     private ArrayList<DailyExpense_Data> expensesData;
     private Context ctx;
+    private MaterialSearchBar searchBar;
 
 
     @SuppressLint("RestrictedApi")
@@ -33,6 +37,43 @@ public class DailyExpense extends AppCompatActivity {
         setContentView(R.layout.activity_daily_expense);
         ctx = DailyExpense.this;
         recyclerView = findViewById(R.id.daily_expenses_rv);
+        searchBar = findViewById(R.id.searchBar);
+
+        /*
+         * searchbar
+         */
+
+        searchBar.setHint("Enter Auditor to search");
+        searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+                super.onSearchStateChanged(enabled);
+
+                if (!enabled) {
+                    adapter.getFilter().filter("");   // filtering the result
+
+                    //      recyclerView.setAdapter(duplicateAdapter);
+                } else {
+
+                }
+                //      recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                super.onSearchConfirmed(text);
+
+                adapter.getFilter().filter(text);   // filtering the result
+            }
+
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+                super.onButtonClicked(buttonCode);
+
+            }
+        });
 
         getList();
 

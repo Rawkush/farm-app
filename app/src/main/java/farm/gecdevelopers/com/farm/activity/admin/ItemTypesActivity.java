@@ -10,6 +10,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.SimpleOnSearchActionListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +32,7 @@ public class ItemTypesActivity extends AppCompatActivity implements NetworkUtili
     private RecyclerView recyclerView;
     private ItemTypesAdapter adapter;
     private String type;
+    private MaterialSearchBar searchBar;
 
 
     @SuppressLint("RestrictedApi")
@@ -36,6 +40,7 @@ public class ItemTypesActivity extends AppCompatActivity implements NetworkUtili
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_types);
+        searchBar = findViewById(R.id.searchBar);
 
         type = SplashActivity.type;
         ctx = ItemTypesActivity.this;
@@ -59,6 +64,42 @@ public class ItemTypesActivity extends AppCompatActivity implements NetworkUtili
             }
         });
 
+
+        /*
+         * searchbar
+         */
+
+        searchBar.setHint("Enter Auditor to search");
+        searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+                super.onSearchStateChanged(enabled);
+
+                if (!enabled) {
+                    adapter.getFilter().filter("");   // filtering the result
+
+                    //      recyclerView.setAdapter(duplicateAdapter);
+                } else {
+
+                }
+                //      recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                super.onSearchConfirmed(text);
+
+                adapter.getFilter().filter(text);   // filtering the result
+            }
+
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+                super.onButtonClicked(buttonCode);
+
+            }
+        });
 
         getList();
 

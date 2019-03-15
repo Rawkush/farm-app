@@ -15,6 +15,9 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.SimpleOnSearchActionListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +40,7 @@ public class FarmactivityList extends Fragment implements NetworkUtility {
     FloatingActionButton floatingActionButton;
     private String type;
     private FarmActivityAdapter adapter;
+    private MaterialSearchBar searchBar;
 
     @Nullable
     @Override
@@ -55,6 +59,7 @@ public class FarmactivityList extends Fragment implements NetworkUtility {
         ctx = getActivity();
         floatingActionButton = view.findViewById(R.id.fab);
         type = SplashActivity.type;
+        searchBar = view.findViewById(R.id.searchBar);
 
         if (type.equals(ADMIN)) {
 
@@ -74,6 +79,49 @@ public class FarmactivityList extends Fragment implements NetworkUtility {
         });
 
         recyclerView = root.findViewById(R.id.man_rv);
+
+
+
+
+
+        /*
+         * searchbar
+         */
+
+        searchBar.setHint("Enter Auditor to search");
+        searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+                super.onSearchStateChanged(enabled);
+
+                if (!enabled) {
+                    adapter.getFilter().filter("");   // filtering the result
+
+                    //      recyclerView.setAdapter(duplicateAdapter);
+                } else {
+
+                }
+                //      recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                super.onSearchConfirmed(text);
+
+                adapter.getFilter().filter(text);   // filtering the result
+            }
+
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+                super.onButtonClicked(buttonCode);
+
+            }
+        });
+
+
+
 
         getList();
 

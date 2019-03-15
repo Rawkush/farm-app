@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import farm.gecdevelopers.com.farm.R;
 import farm.gecdevelopers.com.farm.models.Managers;
@@ -110,7 +109,7 @@ public class ManagersAdapter  extends RecyclerView.Adapter<ManagersAdapter.Manag
                         // here we are looking for name or phone number match
                         if (row.getManName().toLowerCase().contains(charString.toLowerCase())) {
                             filterLst.add(row);
-                        }
+                        } else
                         if (row.getManEmail().toLowerCase().contains(charString.toLowerCase())) {
                             filterLst.add(row);
                         }
