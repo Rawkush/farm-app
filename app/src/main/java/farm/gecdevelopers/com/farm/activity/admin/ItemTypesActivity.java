@@ -141,8 +141,10 @@ public class ItemTypesActivity extends AppCompatActivity implements NetworkUtili
             }
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
 
+        }
     }
 
 }

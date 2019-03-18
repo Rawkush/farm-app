@@ -304,8 +304,10 @@ public class RecordDailyExpense extends AppCompatActivity {
             }
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
 
+        }
         return plotArrayList;
     }
 

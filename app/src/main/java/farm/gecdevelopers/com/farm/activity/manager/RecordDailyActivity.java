@@ -542,6 +542,9 @@ public class RecordDailyActivity extends AppCompatActivity implements UploadCall
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
         }
 
         return plotArrayList;
@@ -559,6 +562,9 @@ public class RecordDailyActivity extends AppCompatActivity implements UploadCall
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
         }
 
         return farmActivities;

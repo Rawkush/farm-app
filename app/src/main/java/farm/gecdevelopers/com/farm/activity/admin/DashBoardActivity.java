@@ -1,6 +1,8 @@
 package farm.gecdevelopers.com.farm.activity.admin;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,13 +15,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import farm.gecdevelopers.com.farm.FetchTable;
 import farm.gecdevelopers.com.farm.R;
-import farm.gecdevelopers.com.farm.activity.SplashActivity;
 import farm.gecdevelopers.com.farm.fragments.AuditorsList;
 import farm.gecdevelopers.com.farm.fragments.FarmactivityList;
 import farm.gecdevelopers.com.farm.fragments.FarmsList;
@@ -29,10 +31,12 @@ import farm.gecdevelopers.com.farm.fragments.PlotsList;
 
 public class DashBoardActivity extends AppCompatActivity {
 
-    public static FetchTable data=SplashActivity.data;
+    public static FetchTable data;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
+    private final int TIME_OUT = 30000;//30 seconds
+    CountDownTimer countDownTimer;
+    private ProgressDialog dialog;
     public static final String MANAGER = "Manager", AUDITOR = "Auditors", FARMS = "FarmData", PLOTS = "Plots",
             FARM_ACTIVITY = "Farm Activities", MORE_OPTIONS = "More Options";
 
@@ -70,25 +74,50 @@ public class DashBoardActivity extends AppCompatActivity {
         }
     }
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         bindView();
 
-        /* starting connection to fetch data*/
+        dialog = new ProgressDialog(this);
+        data = new FetchTable(this);
+        data.startConnection();
+        dialog.setTitle("Fetching Data");
+        dialog.setMessage("Please wait while we Load the Data.");
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+        init();
 
-        if (!data.isDataAvailable()) {
-            data = new FetchTable(this);
-            data.startConnection();
-        }
+        countDownTimer = new CountDownTimer(TIME_OUT, 300) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                if (data.isDataAvailable()) {
+                    init();
+                    countDownTimer.cancel();
+                    dialog.cancel();
+                }
+            }
+
+            @Override
+            public void onFinish() {
+                if (!data.isDataAvailable()) {
+                    Toast.makeText(DashBoardActivity.this, "Cannot Load the Data", Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
+                }
+
+            }
+        }.start();  // first param is timer till which to count
+
+
+    }
+
+    private void init() {
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
-        viewPager.setOffscreenPageLimit(tabLayout.getTabCount()-1);
+        viewPager.setOffscreenPageLimit(tabLayout.getTabCount() - 1);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -116,7 +145,6 @@ public class DashBoardActivity extends AppCompatActivity {
         });
 
 
-
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
 
             Log.d("value",""+i);
@@ -137,6 +165,8 @@ public class DashBoardActivity extends AppCompatActivity {
             tabLayout.getTabAt(i).setCustomView(tab);
         }
     }
+
+
     private void bindView() {
         viewPager = findViewById(R.id.frame_);
         tabLayout = findViewById(R.id.tabs);
