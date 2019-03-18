@@ -66,20 +66,10 @@ public class DashBoardActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        if (!data.isDataAvailable()) {
-            data = new FetchTable(this);
-            data.startConnection();
-        }
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         bindView();
-
         dialog = new ProgressDialog(this);
         data = new FetchTable(this);
         data.startConnection();
