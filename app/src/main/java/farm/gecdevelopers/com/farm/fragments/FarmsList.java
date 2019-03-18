@@ -57,6 +57,7 @@ public class FarmsList extends Fragment implements NetworkUtility {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         type = SplashActivity.type;
+        searchBar = view.findViewById(R.id.searchBar);
 
         floatingActionButton = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.man_rv);

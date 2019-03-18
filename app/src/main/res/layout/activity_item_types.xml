@@ -1,17 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.admin.ItemTypesActivity">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+
+            <com.mancj.materialsearchbar.MaterialSearchBar
+                android:id="@+id/searchBar"
+                style="@style/MaterialSearchBarLight"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:mt_backIconTint="@color/white"
+                app:mt_clearIconTint="@color/white"
+                app:mt_hint="Zoro"
+                app:mt_hintColor="@color/white"
+                app:mt_maxSuggestionsCount="10"
+                app:mt_placeholder=" Auditor"
+                app:mt_placeholderColor="@color/white"
+                app:mt_roundedSearchBarEnabled="true"
+                app:mt_searchBarColor="@color/colorPrimary"
+                app:mt_searchIconTint="@color/white"
+                app:mt_textColor="@color/white" />
+
+
+        </android.support.design.widget.AppBarLayout>
+
+
         <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/toolbar"
+
+
             android:id="@+id/item_types_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,6 +60,7 @@
             android:layout_marginBottom="25dp"
             android:src="@android:drawable/ic_menu_add"
             app:backgroundTint="@color/colorPrimary" />
-    </FrameLayout>
+    </RelativeLayout>
 
-</RelativeLayout>
+
+</FrameLayout>

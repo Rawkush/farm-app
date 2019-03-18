@@ -94,7 +94,6 @@ public class PlotAdapter extends RecyclerView.Adapter<PlotAdapter.PlotViewHolder
                             filterLst.add(row);
                         }
 
-
                     }
 
                     filteredList = filterLst;
