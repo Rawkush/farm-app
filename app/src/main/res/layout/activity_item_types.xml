@@ -28,7 +28,7 @@
                 app:mt_hint="Zoro"
                 app:mt_hintColor="@color/white"
                 app:mt_maxSuggestionsCount="10"
-                app:mt_placeholder=" Auditor"
+                app:mt_placeholder=" Items"
                 app:mt_placeholderColor="@color/white"
                 app:mt_roundedSearchBarEnabled="true"
                 app:mt_searchBarColor="@color/colorPrimary"

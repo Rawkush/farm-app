@@ -26,7 +26,7 @@
           app:mt_backIconTint="@color/white"
           app:mt_clearIconTint="@color/white"
           app:mt_hintColor="@color/white"
-          app:mt_placeholder=" Manager"
+          app:mt_placeholder=" Managers"
           app:mt_placeholderColor="@color/white"
           app:mt_roundedSearchBarEnabled="true"
           app:mt_searchBarColor="@color/colorPrimary"
