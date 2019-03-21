@@ -43,7 +43,7 @@ public class DailyExpense extends AppCompatActivity {
          * searchbar
          */
 
-        searchBar.setHint("Enter Auditor to search");
+        searchBar.setHint("Search Expense");
         searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {

@@ -95,7 +95,7 @@ public class AuditorsList extends Fragment implements NetworkUtility {
         * searchbar
         */
 
-        searchBar.setHint("Enter Auditor to search");
+        searchBar.setHint("Search Auditor");
         searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {

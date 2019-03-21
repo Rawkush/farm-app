@@ -69,7 +69,7 @@ public class ItemTypesActivity extends AppCompatActivity implements NetworkUtili
          * searchbar
          */
 
-        searchBar.setHint("Enter Auditor to search");
+        searchBar.setHint("Search Items");
         searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {

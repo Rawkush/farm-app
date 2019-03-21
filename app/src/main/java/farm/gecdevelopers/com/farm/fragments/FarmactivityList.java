@@ -88,7 +88,7 @@ public class FarmactivityList extends Fragment implements NetworkUtility {
          * searchbar
          */
 
-        searchBar.setHint("Enter Auditor to search");
+        searchBar.setHint("Search Farm Activity");
         searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {

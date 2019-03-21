@@ -44,7 +44,7 @@ public class DailyActivity extends AppCompatActivity implements NetworkUtility {
          * searchbar
          */
 
-        searchBar.setHint("Enter Auditor to search");
+        searchBar.setHint("Search Activity");
         searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {

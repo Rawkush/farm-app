@@ -100,7 +100,7 @@ public class DailyActivitiesFragment extends Fragment implements NetworkUtility 
          * searchbar
          */
 
-        searchBar.setHint("Enter Auditor to search");
+        searchBar.setHint("Search Activities");
         searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {

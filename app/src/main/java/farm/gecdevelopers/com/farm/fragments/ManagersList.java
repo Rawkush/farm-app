@@ -98,7 +98,7 @@ private void init(){
      * searchbar
      */
 
-    searchBar.setHint("Search Manager using name,email...");
+    searchBar.setHint("Search Manager");
     searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
         @Override
         public void onSearchStateChanged(boolean enabled) {

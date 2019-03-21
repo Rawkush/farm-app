@@ -83,7 +83,7 @@ public class DailyExpensesFragment extends Fragment implements NetworkUtility {
          * searchbar
          */
 
-        searchBar.setHint("Enter Auditor to search");
+        searchBar.setHint("Search Expenses");
         searchBar.setOnSearchActionListener(new SimpleOnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {
